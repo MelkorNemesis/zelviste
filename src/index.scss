@@ -1,0 +1,69 @@
+:root {
+  // general
+  --color-overlay: rgba(246, 249, 234, 0.62);
+  --color-bg: #f6f9ea;
+
+  // fonts
+  --font-size-default: 16px;
+  --font-family: "Roboto", sans-serif;
+
+  // colors definition
+  --color-primary: #f1bf28;
+  --color-secondary: #644a44;
+  --color-secondary-d1: #433633;
+  --color-tertiary: #b5cf49;
+  --color-tertiary-d1: #a2bc49;
+
+  --color-grey-d1: #c4c4c4;
+  --color-grey: #ccc;
+  --color-grey-l1: #f4f4f4;
+  --color-grey-l2: #f6f6f6;
+
+  --color-light: #fff;
+
+  // paddings
+  --padding-sides: 1rem;
+
+  // colors usage
+  --color-text-light: #fff;
+  --color-text-dark: var(--color-secondary-d1);
+  --color-box-bg: #fff;
+  --color-separator: #d9d9d9;
+  --color-price-before: #ccc;
+
+  --color-success: #b5cf49;
+  --color-warning: #DE5C72;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+html {
+  font-size: var(--font-size-default);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

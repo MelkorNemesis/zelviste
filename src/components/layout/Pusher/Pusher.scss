@@ -1,0 +1,10 @@
+.Pusher {
+  position: relative;
+  height: 100%;
+
+  transition: transform 0.5s;
+
+  &.Pusher--nav-open {
+    transform: translateX(286px);
+  }
+}

@@ -1,0 +1,106 @@
+.Txt {
+  font-size: 1rem;
+  line-height: 1.35;
+
+  &.Txt--bold {
+    font-weight: 700;
+  }
+
+  &.Txt--medium-bold {
+    font-weight: 500;
+  }
+
+  &.Txt--thin {
+    font-weight: 300;
+  }
+
+  &.Txt--light {
+    color: var(--color-light);
+  }
+
+  &.Txt--smaller {
+    font-size: 0.875rem;
+  }
+
+  &.Txt--small {
+    font-size: 0.75rem;
+  }
+
+  &.Txt--inline {
+    display: inline;
+  }
+
+  &.Txt--inline-block {
+    display: inline-block;
+  }
+
+  &.Txt--center {
+    text-align: center;
+  }
+
+  &.Txt--first {
+    margin-top: 0;
+  }
+
+  &.Txt--last {
+    margin-bottom: 0;
+  }
+
+  &.Txt--header {
+    margin-bottom: 1.3rem;
+    font-weight: 600;
+
+    color: var(--color-tertiary);
+    font-size: 1.5rem;
+  }
+
+  &.Txt--subheader {
+    margin-bottom: 0.625rem;
+    color: var(--color-secondary-d1);
+
+    font-size: 1.25rem;
+  }
+
+  &.Txt--price {
+    font-size: 1.1875rem;
+    color: var(--color-primary);
+    font-weight: 700;
+
+    &.Txt--price-large {
+      font-size: 1.4375rem;
+    }
+  }
+
+  &.Txt--price-before {
+    &.Txt--price-before-large {
+      del {
+        font-size: 1.125rem;
+      }
+    }
+
+    del {
+      font-size: 0.9375rem;
+      color: var(--color-price-before);
+      font-weight: 300;
+      text-decoration-color: var(--color-price-before);
+    }
+  }
+
+  &.Txt--success {
+    color: var(--color-success);
+  }
+
+  &.Txt--warning {
+    color: var(--color-warning);
+  }
+}
+
+p.Txt {
+  font-size: 0.875rem;
+}
+
+h1.Txt,
+h2.Txt {
+  font-weight: inherit;
+  line-height: inherit;
+}

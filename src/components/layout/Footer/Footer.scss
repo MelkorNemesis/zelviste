@@ -1,0 +1,31 @@
+.Footer {
+  margin-top: 0.625rem;
+  padding: 1.625rem 1rem;
+
+  background: var(--color-secondary);
+
+  .Footer__cols {
+    display: flex;
+
+    section {
+      &:first-child {
+        flex-shrink: 0;
+      }
+
+      & + section {
+        margin-left: 1.875rem;
+      }
+
+      .Footer__header {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  .Footer__copyright {
+    padding: 0.75rem 1rem;
+    margin: 0 -1rem;
+
+    background: var(--color-secondary-d1);
+  }
+}

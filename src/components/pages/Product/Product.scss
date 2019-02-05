@@ -1,0 +1,11 @@
+.ProductPage {
+  .Product__add-to-basket {
+    display: flex;
+    align-items: center;
+    margin-top: 1.25rem;
+
+    .Product__quantity {
+      margin-right: 1.5625rem;
+    }
+  }
+}

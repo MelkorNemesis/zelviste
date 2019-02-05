@@ -1,0 +1,19 @@
+.Table {
+  margin: 0.875rem 0;
+
+  font-size: 0.875rem;
+
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  .Table__hcol {
+    color: var(--color-secondary);
+  }
+
+  .Table__col,
+  .Table__hcol {
+    padding: 0.1875rem 0;
+
+    text-align: left;
+  }
+}

@@ -1,0 +1,13 @@
+.GoBackNavigation {
+  margin-bottom: 1.1875rem;
+
+  .GoBackNavigation__link {
+    display: flex;
+    align-items: center;
+  }
+
+  .GoBackNavigation__arrow {
+    width: 1rem;
+    margin-right: 0.8125rem;
+  }
+}

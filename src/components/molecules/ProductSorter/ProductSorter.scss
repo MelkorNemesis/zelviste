@@ -1,0 +1,22 @@
+.ProductSorter {
+  &__caption {
+    margin-right: 1rem;
+  }
+
+  &__option {
+    color: var(--color-secondary-d1);
+
+    & + & {
+      margin-left: 0.75rem;
+    }
+
+    &:hover,
+    &.active {
+      color: var(--color-primary);
+    }
+
+    &.active {
+      pointer-events: none;
+    }
+  }
+}

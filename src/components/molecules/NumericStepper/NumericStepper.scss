@@ -1,0 +1,21 @@
+.NumericStepper {
+  display: inline-flex;
+  align-items: center;
+
+  .NumericStepper__input {
+    margin: 0 0.5rem;
+
+    input {
+      width: 2.75rem;
+      height: 2.75rem;
+      padding: 0 0.5rem;
+      text-align: center;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+}

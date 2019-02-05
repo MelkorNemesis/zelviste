@@ -1,0 +1,62 @@
+.CategoriesNav {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block;
+      padding: 0.5rem 0;
+
+      &.has-children {
+        & > a {
+          &::after {
+            content: "+";
+          }
+        }
+
+        &.is-expanded {
+          & > a {
+            &::after {
+              content: "-";
+            }
+          }
+        }
+      }
+
+      ul {
+        margin: 0.5rem -1rem -0.5rem;
+        padding: 0.5rem 0;
+        background: var(--color-text-dark);
+
+        li {
+          margin: 0 1rem;
+        }
+      }
+    }
+
+    a {
+      padding-left: 1rem;
+      position: relative;
+
+      color: var(--color-light);
+      font-weight: 500;
+      line-height: 1.2;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      &:hover {
+        color: var(--color-primary);
+      }
+
+      &.active {
+        color: var(--color-primary);
+      }
+    }
+  }
+}

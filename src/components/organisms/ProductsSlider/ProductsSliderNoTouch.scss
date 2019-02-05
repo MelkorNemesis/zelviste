@@ -1,0 +1,8 @@
+.ProductsSliderNoTouch {
+  overflow: auto;
+  display: flex;
+
+  .ProductsSliderNoTouch__product {
+    flex: 0 0 10rem;
+  }
+}

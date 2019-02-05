@@ -1,0 +1,8 @@
+.Box {
+  background: var(--color-box-bg);
+  padding: 1.875rem var(--padding-sides);
+
+  & + .Box {
+    margin-top: 0.625rem;
+  }
+}
