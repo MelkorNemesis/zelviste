@@ -14,7 +14,7 @@ export function* initWatchersSaga() {
 }
 /* eslint-enable require-yield */
 
-export function* startupSaga() {
+export function* bootstrapSaga() {
   // load categories
   const categories = yield select(selectCategories);
   if (!categories.length) {
@@ -27,3 +27,5 @@ export function* startupSaga() {
     }
   }
 }
+
+export * from "./category";

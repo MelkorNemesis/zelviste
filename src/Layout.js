@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import { Routes } from "./consts";
+import { routes } from "./routes";
 
-import * as Pages from "./components/pages";
 import * as L from "./components/layout";
-import { NavigationContainer } from "./containers";
+import { Navigation } from "./containers";
 
 import "./Layout.scss";
 
@@ -21,7 +20,7 @@ export class Layout extends Component {
     return (
       <div className="Layout">
         <L.Pusher isNavOpen={this.state.isNavOpen}>
-          <NavigationContainer
+          <Navigation
             watchOutsideClick={this.state.isNavOpen}
             onClickOutside={() => {
               this.setState(() => ({ isNavOpen: false }));
@@ -31,16 +30,9 @@ export class Layout extends Component {
             <L.Header onMenuClick={this.handleNavToggle} />
             <L.Wrapper>
               <Switch>
-                <Route exact path="/" component={Pages.Homepage} />
-                <Route
-                  path={Routes.category.pattern}
-                  component={Pages.Category}
-                />
-                <Route
-                  path={Routes.product.pattern}
-                  component={Pages.Product}
-                />
-                <Route component={Pages.NotFound} />
+                {routes.map((def, idx) => (
+                  <Route key={idx} {...def} />
+                ))}
               </Switch>
               <L.Footer />
             </L.Wrapper>

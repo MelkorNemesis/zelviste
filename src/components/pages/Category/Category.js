@@ -1,9 +1,11 @@
-import React, { PureComponent } from "react";
+import React, { Fragment, PureComponent } from "react";
 
+import { sagaMiddleware } from "../../../redux/configureStore";
 import { Box, Text, Separator, Button } from "../../atoms";
 import { CategoryControls, ProductsGrid } from "../../organisms";
 import { Product } from "../../molecules";
 
+import { loadCategorySaga } from "../../../sagas";
 import routes from "../../../consts/routes";
 
 import "./Category.scss";
@@ -31,19 +33,40 @@ export class Category extends PureComponent {
     sortOptions: [...sortOptionsDefault]
   };
 
-  render() {
+  static serverFetch = match =>
+    sagaMiddleware.run(loadCategorySaga, match.params.seo_url);
+
+  componentDidMount() {
+    const { match, status } = this.props;
+
+    if (!status.done && !status.error) {
+      Category.serverFetch(match);
+    }
+  }
+
+  get loader() {
+    return <Box>Načítám ...</Box>;
+  }
+
+  get error() {
+    return <Box>Chyba při načítání kategorie.</Box>;
+  }
+
+  get content() {
+    const { data } = this.props;
+
     return (
-      <div className="Category">
+      <Fragment>
         <Box>
           <Text.Header h1 first>
-            Osvětlení terárií a akvárií
+            {data.name}
           </Text.Header>
 
           <Text.Paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            ac quam sem. <strong>Phasellus nec ante eu</strong> ante scelerisque
-            convallis. Proin sed tellus varius, vehicula lectus at, sollicitudin
-            eros. Sed ut lectu.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus ac quam sem. <strong>Phasellus nec ante eu</strong>{" "}
+            ante scelerisque convallis. Proin sed tellus varius, vehicula
+            lectus at, sollicitudin eros. Sed ut lectu.
           </Text.Paragraph>
         </Box>
 
@@ -104,6 +127,18 @@ export class Category extends PureComponent {
             <Button.Secondary>Načíst dalších 8</Button.Secondary>
           </div>
         </Box>
+      </Fragment>
+    );
+  }
+
+  render() {
+    const { status } = this.props;
+
+    return (
+      <div className="Category">
+        {status.error && this.error}
+        {status.pending && this.loader}
+        {status.done && this.content}
       </div>
     );
   }

@@ -4,14 +4,14 @@ import { Router } from "react-router-dom";
 import createBrowserHistory from "history/createBrowserHistory";
 
 import configureStore, { sagaMiddleware } from "./redux/configureStore";
-import { initWatchersSaga, startupSaga } from "./sagas/index";
+import { initWatchersSaga, bootstrapSaga } from "./sagas/index";
 import { isTouchDevice } from "./utils";
 import { DeviceContext } from "./contexts";
 import { Layout } from "./Layout";
 
 const store = configureStore();
 sagaMiddleware
-  .run(startupSaga)
+  .run(bootstrapSaga)
   .toPromise()
   .then(() => {
     sagaMiddleware.run(initWatchersSaga);

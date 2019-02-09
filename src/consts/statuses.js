@@ -19,5 +19,5 @@ export const SUCCESS = {
 export const ERROR = {
   pending: false,
   done: false,
-  error: null
+  error: true
 };
