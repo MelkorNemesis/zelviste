@@ -28,6 +28,11 @@ export function categoriesSuccess(categories) {
   return createAction(CATEGORIES_SUCCESS)(categories);
 }
 
+// -- selectors
+export function selectCategories(state) {
+  return state.app.categories;
+}
+
 // -- reducer
 export function reducer(state = getState("app") || initialState, action) {
   return produce(state, draft => {

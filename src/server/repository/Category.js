@@ -1,4 +1,4 @@
-import { Category } from "../model";
+import { Category, Product } from "../model";
 
 function buildTree(categories = []) {
   return function getChildren(parentId = null) {
@@ -35,5 +35,21 @@ export const CategoryRepository = {
     const result = await Category.raw(query);
 
     return buildTree(result.rows)(null);
+  },
+
+  getActiveBySeoUrl(seoUrl) {
+    return Category.query()
+      .where("is_active", true)
+      .where("seo_url", seoUrl)
+      .limit(1)
+      .first();
+  },
+
+  getActiveById(id) {
+    return Category.query()
+      .where("is_active", true)
+      .where("id", id)
+      .limit(1)
+      .first();
   }
 };

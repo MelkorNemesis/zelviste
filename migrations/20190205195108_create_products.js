@@ -9,6 +9,7 @@ exports.up = function(knex) {
     table.text("description_ascii");
     table.float("price_without_vat").notNullable();
     table.float("vat").notNullable();
+    table.float("discount");
     table
       .boolean("is_active")
       .notNullable()
