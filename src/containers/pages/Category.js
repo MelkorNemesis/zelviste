@@ -1,9 +1,10 @@
+import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 
 import { Category as CategoryComp } from "../../components/pages";
-import { withNotFound } from "../../components/hocs";
+import { withNotFound, withStatics } from "../../components/hocs";
 import { API } from "../../consts";
 
 const withStore = connect(state => ({
@@ -13,6 +14,7 @@ const withStore = connect(state => ({
 }));
 
 const enhance = compose(
+  withStatics(CategoryComp),
   withStore,
   withNotFound(
     props =>
