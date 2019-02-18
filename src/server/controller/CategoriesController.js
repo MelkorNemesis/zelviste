@@ -3,24 +3,24 @@ import boom from "boom";
 
 export const CategoriesController = {
   async getAll(req) {
-    const seoUrl = req.query.seo_url;
+    const { seo_url } = req.query;
 
-    if (seoUrl) {
-      const category = await CategoryRepository.getActiveBySeoUrl(seoUrl);
+    // if seo_url in query, fetch one
+    if (seo_url) {
+      const category = await CategoryRepository.getActiveBySeoUrl(seo_url);
 
       if (!category) {
         throw boom.notFound();
       }
 
       return category;
+    } else {
+      // fetch categories tree
+      return CategoryRepository.getTree();
     }
-
-    return CategoryRepository.getTree();
   },
 
-  async getProducts(req) {
-    return await req.category
-      .$relatedQuery("products")
-      .where("is_active", true);
+  getProducts(req) {
+    return req.category.getProducts(req.query);
   }
 };

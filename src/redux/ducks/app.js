@@ -40,11 +40,14 @@ export function reducer(state = getState("app") || initialState, action) {
     switch (action.type) {
       case CATEGORIES_REQUEST:
         draft.categoriesStatus = Statuses.PENDING;
+        draft.categories = [];
         break;
       case CATEGORIES_SUCCESS:
         draft.categoriesStatus = Statuses.SUCCESS;
         draft.categories = action.payload;
         break;
+      case CATEGORIES_FAILURE:
+        draft.categoriesStatus = Statuses.ERROR;
     }
     /* eslint-enable */
   });

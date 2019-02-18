@@ -13,7 +13,7 @@ async function getActiveCategoryOrThrow(req, res, next) {
   if (req.params.id) {
     req.category = await CategoryRepository.getActiveById(req.params.id);
   }
-  console.log(req.category);
+
   if (!req.category) {
     next(boom.notFound());
   }
@@ -35,13 +35,18 @@ router.get(
 
 router.get(
   "/:id/products",
+  celebrate({
+    query: Joi.object().keys({
+      sort: Joi.string().valid("price.asc", "price.desc", "name.asc"),
+      limit: Joi.number()
+        .integer()
+        .positive(),
+      offset: Joi.number()
+        .integer()
+        .positive()
+        .allow(0)
+    })
+  }),
   getActiveCategoryOrThrow,
   asyncHandlerWrapper(CategoriesController.getProducts)
 );
-
-// bodyParser.json(),
-// celebrate({
-//   query: Joi.object().keys({
-//     seo_url: Joi.string().required()
-//   })
-// }),

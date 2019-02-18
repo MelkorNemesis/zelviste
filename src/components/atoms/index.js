@@ -4,5 +4,6 @@ export * from "./Currency/Currency";
 export * from "./Input/Input";
 export * from "./Link/Link";
 export * from "./Separator/Separator";
+export * from "./Spinner/Spinner";
 export * from "./Table/Table";
 export * from "./Text/Text";

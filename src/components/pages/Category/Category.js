@@ -1,12 +1,12 @@
 import React, { Fragment, PureComponent } from "react";
 
-import { sagaMiddleware } from "../../../redux/configureStore";
-import { Box, Text, Separator, Button } from "../../atoms";
+import { Box, Text, Separator, Button, Spinner } from "../../atoms";
 import { CategoryControls, ProductsGrid } from "../../organisms";
 import { Product } from "../../molecules";
 
-import { loadCategorySaga } from "../../../sagas";
-import routes from "../../../consts/routes";
+import { sagaMiddleware } from "../../../redux/configureStore";
+import { loadCategorySaga } from "../../../redux/sagas";
+import { Routes } from "../../../consts";
 
 import "./Category.scss";
 
@@ -44,88 +44,84 @@ export class Category extends PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const { match } = this.props;
+    if (prevProps.match.params.seo_url !== match.params.seo_url) {
+      Category.serverFetch(match);
+    }
+  }
+
   get loader() {
-    return <Box>Načítám ...</Box>;
+    return (
+      <Box>
+        <Spinner.Block>Načítám...</Spinner.Block>
+      </Box>
+    );
   }
 
   get error() {
     return <Box>Chyba při načítání kategorie.</Box>;
   }
 
+  get hasProducts() {
+    return this.props.products.length > 0;
+  }
+
   get content() {
-    const { data } = this.props;
+    const { data, products } = this.props;
 
     return (
       <Fragment>
         <Box>
-          <Text.Header h1 first>
+          <Text.Header h1 first last={!data.description}>
             {data.name}
           </Text.Header>
 
-          <Text.Paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus ac quam sem. <strong>Phasellus nec ante eu</strong>{" "}
-            ante scelerisque convallis. Proin sed tellus varius, vehicula
-            lectus at, sollicitudin eros. Sed ut lectu.
-          </Text.Paragraph>
+          {data.description && (
+            <Text.Paragraph
+              dangerouslySetInnerHTML={{ __html: data.description }}
+              last
+            />
+          )}
         </Box>
 
         <Box>
-          <CategoryControls
-            productsCount={22}
-            sortOptions={this.state.sortOptions}
-          />
+          {this.hasProducts > 0 && (
+            <Fragment>
+              <CategoryControls
+                productsCount={22}
+                sortOptions={this.state.sortOptions}
+              />
 
-          <Separator />
+              <Separator />
 
-          <ProductsGrid>
-            <Product
-              price={200}
-              priceBefore={250}
-              name="Kokosová skořápka s otvorem - Robimaus"
-              seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
-              imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
-            />
-            <Product
-              price={200}
-              priceBefore={250}
-              name="Kokosová skořápka s otvorem - Robimaus"
-              seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
-              imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
-            />
-            <Product
-              price={200}
-              priceBefore={250}
-              name="Kokosová skořápka s otvorem - Robimaus"
-              seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
-              imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
-            />
-            <Product
-              price={200}
-              priceBefore={250}
-              name="Kokosová skořápka s otvorem - Robimaus"
-              seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
-              imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
-            />
-            <Product
-              price={200}
-              priceBefore={250}
-              name="Kokosová skořápka s otvorem - Robimaus"
-              seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={false}
-              imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
-            />
-          </ProductsGrid>
+              <ProductsGrid>
+                {products.map(p => (
+                  <Product
+                    key={p.id}
+                    price={p.price}
+                    priceBefore={p.price - p.discount}
+                    name={p.name}
+                    seoUrl={Routes.product(p.seo_url)}
+                    isAvailable={true}
+                    imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
+                  />
+                ))}
+              </ProductsGrid>
 
-          <Separator small taller />
+              <Separator small taller />
 
-          <div className="Category__more">
-            <Button.Secondary>Načíst dalších 8</Button.Secondary>
-          </div>
+              <div className="Category__more">
+                <Button.Secondary>Načíst dalších 8</Button.Secondary>
+              </div>
+            </Fragment>
+          )}
+
+          {!this.hasProducts && (
+            <Text.Paragraph first last>
+              V kategorii momentálně nejsou žádné produkty.
+            </Text.Paragraph>
+          )}
         </Box>
       </Fragment>
     );

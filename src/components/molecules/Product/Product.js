@@ -29,7 +29,11 @@ export const Product = ({
       </Text>
     </Link.Product>
 
-    <ProductPrice price={299} priceBefore={399} className="Product__price" />
+    <ProductPrice
+      price={price}
+      priceBefore={priceBefore}
+      className="Product__price"
+    />
 
     <ProductAvailability
       isAvailable={isAvailable}

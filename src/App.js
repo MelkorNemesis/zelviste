@@ -4,7 +4,7 @@ import { Router } from "react-router-dom";
 import createBrowserHistory from "history/createBrowserHistory";
 
 import configureStore, { sagaMiddleware } from "./redux/configureStore";
-import { initWatchersSaga, bootstrapSaga } from "./sagas/index";
+import { initWatchersSaga, bootstrapSaga } from "./redux/sagas/index";
 import { isTouchDevice } from "./utils";
 import { DeviceContext } from "./contexts";
 import { Layout } from "./Layout";

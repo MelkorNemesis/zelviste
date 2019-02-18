@@ -21,3 +21,9 @@ export const ERROR = {
   done: false,
   error: true
 };
+
+export const BUILD_ERROR = err => ({
+  pending: false,
+  done: false,
+  error: err
+});

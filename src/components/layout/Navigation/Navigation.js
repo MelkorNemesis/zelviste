@@ -55,7 +55,6 @@ export class Navigation extends PureComponent {
   }
 
   handleClickOutside = e => {
-    // @ts-ignore
     if (this.node && this.node.contains(e.target)) {
       return;
     }

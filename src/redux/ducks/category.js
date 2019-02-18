@@ -41,10 +41,12 @@ export function reducer(state = getState("category") || initialState, action) {
         break;
       case LOAD_SUCCESS:
         draft.status = Statuses.SUCCESS;
-        draft.data = action.payload;
+        const { category, products } = action.payload;
+        draft.data = category;
+        draft.products = products;
         break;
       case LOAD_FAILURE:
-        draft.status = Statuses.ERROR;
+        draft.status = Statuses.BUILD_ERROR(action.error);
         draft.data = initialState.data;
     }
     /* eslint-enable */

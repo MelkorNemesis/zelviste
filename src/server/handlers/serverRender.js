@@ -4,7 +4,7 @@ import { StaticRouter, matchPath } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import configureStore, { sagaMiddleware } from "../../redux/configureStore";
-import { bootstrapSaga } from "../../sagas";
+import { bootstrapSaga } from "../../redux/sagas";
 import { Layout } from "../../Layout";
 import { routes } from "../../routes";
 
@@ -16,19 +16,15 @@ export async function serverRender(req, res) {
 
   // run & wait to finish bootstrap task
   const bootstrapSagaTask = sagaMiddleware.run(bootstrapSaga);
-  await bootstrapSagaTask.toPromise();
+  const bootstrapSagaPromise = bootstrapSagaTask.toPromise();
+  await bootstrapSagaPromise;
 
   // find & run & wait to finish route's serverFetch method
   const dataRequirements = routes
-    .map(route => {
-      route.match = matchPath(req.url, route);
-      return route;
-    })
+    .map(route => ((route.match = matchPath(req.url, route)), route))
     .filter(route => route.match)
     .filter(route => route.component.serverFetch)
-    .map(route => {
-      return route.component.serverFetch(route.match);
-    })
+    .map(route => route.component.serverFetch(route.match))
     .map(task => task.toPromise());
 
   await Promise.all(dataRequirements);
