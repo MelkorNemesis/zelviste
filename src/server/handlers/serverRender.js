@@ -2,6 +2,7 @@ import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter, matchPath } from "react-router-dom";
 import { Provider } from "react-redux";
+import Helmet from "react-helmet";
 
 import configureStore, { sagaMiddleware } from "../../redux/configureStore";
 import { bootstrapSaga } from "../../redux/sagas";
@@ -41,6 +42,8 @@ export async function serverRender(req, res) {
     </StaticRouter>
   );
 
+  const helmetData = Helmet.renderStatic();
+
   if (context.url) {
     res.redirect(context.url);
   } else {
@@ -50,8 +53,9 @@ export async function serverRender(req, res) {
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta charset="utf-8" />
-          <title>Welcome to Razzle</title>
           <meta name="viewport" content="width=device-width, initial-scale=1">
+          ${helmetData.title.toString()}
+          ${helmetData.meta.toString()}
           ${
             assets.client.css
               ? `<link rel="stylesheet" href="${assets.client.css}">`

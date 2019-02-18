@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import { routes } from "./routes";
 import * as L from "./components/layout";
 import { Navigation } from "./containers";
+import { seoTitle } from "./utils";
 
 import "./Layout.scss";
 
@@ -19,6 +21,9 @@ export class Layout extends Component {
   render() {
     return (
       <div className="Layout">
+        <Helmet>
+          <title>{seoTitle()}</title>
+        </Helmet>
         <L.Pusher isNavOpen={this.state.isNavOpen}>
           <Navigation
             watchOutsideClick={this.state.isNavOpen}
