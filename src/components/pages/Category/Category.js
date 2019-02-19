@@ -4,8 +4,6 @@ import { Box, Text, Separator, Button, Spinner } from "../../atoms";
 import { CategoryControls, ProductsGrid } from "../../organisms";
 import { Product } from "../../molecules";
 
-import { sagaMiddleware } from "../../../redux/configureStore";
-import { loadCategorySaga } from "../../../redux/sagas";
 import { Routes } from "../../../consts";
 
 import "./Category.scss";
@@ -32,24 +30,6 @@ export class Category extends PureComponent {
   state = {
     sortOptions: [...sortOptionsDefault]
   };
-
-  static serverFetch = match =>
-    sagaMiddleware.run(loadCategorySaga, match.params.seo_url);
-
-  componentDidMount() {
-    const { match, status } = this.props;
-
-    if (!status.done && !status.error) {
-      Category.serverFetch(match);
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { match } = this.props;
-    if (prevProps.match.params.seo_url !== match.params.seo_url) {
-      Category.serverFetch(match);
-    }
-  }
 
   get loader() {
     return (
