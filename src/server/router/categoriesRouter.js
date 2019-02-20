@@ -1,10 +1,10 @@
 import { Router } from "express";
-import bodyParser from "body-parser";
 import { celebrate, Joi } from "celebrate";
 import boom from "boom";
 
 // imports
 import { CategoriesController } from "../controller";
+import { format } from "../controller/helpers";
 import { CategoryRepository } from "../repository";
 import { asyncHandlerWrapper } from "./helpers";
 
@@ -29,7 +29,7 @@ router.get(
   "/:id",
   getActiveCategoryOrThrow,
   asyncHandlerWrapper(async req => {
-    return req.category;
+    return format.ok(req.category);
   })
 );
 

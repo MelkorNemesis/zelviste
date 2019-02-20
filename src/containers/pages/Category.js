@@ -14,7 +14,6 @@ class CategoryContainer extends Component {
 
   componentDidMount() {
     const { match, status } = this.props;
-
     if (!status.done && !status.error) {
       Category.serverFetch(match);
     }

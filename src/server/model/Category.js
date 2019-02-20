@@ -29,7 +29,13 @@ export class Category extends Model {
       .select(["*", raw("(COUNT(*) OVER())::integer AS total")])
       .where("is_active", true);
 
-    // const total = await productsQuery;
+    // get total products count regardless offset and limit clause
+    let totalProductResult = await productsQuery
+      .clone()
+      .clearSelect()
+      .select(raw("COUNT(*) OVER()::integer AS total"))
+      .limit(1)
+      .first();
 
     if (sort) {
       const [column, direction] = sort.split(".");
@@ -44,6 +50,12 @@ export class Category extends Model {
       productsQuery.offset(offset);
     }
 
-    return productsQuery;
+    // get the products array
+    const products = await productsQuery;
+
+    return {
+      total: totalProductResult !== undefined ? totalProductResult.total : 0,
+      products
+    };
   }
 }

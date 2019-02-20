@@ -1,5 +1,7 @@
-import { CategoryRepository } from "../repository";
 import boom from "boom";
+
+import { CategoryRepository } from "../repository";
+import { format } from "./helpers";
 
 export const CategoriesController = {
   async getAll(req) {
@@ -13,14 +15,18 @@ export const CategoriesController = {
         throw boom.notFound();
       }
 
-      return category;
+      return format.ok(category);
     } else {
       // fetch categories tree
-      return CategoryRepository.getTree();
+      const tree = await CategoryRepository.getTree();
+      return format.ok(tree);
     }
   },
 
-  getProducts(req) {
-    return req.category.getProducts(req.query);
+  async getProducts(req) {
+    const { products, total } = await req.category.getProducts(req.query);
+    return format.ok(products, {
+      total
+    });
   }
 };
