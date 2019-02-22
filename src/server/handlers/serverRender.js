@@ -7,7 +7,7 @@ import Helmet from "react-helmet";
 import configureStore, { sagaMiddleware } from "../../redux/configureStore";
 import { bootstrapSaga } from "../../redux/sagas";
 import { Layout } from "../../Layout";
-import { routes } from "../../routes";
+import { routes } from "../../shared/routes";
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -22,10 +22,10 @@ export async function serverRender(req, res) {
 
   // find & run & wait to finish route's serverFetch method
   const dataRequirements = routes
-    .map(route => ((route.match = matchPath(req.url, route)), route))
+    .map(route => ((route.match = matchPath(req.path, route)), route))
     .filter(route => route.match)
     .filter(route => route.component.serverFetch)
-    .map(route => route.component.serverFetch(route.match))
+    .map(route => route.component.serverFetch(route.match, req.query))
     .map(task => task.toPromise());
 
   await Promise.all(dataRequirements);

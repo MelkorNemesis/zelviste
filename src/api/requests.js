@@ -6,7 +6,10 @@ export function getCategories() {
 }
 
 export function getCategoryBySeoUrl(seoUrl) {
-  return get(`/api/categories?seo_url=${seoUrl}`);
+  const query = qs.stringify({
+    seo_url: seoUrl
+  });
+  return get(`/api/categories?${query}`);
 }
 
 export function getCategoryProducts(id, { sort, limit, offset } = {}) {

@@ -8,29 +8,7 @@ import { Routes } from "../../../consts";
 
 import "./Category.scss";
 
-const sortOptionsDefault = [
-  {
-    name: "Názvu",
-    active: true,
-    link: "abc"
-  },
-  {
-    name: "Nejnižší ceny",
-    active: false,
-    link: "def"
-  },
-  {
-    name: "Nejvyšší ceny",
-    active: false,
-    link: "ghi"
-  }
-];
-
 export class Category extends PureComponent {
-  state = {
-    sortOptions: [...sortOptionsDefault]
-  };
-
   get loader() {
     return (
       <Box>
@@ -70,7 +48,7 @@ export class Category extends PureComponent {
             <Fragment>
               <CategoryControls
                 productsCount={22}
-                sortOptions={this.state.sortOptions}
+                sortOptions={this.props.sortOptions}
               />
 
               <Separator />

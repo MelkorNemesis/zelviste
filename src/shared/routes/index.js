@@ -1,6 +1,6 @@
-import { Homepage, Product, NotFound } from "../components/pages";
-import { Category } from "../containers";
-import { Routes } from "../consts";
+import { Homepage, Product, NotFound } from "../../components/pages";
+import { Category } from "../../containers";
+import { Routes } from "../../consts";
 
 export const routes = [
   {

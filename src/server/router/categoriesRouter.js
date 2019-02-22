@@ -7,6 +7,7 @@ import { CategoriesController } from "../controller";
 import { format } from "../controller/helpers";
 import { CategoryRepository } from "../repository";
 import { asyncHandlerWrapper } from "./helpers";
+import { Category } from "../../shared/consts";
 
 // middlewares
 async function getActiveCategoryOrThrow(req, res, next) {
@@ -37,7 +38,7 @@ router.get(
   "/:id/products",
   celebrate({
     query: Joi.object().keys({
-      sort: Joi.string().valid("price.asc", "price.desc", "name.asc"),
+      sort: Joi.string().valid(Category.AVAILABLE_SORTING),
       limit: Joi.number()
         .integer()
         .positive(),

@@ -6,8 +6,8 @@ import { Statuses } from "../../consts";
 
 // -- default state
 const initialState = {
-  products: [],
   data: undefined,
+  products: [],
   status: Statuses.DEFAULT
 };
 
@@ -48,6 +48,7 @@ export function reducer(state = getState("category") || initialState, action) {
       case LOAD_FAILURE:
         draft.status = Statuses.BUILD_ERROR(action.error);
         draft.data = initialState.data;
+        draft.products = [];
     }
     /* eslint-enable */
   });
