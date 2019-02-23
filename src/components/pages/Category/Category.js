@@ -26,7 +26,7 @@ export class Category extends PureComponent {
   }
 
   get content() {
-    const { data, products } = this.props;
+    const { data, products, total } = this.props;
 
     return (
       <Fragment>
@@ -47,7 +47,7 @@ export class Category extends PureComponent {
           {this.hasProducts > 0 && (
             <Fragment>
               <CategoryControls
-                productsCount={22}
+                productsCount={total}
                 sortOptions={this.props.sortOptions}
               />
 

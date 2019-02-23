@@ -8,7 +8,8 @@ import { Statuses } from "../../consts";
 const initialState = {
   data: undefined,
   products: [],
-  status: Statuses.DEFAULT
+  status: Statuses.DEFAULT,
+  total: 0
 };
 
 // -- actions
@@ -38,12 +39,14 @@ export function reducer(state = getState("category") || initialState, action) {
         draft.status = Statuses.PENDING;
         draft.data = initialState.data;
         draft.products = [];
+        draft.total = 0;
         break;
       case LOAD_SUCCESS:
         draft.status = Statuses.SUCCESS;
-        const { category, products } = action.payload;
+        const { category, products, total } = action.payload;
         draft.data = category;
         draft.products = products;
+        draft.total = total;
         break;
       case LOAD_FAILURE:
         draft.status = Statuses.BUILD_ERROR(action.error);

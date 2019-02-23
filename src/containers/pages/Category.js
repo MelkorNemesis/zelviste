@@ -9,7 +9,7 @@ import { sagaMiddleware } from "../../redux/configureStore";
 import { loadCategorySaga } from "../../redux/sagas";
 import { API } from "../../consts";
 import { Category as CategoryConsts } from "../../shared/consts";
-import { falidator, isValidPage, isValidSorting } from "../../validations";
+import { falidateOrder, falidatePage } from "../../falidators";
 import { Routes } from "../../consts";
 
 class CategoryContainer extends Component {
@@ -20,8 +20,8 @@ class CategoryContainer extends Component {
 
     let { page, order } = query;
 
-    order = falidator(isValidSorting, CategoryConsts.DEFAULT_SORTING)(order);
-    page = falidator(isValidPage, 1)(page);
+    order = falidateOrder(order, undefined);
+    page = falidatePage(page, undefined);
 
     return sagaMiddleware.run(loadCategorySaga, {
       seo_url,
@@ -31,10 +31,22 @@ class CategoryContainer extends Component {
   };
 
   get sortOptions() {
+    const {
+      match: {
+        params: { seo_url }
+      }
+    } = this.props;
+
+    let { page, order } = this.query;
+
+    page = falidatePage(page, undefined);
+    order = falidateOrder(order, CategoryConsts.DEFAULT_SORTING);
+
     return CategoryConsts.AVAILABLE_SORTING_OPTIONS.map(sortOption => {
       return {
         ...sortOption,
-        link: sortOption.id
+        active: sortOption.id === order,
+        link: Routes.category(seo_url, { order: sortOption.id, page })
       };
     });
   }
@@ -60,8 +72,24 @@ class CategoryContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { match } = this.props;
-    if (prevProps.match.params.seo_url !== match.params.seo_url) {
+    const {
+      match: {
+        params: { seo_url }
+      },
+      location: { search }
+    } = this.props;
+
+    const {
+      match: {
+        params: { seo_url: prev_seo_url }
+      },
+      location: { search: prev_search }
+    } = prevProps;
+
+    const hasUrlChanged = seo_url !== prev_seo_url;
+    const hasParamsChanged = search !== prev_search;
+
+    if (hasUrlChanged || hasParamsChanged) {
       this.update();
     }
   }
@@ -87,7 +115,7 @@ const withStore = connect(state => ({
   status: state.category.status,
   data: state.category.data,
   products: state.category.products,
-  order: state.category.order
+  total: state.category.total
 }));
 
 const enhance = compose(
