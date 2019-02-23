@@ -3,6 +3,7 @@ export * from "./Button/Button";
 export * from "./Currency/Currency";
 export * from "./Input/Input";
 export * from "./Link/Link";
+export * from "./Meta/Meta";
 export * from "./Separator/Separator";
 export * from "./Spinner/Spinner";
 export * from "./Table/Table";

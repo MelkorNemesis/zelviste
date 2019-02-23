@@ -1,6 +1,6 @@
 import React, { Fragment, PureComponent } from "react";
 
-import { Box, Text, Separator, Button, Spinner } from "../../atoms";
+import { Box, Text, Separator, Button, Spinner, Meta } from "../../atoms";
 import { CategoryControls, ProductsGrid } from "../../organisms";
 import { Product } from "../../molecules";
 
@@ -30,6 +30,7 @@ export class Category extends PureComponent {
 
     return (
       <Fragment>
+        <Meta title={data.name} />
         <Box>
           <Text.Header h1 first last={!data.description}>
             {data.name}
