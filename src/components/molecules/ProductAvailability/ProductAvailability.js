@@ -5,21 +5,22 @@ import PropTypes from "prop-types";
 import "./ProductAvailability.scss";
 import { Text } from "../../atoms";
 
-export const ProductAvailability = ({ isAvailable, className, ...rest }) => (
+export const ProductAvailability = ({ stockQuantity, className, ...rest }) => (
   <div className={cx("ProductAvailability", className)} {...rest}>
-    {(isAvailable && (
-      <Text.Success smaller bold>
-        skladem
-      </Text.Success>
-    )) || (
+    {stockQuantity <= 0 && (
       <Text.Warning smaller bold>
         není skladem
       </Text.Warning>
+    )}
+    {stockQuantity > 0 && (
+      <Text.Success smaller bold>
+        skladem
+      </Text.Success>
     )}
   </div>
 );
 
 ProductAvailability.propTypes = {
-  isAvailable: PropTypes.bool.isRequired,
+  stockQuantity: PropTypes.number.isRequired,
   className: PropTypes.string
 };

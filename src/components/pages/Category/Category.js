@@ -62,7 +62,7 @@ export class Category extends PureComponent {
                     priceBefore={p.price - p.discount}
                     name={p.name}
                     seoUrl={Routes.product(p.seo_url)}
-                    isAvailable={true}
+                    stockQuantity={p.stock_quantity}
                     imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
                   />
                 ))}

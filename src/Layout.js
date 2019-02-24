@@ -6,7 +6,7 @@ import * as L from "./components/layout";
 import { Navigation } from "./containers";
 
 import "./Layout.scss";
-import {Meta} from "./components/atoms";
+import { Meta } from "./components/atoms";
 
 export class Layout extends Component {
   state = {

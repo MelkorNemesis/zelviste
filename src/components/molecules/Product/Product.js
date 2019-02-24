@@ -12,7 +12,7 @@ export const Product = ({
   priceBefore,
   name,
   seoUrl,
-  isAvailable,
+  stockQuantity,
   imageURL,
   className,
   showButton = true,
@@ -36,7 +36,7 @@ export const Product = ({
     />
 
     <ProductAvailability
-      isAvailable={isAvailable}
+      stockQuantity={stockQuantity}
       className="Product__availability"
     />
 
