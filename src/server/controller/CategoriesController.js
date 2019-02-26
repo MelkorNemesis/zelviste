@@ -24,7 +24,11 @@ export const CategoriesController = {
   },
 
   async getProducts(req) {
-    const { products, total } = await req.category.getProducts(req.query);
+    const { products, total } = await CategoryRepository.getProducts(
+      req.category.id,
+      req.query
+    );
+
     return format.ok(products, {
       total
     });
