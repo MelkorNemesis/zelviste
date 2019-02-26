@@ -6,9 +6,22 @@ export class Product extends Model {
     return "products";
   }
 
-  static virtualAttributes = ["price", "currency"];
+  static virtualAttributes = ["price", "currency", "priceBefore"];
 
   get price() {
+    const discount = this.discount || 0;
+
+    return this.priceIncVAT - discount;
+  }
+
+  get priceBefore() {
+    if (this.discount) {
+      return this.priceIncVAT;
+    }
+    return null;
+  }
+
+  get priceIncVAT() {
     return this.price_without_vat * (1 + this.vat / 100);
   }
 

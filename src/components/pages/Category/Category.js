@@ -59,7 +59,7 @@ export class Category extends PureComponent {
                   <Product
                     key={p.id}
                     price={p.price}
-                    priceBefore={p.price - p.discount}
+                    priceBefore={p.priceBefore}
                     name={p.name}
                     seoUrl={Routes.product(p.seo_url)}
                     stockQuantity={p.stock_quantity}

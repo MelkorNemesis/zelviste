@@ -20,7 +20,7 @@ export class Homepage extends PureComponent {
               priceBefore={250}
               name="Kokosová skořápka s otvorem - Abcdef"
               seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
+              stockQuantity={10}
               imageURL="https://www.robimaus.cz/graphics/product/ukryt-pro-plazy-25cm-z-kokosoveho-vlakna-452.jpg"
               showButton={false}
             />
@@ -29,7 +29,7 @@ export class Homepage extends PureComponent {
               priceBefore={250}
               name="Kokosová skořápka s otvorem - Abcdef"
               seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
+              stockQuantity={10}
               imageURL="https://www.robimaus.cz/graphics/product/ukryt-pro-plazy-25cm-z-kokosoveho-vlakna-452.jpg"
               showButton={false}
             />
@@ -38,7 +38,7 @@ export class Homepage extends PureComponent {
               priceBefore={250}
               name="Kokosová skořápka s otvorem - Abcdef"
               seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
+              stockQuantity={10}
               imageURL="https://www.robimaus.cz/graphics/product/ukryt-pro-plazy-25cm-z-kokosoveho-vlakna-452.jpg"
               showButton={false}
             />
@@ -47,7 +47,7 @@ export class Homepage extends PureComponent {
               priceBefore={250}
               name="Kokosová skořápka s otvorem - Abcdef"
               seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
+              stockQuantity={10}
               imageURL="https://www.robimaus.cz/graphics/product/ukryt-pro-plazy-25cm-z-kokosoveho-vlakna-452.jpg"
               showButton={false}
             />
@@ -56,7 +56,7 @@ export class Homepage extends PureComponent {
               priceBefore={250}
               name="Kokosová skořápka s otvorem - Abcdef"
               seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
+              stockQuantity={10}
               imageURL="https://www.robimaus.cz/graphics/product/ukryt-pro-plazy-25cm-z-kokosoveho-vlakna-452.jpg"
               showButton={false}
             />
@@ -86,7 +86,7 @@ export class Homepage extends PureComponent {
               priceBefore={250}
               name="Kokosová skořápka s otvorem - Robimaus"
               seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
+              stockQuantity={10}
               imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
               showButton={false}
             />
@@ -95,7 +95,7 @@ export class Homepage extends PureComponent {
               priceBefore={250}
               name="Kokosová skořápka s otvorem - Robimaus"
               seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
+              stockQuantity={10}
               imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
               showButton={false}
             />
@@ -104,7 +104,7 @@ export class Homepage extends PureComponent {
               priceBefore={250}
               name="Kokosová skořápka s otvorem - Robimaus"
               seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
+              stockQuantity={10}
               imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
               showButton={false}
             />
@@ -113,7 +113,7 @@ export class Homepage extends PureComponent {
               priceBefore={250}
               name="Kokosová skořápka s otvorem - Robimaus"
               seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
+              stockQuantity={10}
               imageURL="https://www.robimaus.cz/graphics/product/ukryt-pro-plazy-25cm-z-kokosoveho-vlakna-452.jpg"
               showButton={false}
             />
@@ -122,7 +122,7 @@ export class Homepage extends PureComponent {
               priceBefore={250}
               name="Kokosová skořápka s otvorem - Robimaus"
               seoUrl={routes.product("kokosova-skorapka")}
-              isAvailable={true}
+              stockQuantity={10}
               imageURL="https://www.robimaus.cz/graphics/product/ukryt-pro-plazy-25cm-z-kokosoveho-vlakna-452.jpg"
               showButton={false}
             />

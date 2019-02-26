@@ -56,7 +56,7 @@ export const Product = () => {
         <Separator small />
 
         <ProductPrice large price={1296} priceBefore={1350} />
-        <ProductAvailability isAvailable />
+        <ProductAvailability stockQuantity={10} />
 
         <div className="Product__add-to-basket">
           <NumericStepper
