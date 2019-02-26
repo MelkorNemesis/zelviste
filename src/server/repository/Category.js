@@ -98,7 +98,7 @@ export const CategoryRepository = {
     const products = await productsQuery;
 
     return {
-      total: totalProductResult !== undefined ? totalProductResult.total : 0,
+      total: (totalProductResult && totalProductResult.total) || 0,
       products
     };
   },
