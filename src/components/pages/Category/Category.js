@@ -1,6 +1,14 @@
 import React, { Fragment, PureComponent } from "react";
 
-import { Box, Text, Separator, Button, Spinner, Meta } from "../../atoms";
+import {
+  Box,
+  Text,
+  Separator,
+  Button,
+  Spinner,
+  Meta,
+  ButtonLink
+} from "../../atoms";
 import { CategoryControls, ProductsGrid } from "../../organisms";
 import { Product } from "../../molecules";
 
@@ -41,6 +49,18 @@ export class Category extends PureComponent {
               dangerouslySetInnerHTML={{ __html: data.description }}
               last
             />
+          )}
+
+          {data.children && (
+            <div className="Category__children">
+              {data.children.map(category => {
+                return (
+                  <ButtonLink.Category to={Routes.category(category.seo_url)}>
+                    {category.name}
+                  </ButtonLink.Category>
+                );
+              })}
+            </div>
           )}
         </Box>
 

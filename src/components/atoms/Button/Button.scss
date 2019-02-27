@@ -97,4 +97,12 @@
       background: var(--color-grey-d1);
     }
   }
+
+  &.Button--category {
+    border-radius: 0;
+
+    & + .Button--category {
+      margin-left: 0.5rem;
+    }
+  }
 }

@@ -13,6 +13,8 @@ export const CategoriesController = {
 
       if (!category) {
         throw boom.notFound();
+      } else {
+        await category.$relatedQuery("children").where("is_active", true);
       }
 
       return format.ok(category);

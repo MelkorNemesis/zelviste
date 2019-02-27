@@ -15,6 +15,14 @@ export class Category extends Model {
           from: "categories.id",
           to: "products.id_category"
         }
+      },
+      children: {
+        relation: Model.HasManyRelation,
+        modelClass: Category,
+        join: {
+          from: "categories.id",
+          to: "categories.parent_id"
+        }
       }
     };
   }

@@ -42,15 +42,21 @@ function ButtonHOC(WrappedComponent) {
     </ButtonWrapper>
   );
 
-  ButtonWrapper.Plus = ({ children, className, ...rest }) => (
+  ButtonWrapper.Plus = ({ className, ...rest }) => (
     <ButtonWrapper className={cx("Button--plus", className)} {...rest}>
       +
     </ButtonWrapper>
   );
 
-  ButtonWrapper.Minus = ({ children, className, ...rest }) => (
+  ButtonWrapper.Minus = ({ className, ...rest }) => (
     <ButtonWrapper className={cx("Button--minus", className)} {...rest}>
       -
+    </ButtonWrapper>
+  );
+
+  ButtonWrapper.Category = ({ children, className, ...rest }) => (
+    <ButtonWrapper className={cx("Button--category", className)} {...rest}>
+      {children}
     </ButtonWrapper>
   );
 
