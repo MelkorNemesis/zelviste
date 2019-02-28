@@ -8,24 +8,15 @@ import { Routes } from "../../../../consts";
 import "./CategoriesNav.scss";
 
 export class CategoriesNav extends PureComponent {
-  state = {
-    categoryExpandedId: null,
-    onSelect: undefined
-  };
-
   static propTypes = {
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
+    activeIds: PropTypes.arrayOf(PropTypes.number)
   };
 
   static defaultProps = {
-    categories: []
-  };
-
-  isActive = route => {
-    return (
-      typeof window !== "undefined" &&
-      window.location.pathname.startsWith(route)
-    );
+    onSelect: undefined,
+    categories: [],
+    activeIds: []
   };
 
   onClick = () => {
@@ -43,16 +34,17 @@ export class CategoriesNav extends PureComponent {
       return null;
     }
 
+    const { activeIds } = this.props;
+
     return (
       <ul>
         {c.children.map(c => {
           const categoryURL = Routes.category(c.seo_url);
-          // const isActive = this.isActive(categoryURL);
 
           return (
             <li key={c.id}>
               <Link
-                // className={cx({ active: isActive })}
+                className={cx({ active: activeIds.indexOf(c.id) > -1 })}
                 onClick={this.onClick}
                 to={categoryURL}
               >
@@ -65,22 +57,17 @@ export class CategoriesNav extends PureComponent {
     );
   };
 
-  handleRootCategoryClick = category => {
-    this.setState({ categoryExpandedId: category.id });
-  };
-
   render() {
-    const { categories } = this.props;
+    const { categories, activeIds } = this.props;
     return (
       <div className="CategoriesNav">
         <ul>
           {categories.map(c => {
             const hasChildren = c.children.length > 0;
-            const isExpanded =
-              hasChildren && c.id === this.state.categoryExpandedId;
+            const isActive = activeIds.indexOf(c.id) > -1;
+            const isExpanded = hasChildren && isActive;
 
             const categoryURL = Routes.category(c.seo_url);
-            // const isActive = this.isActive(categoryURL);
 
             return (
               <li
@@ -92,9 +79,8 @@ export class CategoriesNav extends PureComponent {
               >
                 <Link
                   to={categoryURL}
-                  // className={cx({ active: isActive })}
+                  className={cx({ active: isActive })}
                   onClick={() => {
-                    this.handleRootCategoryClick(c);
                     this.props.onSelect();
                   }}
                 >

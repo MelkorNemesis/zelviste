@@ -7,6 +7,7 @@ import qs from "qs";
 import { Category as CategoryComp, NotFound } from "../../components/pages";
 import { sagaMiddleware } from "../../redux/configureStore";
 import { loadCategorySaga } from "../../redux/sagas";
+import { categoryUnset } from "../../redux/ducks";
 import { API } from "../../consts";
 import { Category as CategoryConsts } from "../../shared/consts";
 import { falidateOrder, falidatePage } from "../../falidators";
@@ -111,12 +112,17 @@ class CategoryContainer extends Component {
   }
 }
 
-const withStore = connect(state => ({
-  status: state.category.status,
-  data: state.category.data,
-  products: state.category.products,
-  total: state.category.total
-}));
+const withStore = connect(
+  state => ({
+    status: state.category.status,
+    data: state.category.data,
+    products: state.category.products,
+    total: state.category.total
+  }),
+  dispatch => ({
+    onUnmount: () => dispatch(categoryUnset())
+  })
+);
 
 const enhance = compose(
   withStore,

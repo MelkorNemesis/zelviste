@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 import { Text } from "../../atoms";
 import * as Icons from "../../icons";
+import { CategoriesNav } from "../../../containers";
 
-import { CategoriesNav } from "./CategoriesNav/CategoriesNav";
 import "./Navigation.scss";
 
 const NavigationHeader = ({ children, Icon }) => (

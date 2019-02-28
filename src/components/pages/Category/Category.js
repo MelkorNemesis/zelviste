@@ -1,4 +1,5 @@
 import React, { Fragment, PureComponent } from "react";
+import PropTypes from "prop-types";
 
 import {
   Box,
@@ -17,6 +18,18 @@ import { Routes } from "../../../consts";
 import "./Category.scss";
 
 export class Category extends PureComponent {
+  static propTypes = {
+    onUnmount: PropTypes.func
+  };
+
+  componentWillUnmount() {
+    const { onUnmount } = this.props;
+
+    if (typeof onUnmount === "function") {
+      onUnmount();
+    }
+  }
+
   get loader() {
     return (
       <Box>
@@ -33,6 +46,21 @@ export class Category extends PureComponent {
     return this.props.products.length > 0;
   }
 
+  get goBackNavigation() {
+    const { data } = this.props;
+
+    if (data.parent) {
+      return (
+        <GoBackNavigation
+          caption={data.parent.name}
+          seoUrl={Routes.category(data.parent.seo_url)}
+        />
+      );
+    } else {
+      return <GoBackNavigation caption="Hlavní strana" seoUrl="/" />;
+    }
+  }
+
   get content() {
     const { data, products, total } = this.props;
 
@@ -41,12 +69,7 @@ export class Category extends PureComponent {
         <Meta title={data.name} />
 
         <Box>
-          {data.parent && (
-            <GoBackNavigation
-              caption={data.parent.name}
-              seoUrl={Routes.category(data.parent.seo_url)}
-            />
-          )}
+          {this.goBackNavigation}
 
           <Text.Header h1 first last={!data.description}>
             {data.name}
