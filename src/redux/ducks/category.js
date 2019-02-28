@@ -60,8 +60,10 @@ export function reducer(state = getState("category") || initialState, action) {
     /* eslint-disable default-case */
     switch (action.type) {
       case LOAD_REQUEST:
+        /* we don't unset draft.data because it causes
+           blink in menu navigation */
+
         draft.status = Statuses.PENDING;
-        draft.data = initialState.data;
         draft.products = [];
         draft.total = 0;
         break;
