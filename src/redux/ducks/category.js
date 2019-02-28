@@ -16,7 +16,6 @@ const initialState = {
 const LOAD_REQUEST = "@eshop/category/load/REQUEST";
 const LOAD_SUCCESS = "@eshop/category/load/SUCCESS";
 const LOAD_FAILURE = "@eshop/category/load/FAILURE";
-
 const UNSET = "@eshop/category/unset";
 
 // -- action creators
@@ -62,7 +61,6 @@ export function reducer(state = getState("category") || initialState, action) {
       case LOAD_REQUEST:
         /* we don't unset draft.data because it causes
            blink in menu navigation */
-
         draft.status = Statuses.PENDING;
         draft.products = [];
         draft.total = 0;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
+import PropTypes from "prop-types";
 import qs from "qs";
 
 import { Category as CategoryComp, NotFound } from "../../components/pages";
@@ -29,6 +30,10 @@ class CategoryContainer extends Component {
       order,
       page
     });
+  };
+
+  static propTypes = {
+    onUnmount: PropTypes.func.isRequired
   };
 
   get sortOptions() {
@@ -93,6 +98,10 @@ class CategoryContainer extends Component {
     if (hasUrlChanged || hasParamsChanged) {
       this.update();
     }
+  }
+
+  componentWillUnmount() {
+    this.props.onUnmount();
   }
 
   render() {

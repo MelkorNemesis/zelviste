@@ -1,5 +1,4 @@
 import React, { Fragment, PureComponent } from "react";
-import PropTypes from "prop-types";
 
 import {
   Box,
@@ -18,18 +17,6 @@ import { Routes } from "../../../consts";
 import "./Category.scss";
 
 export class Category extends PureComponent {
-  static propTypes = {
-    onUnmount: PropTypes.func
-  };
-
-  componentWillUnmount() {
-    const { onUnmount } = this.props;
-
-    if (typeof onUnmount === "function") {
-      onUnmount();
-    }
-  }
-
   get loader() {
     return (
       <Box>
