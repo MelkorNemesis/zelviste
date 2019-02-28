@@ -15,6 +15,7 @@ export const CategoriesController = {
         throw boom.notFound();
       } else {
         await category.$relatedQuery("children").where("is_active", true);
+        await category.$relatedQuery("parent");
       }
 
       return format.ok(category);

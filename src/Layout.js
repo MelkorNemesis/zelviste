@@ -17,6 +17,10 @@ export class Layout extends Component {
     this.setState(state => ({ ...state, isNavOpen: !state.isNavOpen }));
   };
 
+  closeNav = () => {
+    this.setState(() => ({ isNavOpen: false }));
+  };
+
   render() {
     return (
       <div className="Layout">
@@ -24,9 +28,8 @@ export class Layout extends Component {
         <L.Pusher isNavOpen={this.state.isNavOpen}>
           <Navigation
             watchOutsideClick={this.state.isNavOpen}
-            onClickOutside={() => {
-              this.setState(() => ({ isNavOpen: false }));
-            }}
+            onNavigate={this.closeNav}
+            onClickOutside={this.closeNav}
           />
           <L.Content hasOverlay={this.state.isNavOpen}>
             <L.Header onMenuClick={this.handleNavToggle} />

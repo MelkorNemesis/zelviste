@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import cx from "classnames";
 
 import { Routes } from "../../../../consts";
@@ -8,7 +9,12 @@ import "./CategoriesNav.scss";
 
 export class CategoriesNav extends PureComponent {
   state = {
-    categoryExpandedId: null
+    categoryExpandedId: null,
+    onSelect: undefined
+  };
+
+  static propTypes = {
+    onSelect: PropTypes.func
   };
 
   static defaultProps = {
@@ -20,6 +26,16 @@ export class CategoriesNav extends PureComponent {
       typeof window !== "undefined" &&
       window.location.pathname.startsWith(route)
     );
+  };
+
+  onClick = () => {
+    const { onSelect } = this.props;
+    if (typeof onSelect === "function") {
+      onSelect();
+    }
+    // because only change in URL
+    // does not trigger re-render
+    this.forceUpdate();
   };
 
   renderChildren = c => {
@@ -37,11 +53,7 @@ export class CategoriesNav extends PureComponent {
             <li key={c.id}>
               <Link
                 // className={cx({ active: isActive })}
-                onClick={() => {
-                  // because only change in URL
-                  // does not trigger re-render
-                  this.forceUpdate();
-                }}
+                onClick={this.onClick}
                 to={categoryURL}
               >
                 {c.name}
@@ -83,6 +95,7 @@ export class CategoriesNav extends PureComponent {
                   // className={cx({ active: isActive })}
                   onClick={() => {
                     this.handleRootCategoryClick(c);
+                    this.props.onSelect();
                   }}
                 >
                   {c.name}

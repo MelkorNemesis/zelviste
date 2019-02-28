@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { Text } from "../../atoms";
 import * as Icons from "../../icons";
@@ -26,6 +27,10 @@ const NavigationIcon = {
 };
 
 export class Navigation extends PureComponent {
+  static propTypes = {
+    onNavigate: PropTypes.func
+  };
+
   node = null;
 
   listenToClickOutside = () => {
@@ -62,7 +67,7 @@ export class Navigation extends PureComponent {
   };
 
   render() {
-    const { categories } = this.props;
+    const { categories, onNavigate } = this.props;
 
     return (
       <div
@@ -75,7 +80,7 @@ export class Navigation extends PureComponent {
           Kategorie
         </NavigationHeader>
         <NavigationBox>
-          <CategoriesNav categories={categories} />
+          <CategoriesNav onSelect={onNavigate} categories={categories} />
         </NavigationBox>
 
         <NavigationHeader Icon={NavigationIcon.Contact}>

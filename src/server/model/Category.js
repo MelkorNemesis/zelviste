@@ -23,6 +23,14 @@ export class Category extends Model {
           from: "categories.id",
           to: "categories.parent_id"
         }
+      },
+      parent: {
+        relation: Model.HasOneRelation,
+        modelClass: Category,
+        join: {
+          from: "categories.parent_id",
+          to: "categories.id"
+        }
       }
     };
   }

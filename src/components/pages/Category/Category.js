@@ -10,7 +10,7 @@ import {
   ButtonLink
 } from "../../atoms";
 import { CategoryControls, ProductsGrid } from "../../organisms";
-import { Product } from "../../molecules";
+import { GoBackNavigation, Product } from "../../molecules";
 
 import { Routes } from "../../../consts";
 
@@ -39,7 +39,15 @@ export class Category extends PureComponent {
     return (
       <Fragment>
         <Meta title={data.name} />
+
         <Box>
+          {data.parent && (
+            <GoBackNavigation
+              caption={data.parent.name}
+              seoUrl={Routes.category(data.parent.seo_url)}
+            />
+          )}
+
           <Text.Header h1 first last={!data.description}>
             {data.name}
           </Text.Header>
@@ -51,11 +59,14 @@ export class Category extends PureComponent {
             />
           )}
 
-          {data.children && (
+          {data.children.length > 0 && (
             <div className="Category__children">
               {data.children.map(category => {
                 return (
-                  <ButtonLink.Category to={Routes.category(category.seo_url)}>
+                  <ButtonLink.Category
+                    key={category.id}
+                    to={Routes.category(category.seo_url)}
+                  >
                     {category.name}
                   </ButtonLink.Category>
                 );
