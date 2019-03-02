@@ -7,7 +7,7 @@ import qs from "qs";
 
 import { Category as CategoryComp, NotFound } from "../../components/pages";
 import { sagaMiddleware } from "../../redux/configureStore";
-import { loadCategorySaga } from "../../redux/sagas";
+import { loadCategoryProductsSaga, loadCategorySaga } from "../../redux/sagas";
 import { categoryUnset } from "../../redux/ducks";
 import { API } from "../../consts";
 import { Category as CategoryConsts } from "../../shared/consts";
@@ -70,6 +70,23 @@ class CategoryContainer extends Component {
     Category.serverFetch(match, this.query);
   };
 
+  updateProducts = () => {
+    const {
+      data: { id: categoryId }
+    } = this.props;
+
+    let { order, page } = this.query;
+
+    page = falidatePage(page, undefined);
+    order = falidateOrder(order, CategoryConsts.DEFAULT_SORTING);
+
+    sagaMiddleware.run(loadCategoryProductsSaga, {
+      categoryId,
+      order,
+      page
+    });
+  };
+
   componentDidMount() {
     const { status } = this.props;
     if (!status.done && !status.error) {
@@ -92,11 +109,13 @@ class CategoryContainer extends Component {
       location: { search: prev_search }
     } = prevProps;
 
-    const hasUrlChanged = seo_url !== prev_seo_url;
+    const hasCategoryChanged = seo_url !== prev_seo_url;
     const hasParamsChanged = search !== prev_search;
 
-    if (hasUrlChanged || hasParamsChanged) {
+    if (hasCategoryChanged) {
       this.update();
+    } else if (hasParamsChanged) {
+      this.updateProducts();
     }
   }
 
@@ -105,7 +124,7 @@ class CategoryContainer extends Component {
   }
 
   render() {
-    const { status, ...props } = this.props;
+    const { status, onUnmount, ...props } = this.props;
 
     if (status.error && status.error.status === API.ERROR_CODES.NOT_FOUND) {
       return <NotFound />;
@@ -124,6 +143,7 @@ class CategoryContainer extends Component {
 const withStore = connect(
   state => ({
     status: state.category.status,
+    productsStatus: state.category.productsStatus,
     data: state.category.data,
     products: state.category.products,
     total: state.category.total

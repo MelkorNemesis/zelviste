@@ -29,8 +29,73 @@ export class Category extends PureComponent {
     return <Box>Chyba při načítání kategorie.</Box>;
   }
 
+  get errorProducts() {
+    return <Box>Chyba při načítání produktů.</Box>;
+  }
+
   get hasProducts() {
     return this.props.products.length > 0;
+  }
+
+  get productsList() {
+    const { products, total } = this.props;
+
+    return (
+      <Fragment>
+        <CategoryControls
+          productsCount={total}
+          sortOptions={this.props.sortOptions}
+        />
+
+        <Separator />
+
+        <ProductsGrid>
+          {products.map(p => (
+            <Product
+              key={p.id}
+              price={p.price}
+              priceBefore={p.priceBefore}
+              name={p.name}
+              seoUrl={Routes.product(p.seo_url)}
+              stockQuantity={p.stock_quantity}
+              imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
+            />
+          ))}
+        </ProductsGrid>
+
+        <Separator small taller />
+
+        <div className="Category__more">
+          <Button.Secondary>Načíst dalších 8</Button.Secondary>
+        </div>
+      </Fragment>
+    );
+  }
+
+  get noProducts() {
+    return (
+      <Text.Paragraph first last>
+        V kategorii momentálně nejsou žádné produkty.
+      </Text.Paragraph>
+    );
+  }
+
+  get products() {
+    const { productsStatus } = this.props;
+
+    if (productsStatus.pending) {
+      return this.loader;
+    } else if (productsStatus.error) {
+      return this.errorProducts;
+    } else if (productsStatus.done) {
+      if (this.hasProducts) {
+        return this.productsList;
+      } else {
+        return this.noProducts;
+      }
+    } else {
+      return null;
+    }
   }
 
   get goBackNavigation() {
@@ -49,7 +114,7 @@ export class Category extends PureComponent {
   }
 
   get content() {
-    const { data, products, total } = this.props;
+    const { data } = this.props;
 
     return (
       <Fragment>
@@ -85,44 +150,7 @@ export class Category extends PureComponent {
           )}
         </Box>
 
-        <Box>
-          {this.hasProducts > 0 && (
-            <Fragment>
-              <CategoryControls
-                productsCount={total}
-                sortOptions={this.props.sortOptions}
-              />
-
-              <Separator />
-
-              <ProductsGrid>
-                {products.map(p => (
-                  <Product
-                    key={p.id}
-                    price={p.price}
-                    priceBefore={p.priceBefore}
-                    name={p.name}
-                    seoUrl={Routes.product(p.seo_url)}
-                    stockQuantity={p.stock_quantity}
-                    imageURL="https://www.robimaus.cz/graphics/product/kokosova-slupka-405.jpg"
-                  />
-                ))}
-              </ProductsGrid>
-
-              <Separator small taller />
-
-              <div className="Category__more">
-                <Button.Secondary>Načíst dalších 8</Button.Secondary>
-              </div>
-            </Fragment>
-          )}
-
-          {!this.hasProducts && (
-            <Text.Paragraph first last>
-              V kategorii momentálně nejsou žádné produkty.
-            </Text.Paragraph>
-          )}
-        </Box>
+        <Box>{this.products}</Box>
       </Fragment>
     );
   }
