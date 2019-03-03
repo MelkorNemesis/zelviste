@@ -45,12 +45,10 @@ export async function serverRender(req, res) {
 
   const helmetData = Helmet.renderStatic();
 
-  res.status(context.code || HttpStatus.OK);
-
   if (context.url) {
     res.redirect(context.url);
   } else {
-    res.send(
+    res.status(context.code || HttpStatus.OK).send(
       `<!doctype html>
         <html lang="">
         <head>

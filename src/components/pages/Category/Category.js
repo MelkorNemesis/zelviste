@@ -10,7 +10,7 @@ import {
   ButtonLink
 } from "../../atoms";
 import { CategoryControls, ProductsGrid } from "../../organisms";
-import { GoBackNavigation, Product } from "../../molecules";
+import { GoBackNavigation, Product, CategoryList } from "../../molecules";
 
 import { Routes } from "../../../consts";
 
@@ -113,6 +113,24 @@ export class Category extends PureComponent {
     }
   }
 
+  get categoryChildren() {
+    const { data } = this.props;
+
+    if (data.children.length > 0) {
+      return (
+        <CategoryList
+          categories={data.children.map(({ id, seo_url, name }) => ({
+            id,
+            seo_url,
+            name
+          }))}
+        />
+      );
+    }
+
+    return null;
+  }
+
   get content() {
     const { data } = this.props;
 
@@ -134,20 +152,7 @@ export class Category extends PureComponent {
             />
           )}
 
-          {data.children.length > 0 && (
-            <div className="Category__children">
-              {data.children.map(category => {
-                return (
-                  <ButtonLink.Category
-                    key={category.id}
-                    to={Routes.category(category.seo_url)}
-                  >
-                    {category.name}
-                  </ButtonLink.Category>
-                );
-              })}
-            </div>
-          )}
+          {this.categoryChildren}
         </Box>
 
         <Box>{this.products}</Box>

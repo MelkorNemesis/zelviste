@@ -1,11 +1,16 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 import { Box, Text } from "../../atoms";
-import { Product } from "../../molecules";
+import { CategoryList, Product } from "../../molecules";
 import { ProductsSlider } from "../../organisms";
 import routes from "../../../consts/routes";
 
 export class Homepage extends PureComponent {
+  static propTypes = {
+    categories: PropTypes.arrayOf(PropTypes.object)
+  };
+
   render() {
     return (
       <div className="Homepage">
@@ -73,6 +78,8 @@ export class Homepage extends PureComponent {
           <Text.Header h2 first>
             Kategorie
           </Text.Header>
+
+          <CategoryList categories={this.props.categories} />
         </Box>
 
         <Box>

@@ -1,3 +1,4 @@
+export * from "./CategoryList/CategoryList";
 export * from "./GoBackNavigation/GoBackNavigation";
 export * from "./NumericStepper/NumericStepper";
 export * from "./Product/Product";
