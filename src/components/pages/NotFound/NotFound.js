@@ -1,8 +1,19 @@
 import React, { PureComponent } from "react";
+import * as HttpStatus from "http-status-codes";
 
 import { Box, Text } from "../../atoms";
 
 export class NotFound extends PureComponent {
+  constructor(...args) {
+    super(...args);
+
+    const { staticContext } = this.props;
+
+    if (staticContext) {
+      staticContext.code = HttpStatus.NOT_FOUND;
+    }
+  }
+
   render() {
     return (
       <div className="NotFound">

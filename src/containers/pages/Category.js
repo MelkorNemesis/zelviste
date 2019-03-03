@@ -9,10 +9,9 @@ import { Category as CategoryComp, NotFound } from "../../components/pages";
 import { sagaMiddleware } from "../../redux/configureStore";
 import { loadCategoryProductsSaga, loadCategorySaga } from "../../redux/sagas";
 import { categoryUnset } from "../../redux/ducks";
-import { API } from "../../consts";
 import { Category as CategoryConsts } from "../../shared/consts";
+import { API, Routes } from "../../consts";
 import { falidateOrder, falidatePage } from "../../falidators";
-import { Routes } from "../../consts";
 
 class CategoryContainer extends Component {
   static serverFetch = (match, query) => {
@@ -124,10 +123,10 @@ class CategoryContainer extends Component {
   }
 
   render() {
-    const { status, onUnmount, ...props } = this.props;
+    const { status, onUnmount, staticContext, ...props } = this.props;
 
     if (status.error && status.error.status === API.ERROR_CODES.NOT_FOUND) {
-      return <NotFound />;
+      return <NotFound staticContext={staticContext} />;
     } else {
       return (
         <CategoryComp

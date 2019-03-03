@@ -3,6 +3,7 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter, matchPath } from "react-router-dom";
 import { Provider } from "react-redux";
 import Helmet from "react-helmet";
+import * as HttpStatus from "http-status-codes";
 
 import configureStore, { sagaMiddleware } from "../../redux/configureStore";
 import { bootstrapSaga } from "../../redux/sagas";
@@ -44,10 +45,12 @@ export async function serverRender(req, res) {
 
   const helmetData = Helmet.renderStatic();
 
+  res.status(context.code || HttpStatus.OK);
+
   if (context.url) {
     res.redirect(context.url);
   } else {
-    res.status(200).send(
+    res.send(
       `<!doctype html>
         <html lang="">
         <head>
