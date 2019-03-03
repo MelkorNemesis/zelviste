@@ -1,6 +1,7 @@
 export * from "./CategoryList/CategoryList";
 export * from "./GoBackNavigation/GoBackNavigation";
 export * from "./NumericStepper/NumericStepper";
+export * from "./Pagination/Pagination";
 export * from "./Product/Product";
 export * from "./ProductAvailability/ProductAvailability";
 export * from "./ProductCount/ProductCount";

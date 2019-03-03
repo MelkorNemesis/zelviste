@@ -1,16 +1,13 @@
 import React, { Fragment, PureComponent } from "react";
 
-import {
-  Box,
-  Text,
-  Separator,
-  Button,
-  Spinner,
-  Meta,
-  ButtonLink
-} from "../../atoms";
+import { Box, Text, Separator, Spinner, Meta } from "../../atoms";
 import { CategoryControls, ProductsGrid } from "../../organisms";
-import { GoBackNavigation, Product, CategoryList } from "../../molecules";
+import {
+  GoBackNavigation,
+  Product,
+  CategoryList,
+  Pagination
+} from "../../molecules";
 
 import { Routes } from "../../../consts";
 
@@ -38,7 +35,7 @@ export class Category extends PureComponent {
   }
 
   get productsList() {
-    const { products, total } = this.props;
+    const { products, total, paginationData } = this.props;
 
     return (
       <Fragment>
@@ -65,9 +62,7 @@ export class Category extends PureComponent {
 
         <Separator small taller />
 
-        <div className="Category__more">
-          <Button.Secondary>Načíst dalších 8</Button.Secondary>
-        </div>
+        <Pagination data={paginationData} />
       </Fragment>
     );
   }

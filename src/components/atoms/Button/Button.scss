@@ -111,4 +111,31 @@
       margin-left: 0.5rem;
     }
   }
+
+  &.Button--page {
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    box-sizing: border-box;
+
+    justify-content: center;
+
+    border: 0.125rem solid var(--color-secondary-d1);
+    background: var(--color-light);
+
+    &:hover {
+      color: var(--color-primary);
+
+      border-color: var(--color-primary);
+    }
+
+    &.Button--page-active {
+      color: var(--color-text-light);
+
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+
+      pointer-events: none;
+    }
+  }
 }

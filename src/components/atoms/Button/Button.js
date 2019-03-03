@@ -60,6 +60,21 @@ function ButtonHOC(WrappedComponent) {
     </ButtonWrapper>
   );
 
+  ButtonWrapper.Page = ({ children, className, active = false, ...rest }) => (
+    <ButtonWrapper
+      className={cx(
+        "Button--page",
+        {
+          "Button--page-active": active
+        },
+        className
+      )}
+      {...rest}
+    >
+      {children}
+    </ButtonWrapper>
+  );
+
   return ButtonWrapper;
 }
 

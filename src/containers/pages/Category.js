@@ -12,6 +12,8 @@ import { categoryUnset } from "../../redux/ducks";
 import { Category as CategoryConsts } from "../../shared/consts";
 import { API, Routes } from "../../consts";
 import { falidateOrder, falidatePage } from "../../falidators";
+import { calculatePages, range } from "../../utils";
+import { ITEMS_PER_PAGE } from "../../shared/consts/category";
 
 class CategoryContainer extends Component {
   static serverFetch = (match, query) => {
@@ -54,6 +56,30 @@ class CategoryContainer extends Component {
         link: Routes.category(seo_url, { order: sortOption.id, page })
       };
     });
+  }
+
+  get paginationData() {
+    const { total } = this.props;
+    const pagesCount = calculatePages({ total, itemsPerPage: ITEMS_PER_PAGE });
+
+    const {
+      match: {
+        params: { seo_url }
+      }
+    } = this.props;
+
+    let { page, order } = this.query;
+
+    page = falidatePage(page, 1);
+    order = falidateOrder(order, CategoryConsts.DEFAULT_SORTING);
+
+    return [...range(1, pagesCount)].map(idx => ({
+      url: Routes.category(seo_url, {
+        page: idx,
+        order
+      }),
+      active: idx === +page
+    }));
   }
 
   get query() {
@@ -132,6 +158,7 @@ class CategoryContainer extends Component {
         <CategoryComp
           status={status}
           sortOptions={this.sortOptions}
+          paginationData={this.paginationData}
           {...props}
         />
       );

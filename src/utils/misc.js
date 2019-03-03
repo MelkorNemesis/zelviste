@@ -13,3 +13,9 @@ export function fallback(fallback = undefined) {
     return val;
   };
 }
+
+export function* range(start, end) {
+  for (let i = start; i <= end; i++) {
+    yield i;
+  }
+}
