@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 
 import db from "./server/db";
-import { CategoriesRouter } from "./server/router";
+import { CategoriesRouter, ProductsRouter } from "./server/router";
 import { serverRender } from "./server/handlers";
 import { serverErrorHandler, clientErrorHandler } from "./server/middlewares";
 
@@ -18,6 +18,7 @@ server
 
   // routes
   .use("/api/categories", CategoriesRouter)
+  .use("/api/products", ProductsRouter)
 
   // server-side rendering fallback
   .get("/*", serverRender)

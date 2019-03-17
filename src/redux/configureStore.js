@@ -2,12 +2,13 @@ import { applyMiddleware, createStore, combineReducers } from "redux";
 import createSagaMiddleware from "redux-saga";
 
 import { isBrowser } from "../utils";
-import { category, app } from "./ducks";
+import { category, app, product } from "./ducks";
 import { logger } from "./middlewares";
 
 const rootReducer = combineReducers({
   category: category.reducer,
-  app: app.reducer
+  app: app.reducer,
+  product: product.reducer
 });
 
 export const sagaMiddleware = createSagaMiddleware();

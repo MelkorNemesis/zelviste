@@ -26,11 +26,13 @@ class CategoryContainer extends Component {
     order = falidateOrder(order, undefined);
     page = falidatePage(page, undefined);
 
-    return sagaMiddleware.run(loadCategorySaga, {
-      seo_url,
-      order,
-      page
-    });
+    return sagaMiddleware
+      .run(loadCategorySaga, {
+        seo_url,
+        order,
+        page
+      })
+      .toPromise();
   };
 
   static propTypes = {
@@ -92,7 +94,7 @@ class CategoryContainer extends Component {
 
   update = () => {
     const { match } = this.props;
-    Category.serverFetch(match, this.query);
+    CategoryContainer.serverFetch(match, this.query);
   };
 
   updateProducts = () => {

@@ -26,8 +26,7 @@ export async function serverRender(req, res) {
     .map(route => ((route.match = matchPath(req.path, route)), route))
     .filter(route => route.match)
     .filter(route => route.component.serverFetch)
-    .map(route => route.component.serverFetch(route.match, req.query))
-    .map(task => task.toPromise());
+    .map(route => route.component.serverFetch(route.match, req.query));
 
   await Promise.all(dataRequirements);
 

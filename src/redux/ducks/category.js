@@ -1,6 +1,6 @@
-import getState from "../getStateFromGlobal";
 import { produce } from "immer";
 
+import getState from "../getStateFromGlobal";
 import { createAction } from "../helpers";
 import { Statuses } from "../../consts";
 
@@ -114,9 +114,7 @@ export function reducer(state = getState("category") || initialState, action) {
         break;
 
       case LOAD_PRODUCTS_FAILURE:
-        draft.productsStatus = Statuses.BUILD_ERROR(
-            action.error
-        );
+        draft.productsStatus = Statuses.BUILD_ERROR(action.error);
         draft.products = [];
         draft.total = 0;
         break;

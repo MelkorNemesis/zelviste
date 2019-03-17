@@ -1,5 +1,5 @@
 import { Model } from "objection";
-import { Category } from ".";
+import { Category, Manufacturer } from ".";
 
 export class Product extends Model {
   static get tableName() {
@@ -7,6 +7,27 @@ export class Product extends Model {
   }
 
   static virtualAttributes = ["price", "currency", "priceBefore"];
+
+  static get relationMappings() {
+    return {
+      category: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Category,
+        join: {
+          from: "products.id_category",
+          to: "categories.id"
+        }
+      },
+      manufacturer: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Manufacturer,
+        join: {
+          from: 'products.id_manufacturer',
+          to: 'manufacturers.id'
+        }
+      }
+    };
+  }
 
   get price() {
     const discount = this.discount || 0;
@@ -27,18 +48,5 @@ export class Product extends Model {
 
   get currency() {
     return "Kč";
-  }
-
-  static get relationMappings() {
-    return {
-      category: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: Category,
-        join: {
-          from: "products.id_category",
-          to: "categories.id"
-        }
-      }
-    };
   }
 }

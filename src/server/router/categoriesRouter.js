@@ -2,14 +2,14 @@ import { Router } from "express";
 import { celebrate, Joi } from "celebrate";
 import boom from "boom";
 
-// imports
+// -- imports
 import { CategoriesController } from "../controller";
 import { format } from "../controller/helpers";
 import { CategoryRepository } from "../repository";
 import { asyncHandlerWrapper } from "./helpers";
 import { Category } from "../../shared/consts";
 
-// middlewares
+// -- middlewares
 async function getActiveCategoryOrThrow(req, res, next) {
   if (req.params.id) {
     req.category = await CategoryRepository.getActiveById(req.params.id);
@@ -21,7 +21,7 @@ async function getActiveCategoryOrThrow(req, res, next) {
   next();
 }
 
-// router
+// -- router
 export const router = new Router();
 
 router.get("/", asyncHandlerWrapper(CategoriesController.getAll));

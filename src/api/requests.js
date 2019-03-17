@@ -16,3 +16,10 @@ export function getCategoryProducts(id, { sort, limit, offset } = {}) {
   const query = qs.stringify({ sort, limit, offset });
   return get(`/api/categories/${id}/products?${query}`);
 }
+
+export function getProductBySeoUrl(seoUrl) {
+  const query = qs.stringify({
+    seo_url: seoUrl
+  });
+  return get(`/api/products?${query}`);
+}

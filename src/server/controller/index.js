@@ -1,1 +1,2 @@
-export * from './CategoriesController'
+export * from "./CategoriesController";
+export * from "./ProductsController";

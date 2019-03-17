@@ -34,4 +34,17 @@ export class Category extends Model {
       }
     };
   }
+
+  async hasAllParentsActive() {
+    let category = await this.$query().eager("parent.^");
+
+    while (category) {
+      if (!category.is_active) {
+        return false;
+      }
+      category = category.parent;
+    }
+
+    return true;
+  }
 }
