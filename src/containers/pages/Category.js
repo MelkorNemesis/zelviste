@@ -16,7 +16,7 @@ import { calculatePages, range } from "../../utils";
 import { ITEMS_PER_PAGE } from "../../shared/consts/category";
 
 class CategoryContainer extends Component {
-  static serverFetch = (match, query) => {
+  static serverFetch = (match, { query }) => {
     const {
       params: { seo_url }
     } = match;

@@ -10,6 +10,7 @@ import {
   Size,
   Manufacturer
 } from "../../atoms";
+
 import {
   GoBackNavigation,
   PropertyValueList,

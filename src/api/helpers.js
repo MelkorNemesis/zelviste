@@ -4,16 +4,6 @@ import deepMerge from "deepmerge";
 import { isBrowser } from "../utils";
 import { APIError } from ".";
 
-let injectedCookie;
-
-export function injectCookie(cookie) {
-  injectedCookie = cookie;
-
-  return function ejectCookie() {
-    injectedCookie = undefined;
-  };
-}
-
 function status(response) {
   if (response.status >= 200 && response.status < 300) {
     return Promise.resolve(response);
@@ -37,8 +27,7 @@ function withBase(url) {
 export function get(url, opts) {
   const headers = {
     Accept: "application/json",
-    "Content-Type": "application/json",
-    ...(injectedCookie && { Cookie: injectedCookie })
+    "Content-Type": "application/json"
   };
 
   // prettier-ignore

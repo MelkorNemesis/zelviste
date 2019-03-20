@@ -3,6 +3,7 @@ import morgan from "morgan";
 import redis from "redis";
 import session from "express-session";
 import sessionStorage from "express-sessions";
+import cookieParser from "cookie-parser";
 
 import db from "./server/db";
 import { CategoriesRouter, ProductsRouter } from "./server/router";
@@ -19,6 +20,7 @@ const server = express();
 
 server
   .disable("x-powered-by")
+  .use(cookieParser())
   .use(
     session({
       secret: "a4f8071f-c873-4447-8ee2",
@@ -35,14 +37,6 @@ server
       })
     })
   )
-  // .use((req, res, next) => {
-  //   console.log({
-  //     path: req.url,
-  //     foo: req.session.foo,
-  //     cookie: req.headers.cookie
-  //   });
-  //   next();
-  // })
   .use(morgan("dev"))
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
 
