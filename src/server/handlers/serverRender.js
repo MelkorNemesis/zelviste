@@ -6,6 +6,7 @@ import Helmet from "react-helmet";
 import * as HttpStatus from "http-status-codes";
 
 import configureStore, { sagaMiddleware } from "../../redux/configureStore";
+import { injectCookie } from "../../api/helpers";
 import { bootstrapSaga } from "../../redux/sagas";
 import { Layout } from "../../Layout";
 import { routes } from "../../shared/routes";
@@ -13,6 +14,9 @@ import { routes } from "../../shared/routes";
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 export async function serverRender(req, res) {
+  // inject cookie received from browser
+  const ejectCookie = injectCookie(req.header("Cookie"));
+
   const context = {};
   const store = configureStore();
 
@@ -29,6 +33,9 @@ export async function serverRender(req, res) {
     .map(route => route.component.serverFetch(route.match, req.query));
 
   await Promise.all(dataRequirements);
+
+  // eject cookie received from browser
+  ejectCookie();
 
   // get redux state
   const reduxState = store.getState();

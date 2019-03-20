@@ -1,7 +1,18 @@
 import fetch from "isomorphic-fetch";
+import deepMerge from "deepmerge";
 
 import { isBrowser } from "../utils";
 import { APIError } from ".";
+
+let injectedCookie;
+
+export function injectCookie(cookie) {
+  injectedCookie = cookie;
+
+  return function ejectCookie() {
+    injectedCookie = undefined;
+  };
+}
 
 function status(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -23,23 +34,26 @@ function withBase(url) {
   return `${BASE}${url}`;
 }
 
-export function get(url, options) {
-  return fetch(withBase(url), {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
-    ...options
-  })
+export function get(url, opts) {
+  const headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    ...(injectedCookie && { Cookie: injectedCookie })
+  };
+
+  // prettier-ignore
+  const options = deepMerge({ headers }, opts || {});
+
+  return fetch(withBase(url), options)
     .then(status)
     .then(json);
 }
 
 // eslint-disable-next-line
-export function post(url, options) {
+export function post(url, opts) {
   return fetch(withBase(url), {
     method: "POST",
-    ...options
+    ...opts
   })
     .then(status)
     .then(json);
