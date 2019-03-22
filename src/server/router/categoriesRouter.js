@@ -7,7 +7,7 @@ import { CategoriesController } from "../controller";
 import { format } from "../controller/helpers";
 import { CategoryRepository } from "../repository";
 import { asyncHandlerWrapper } from "./helpers";
-import { Category } from "../../shared/consts";
+import { Category } from "../../frontend/shared/consts";
 
 // -- middlewares
 async function getActiveCategoryOrThrow(req, res, next) {

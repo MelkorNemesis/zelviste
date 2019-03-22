@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { routes } from "../shared/routes";
+import { routes } from "./shared/routes";
 import * as L from "./components/layout";
 import { Navigation } from "./containers";
 

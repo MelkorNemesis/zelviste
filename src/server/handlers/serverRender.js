@@ -8,7 +8,7 @@ import * as HttpStatus from "http-status-codes";
 import configureStore, { sagaMiddleware } from "../../frontend/redux/configureStore";
 import { bootstrapSaga } from "../../frontend/redux/sagas";
 import { Layout } from "../../frontend/Layout";
-import { routes } from "../../shared/routes";
+import { routes } from "../../frontend/shared/routes";
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 

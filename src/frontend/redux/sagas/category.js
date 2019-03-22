@@ -10,7 +10,7 @@ import {
   categoryLoadRequest,
   categoryLoadSuccess
 } from "../ducks";
-import { Category as CategoryConsts } from "../../../shared/consts";
+import { Category as CategoryConsts } from "../../shared/consts";
 import { calculateLimitOffset } from "../../utils";
 
 export function* loadCategorySaga({
