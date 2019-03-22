@@ -1,5 +1,5 @@
 import getState from "../getStateFromGlobal";
-import { produce } from "immer";
+import { produce } from "immer/dist/immer";
 
 import { createAction } from "../helpers";
 import { Statuses } from "../../consts";

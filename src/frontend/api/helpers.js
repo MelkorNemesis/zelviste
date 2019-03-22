@@ -2,7 +2,7 @@ import fetch from "isomorphic-fetch";
 import deepMerge from "deepmerge";
 
 import { isBrowser } from "../utils";
-import { APIError } from ".";
+import { APIError } from "./index";
 
 function status(response) {
   if (response.status >= 200 && response.status < 300) {

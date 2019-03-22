@@ -9,11 +9,11 @@ import { Category as CategoryComp, NotFound } from "../../components/pages";
 import { sagaMiddleware } from "../../redux/configureStore";
 import { loadCategoryProductsSaga, loadCategorySaga } from "../../redux/sagas";
 import { categoryUnset } from "../../redux/ducks";
-import { Category as CategoryConsts } from "../../shared/consts";
+import { Category as CategoryConsts } from "../../../shared/consts";
 import { API, Routes } from "../../consts";
 import { falidateOrder, falidatePage } from "../../falidators";
 import { calculatePages, range } from "../../utils";
-import { ITEMS_PER_PAGE } from "../../shared/consts/category";
+import { ITEMS_PER_PAGE } from "../../../shared/consts/category";
 
 class CategoryContainer extends Component {
   static serverFetch = (match, { query }) => {
@@ -94,7 +94,7 @@ class CategoryContainer extends Component {
 
   update = () => {
     const { match } = this.props;
-    CategoryContainer.serverFetch(match, this.query);
+    CategoryContainer.serverFetch(match, { query: this.query });
   };
 
   updateProducts = () => {

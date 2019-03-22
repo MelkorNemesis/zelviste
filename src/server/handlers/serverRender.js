@@ -5,9 +5,9 @@ import { Provider } from "react-redux";
 import Helmet from "react-helmet";
 import * as HttpStatus from "http-status-codes";
 
-import configureStore, { sagaMiddleware } from "../../redux/configureStore";
-import { bootstrapSaga } from "../../redux/sagas";
-import { Layout } from "../../Layout";
+import configureStore, { sagaMiddleware } from "../../frontend/redux/configureStore";
+import { bootstrapSaga } from "../../frontend/redux/sagas";
+import { Layout } from "../../frontend/Layout";
 import { routes } from "../../shared/routes";
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);

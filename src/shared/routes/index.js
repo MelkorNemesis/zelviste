@@ -1,6 +1,6 @@
-import { NotFound } from "../../components/pages";
-import { Category, Homepage, Product } from "../../containers";
-import { Routes } from "../../consts";
+import { NotFound } from "../../frontend/components/pages";
+import { Category, Homepage, Product } from "../../frontend/containers";
+import { Routes } from "../../frontend/consts";
 
 export const routes = [
   {

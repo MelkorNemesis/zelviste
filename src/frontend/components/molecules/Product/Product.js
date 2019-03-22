@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 
 import { Link, ButtonLink, Text } from "../../atoms";
-import { ProductPrice } from "..";
+import { ProductPrice } from "../index";
 
 import "./Product.scss";
 import { ProductAvailability } from "..";

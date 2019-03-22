@@ -1,4 +1,4 @@
-import { produce } from "immer";
+import { produce } from "immer/dist/immer";
 
 import getState from "../getStateFromGlobal";
 import { createAction } from "../helpers";

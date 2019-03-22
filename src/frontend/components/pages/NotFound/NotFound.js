@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import * as HttpStatus from "http-status-codes";
+import * as HttpStatus from "http-status-codes/index";
 
 import { Box, Text } from "../../atoms";
 

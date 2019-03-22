@@ -4,7 +4,7 @@ import cx from "classnames";
 import { Units } from "../../../consts";
 import { mm2cm } from "../../../utils";
 
-import "./size.scss";
+import "./Size.scss";
 
 export const Size = ({ millimeters, className, ...rest }) => (
   <span className={cx(className, "Size")} {...rest}>

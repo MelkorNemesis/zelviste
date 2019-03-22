@@ -44,6 +44,13 @@ server
   .use("/api/categories", CategoriesRouter)
   .use("/api/products", ProductsRouter)
 
+  .use("/admin/api", (req, res) => {
+    res.json({ api: "voe" });
+  })
+  .use("/admin/*", (req, res) => {
+    res.json({ hello: "world" });
+  })
+
   // server-side rendering fallback
   .get("/*", serverRender)
 
