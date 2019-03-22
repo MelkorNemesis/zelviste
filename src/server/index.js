@@ -5,10 +5,10 @@ import session from "express-session";
 import sessionStorage from "express-sessions";
 import cookieParser from "cookie-parser";
 
-import db from "./server/db";
-import { CategoriesRouter, ProductsRouter } from "./server/router";
-import { serverRender } from "./server/handlers";
-import { serverErrorHandler, clientErrorHandler } from "./server/middlewares";
+import db from "./db";
+import { CategoriesRouter, ProductsRouter } from "./router";
+import { serverRender } from "./handlers";
+import { serverErrorHandler, clientErrorHandler } from "./middlewares";
 
 // setup redis client
 const redisClient = redis.createClient(6379, "localhost");
@@ -16,9 +16,9 @@ const redisClient = redis.createClient(6379, "localhost");
 // setup knex & objection
 db.initDatabase();
 
-const server = express();
+const index = express();
 
-server
+index
   .disable("x-powered-by")
   .use(cookieParser())
   .use(
@@ -58,4 +58,4 @@ server
   .use(serverErrorHandler)
   .use(clientErrorHandler);
 
-export default server;
+export default index;
