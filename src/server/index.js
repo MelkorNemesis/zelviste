@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 
 import db from "./db";
 import { CategoriesRouter, ProductsRouter } from "./router";
-import { serverRender } from "./handlers";
+import { serverRender, adminServerRender } from "./handlers";
 import { serverErrorHandler, clientErrorHandler } from "./middlewares";
 
 // setup redis client
@@ -47,9 +47,7 @@ index
   .use("/admin/api", (req, res) => {
     res.json({ api: "voe" });
   })
-  .use("/admin/*", (req, res) => {
-    res.json({ hello: "world" });
-  })
+  .use("/admin*", adminServerRender)
 
   // server-side rendering fallback
   .get("/*", serverRender)

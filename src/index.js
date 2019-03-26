@@ -21,7 +21,7 @@ if (module.hot) {
     console.log("🔁  HMR Reloading `./server`...");
 
     try {
-      app = require("./server/server").default;
+      app = require("./server").default;
       server.removeListener("request", currentApp);
       server.on("request", app);
       currentApp = app;
