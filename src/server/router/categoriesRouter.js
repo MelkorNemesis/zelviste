@@ -3,8 +3,8 @@ import { celebrate, Joi } from "celebrate";
 import boom from "boom";
 
 // -- imports
-import { CategoriesController } from "../controller";
-import { format } from "../controller/helpers";
+import { CategoriesController } from "../controllers";
+import { format } from "../controllers/helpers";
 import { CategoryRepository } from "../repository";
 import { asyncHandlerWrapper } from "./helpers";
 import { Category } from "../../frontend/shared/consts";

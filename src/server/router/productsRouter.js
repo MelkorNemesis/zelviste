@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { celebrate, Joi } from "celebrate";
 
-import { ProductsController } from "../controller";
+import { ProductsController } from "../controllers";
 import { asyncHandlerWrapper } from "./helpers";
 
 // -- router
