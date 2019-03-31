@@ -18,6 +18,6 @@ export const Header = ({ onMenuClick }) => (
       <Icons.Logo fill={Colors.LIGHT} />
     </Link>
     <Icons.Search size={20} fill={Colors.LIGHT} className="Header__search" />
-    <Icons.Cart size={25} fill={Colors.LIGHT} />
+    <Icons.Cart size={20} fill={Colors.LIGHT} />
   </div>
 );

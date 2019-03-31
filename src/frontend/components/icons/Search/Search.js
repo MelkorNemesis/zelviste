@@ -2,7 +2,7 @@ import React from "react";
 
 import { Colors } from "../../../consts";
 
-export const Cart = ({
+export const Search = ({
   size,
   fill = Colors.SECONDARY_D1,
   className,
