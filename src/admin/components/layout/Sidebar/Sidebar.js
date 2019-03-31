@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-import { spacingM } from "../../../styles/";
+import { spacing_m } from "../../../styles/";
 import { Navigation } from "../index";
 
 const StyledSidebar = styled.aside`
   flex: 0 0 auto;
-  padding: ${spacingM};
+  padding: ${spacing_m};
 `;
 
 export const Sidebar = () => (

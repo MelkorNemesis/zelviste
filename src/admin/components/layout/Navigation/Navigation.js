@@ -1,14 +1,18 @@
 import React, { createElement } from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+
 import MarketplaceIcon from "@atlaskit/icon/glyph/marketplace";
 import DashboardIcon from "@atlaskit/icon/glyph/dashboard";
+import SettingsIcon from "@atlaskit/icon/glyph/settings";
+import EmojiFoodIcon from "@atlaskit/icon/glyph/emoji/food";
 
 import {
   c_green_1,
   c_green_2,
   c_green_3,
-  spacingM,
-  spacingS
+  spacing_m,
+  spacing_s
 } from "../../../styles";
 
 const Group = ({ children }) => <ul>{children}</ul>;
@@ -16,10 +20,10 @@ const Group = ({ children }) => <ul>{children}</ul>;
 const Item = ({ text, to, before, className }) => {
   return (
     <li className={className}>
-      <a href={to}>
+      <NavLink activeClassName="active" to={to}>
         {before && <span className="before">{createElement(before)}</span>}
         {text}
-      </a>
+      </NavLink>
     </li>
   );
 };
@@ -28,7 +32,7 @@ const StyledItem = styled(Item)`
   a {
     display: flex;
     align-items: center;
-    padding: ${spacingS} ${spacingM};
+    padding: ${spacing_s} ${spacing_m};
 
     color: #444;
     text-decoration: none;
@@ -49,16 +53,22 @@ const StyledItem = styled(Item)`
     }
 
     .before {
-      margin-right: ${spacingS};
+      margin-right: ${spacing_s};
     }
   }
 `;
 
+const StyledNavigation = styled.nav``;
+
 export const Navigation = () => (
-  <div>
+  <StyledNavigation>
     <Group>
-      <StyledItem text="Dashboard" to="/admin/dashboard" before={DashboardIcon} />
-      <StyledItem text="Objednávky" to="/admin/orders" before={MarketplaceIcon} />
+      <StyledItem text="Dashboard" to="/dashboard" before={DashboardIcon} />
+      <StyledItem text="Objednávky" to="/orders" before={MarketplaceIcon} />
+      <StyledItem text="Produkty" to="/products" before={EmojiFoodIcon} />
+      <StyledItem text="Nastavení" to="/settings" before={SettingsIcon} />
     </Group>
-  </div>
+
+    <footer />
+  </StyledNavigation>
 );
