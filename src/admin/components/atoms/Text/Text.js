@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { theme } from "../../../styles";
+
 export const Text = styled.div``;
 
 function getHeaderFontSize({ h1 }) {
@@ -11,6 +13,9 @@ function getHeaderFontSize({ h1 }) {
 }
 
 Text.Header = styled.h1`
+  margin-bottom: 0.5em;
+
   font-weight: 700;
   font-size: ${getHeaderFontSize};
+  font-family: ${theme("font_family_alt")};
 `;

@@ -5,6 +5,10 @@ export class UserContainer extends Container {
     user: null
   };
 
+  get isLoggedIn() {
+    return false;
+  }
+
   login() {
     console.log("logging in");
   }

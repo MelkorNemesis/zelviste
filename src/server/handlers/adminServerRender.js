@@ -20,6 +20,7 @@ export async function adminServerRender(req, res) {
               ? `<script src="${assets.admin.js}" defer></script>`
               : `<script src="${assets.admin.js}" defer crossorigin></script>`
           }
+          <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
         </head>
         <body>
           <div id="root"></div>
