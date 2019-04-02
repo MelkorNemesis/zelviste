@@ -50,6 +50,7 @@
     "redux-saga": "^1.0.1",
     "styled-components": "^4.2.0",
     "styled-reset": "^2.0.4",
-    "unstated": "^2.1.1"
+    "unstated": "^2.1.1",
+    "unstated-debug": "^0.3.2"
   }
 }

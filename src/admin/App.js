@@ -3,11 +3,15 @@ import { Provider } from "unstated";
 import { Route, Router, Switch } from "react-router-dom";
 import * as history from "history";
 import { ThemeProvider } from "styled-components";
+import UNSTATED from "unstated-debug";
 
 import { Content, Wrapper, Sidebar } from "./components/layout";
 import { Dashboard } from "./components/pages";
 import * as variables from "./styles/variables";
 import { GlobalStyles, Reset } from "./components/styles";
+
+// log unstated only in development mode
+UNSTATED.logStateChanges = process.env.NODE_ENV === "development";
 
 const browserHistory = history.createBrowserHistory({ basename: "/admin" });
 
