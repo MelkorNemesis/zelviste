@@ -12,6 +12,8 @@ export const input_focus_color = "#2980b9";
 export const spacing_xs = "4px";
 export const spacing_s = "8px";
 export const spacing_m = "16px";
+export const spacing_l = "24px";
+export const spacing_xl = "32px";
 
 export const c_green_1 = "#f2ffd2";
 export const c_green_2 = "#899B45";

@@ -6,7 +6,7 @@ export const Text = styled.div``;
 
 function getHeaderFontSize({ h1 }) {
   if (h1) {
-    return "32px";
+    return "26px";
   }
 
   return "22px";

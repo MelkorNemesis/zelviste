@@ -7,13 +7,7 @@ import DashboardIcon from "@atlaskit/icon/glyph/dashboard";
 import SettingsIcon from "@atlaskit/icon/glyph/settings";
 import EmojiFoodIcon from "@atlaskit/icon/glyph/emoji/food";
 
-import {
-  c_green_1,
-  c_green_2,
-  c_green_3,
-  spacing_m,
-  spacing_s
-} from "../../../styles";
+import { theme } from "../../../styles";
 
 const Group = ({ children }) => <ul>{children}</ul>;
 
@@ -32,7 +26,7 @@ const StyledItem = styled(Item)`
   a {
     display: flex;
     align-items: center;
-    padding: ${spacing_s} ${spacing_m};
+    padding: ${theme("spacing_s")} ${theme("spacing_m")};
 
     color: #444;
     text-decoration: none;
@@ -47,13 +41,13 @@ const StyledItem = styled(Item)`
     }
 
     &:active {
-      background: ${c_green_1};
-      border: 2px solid ${c_green_2};
-      color: ${c_green_3};
+      background: ${theme("c_green_1")};
+      border: 2px solid ${theme("c_green_2")};
+      color: ${theme("c_green_3")};
     }
 
     .before {
-      margin-right: ${spacing_s};
+      margin-right: ${theme("spacing_s")};
     }
   }
 `;
