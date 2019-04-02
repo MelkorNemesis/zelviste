@@ -1,16 +1,18 @@
-import React from "react";
-import { Subscribe } from "unstated";
-import styled from "styled-components";
+import React, { Fragment } from "react";
+import { render } from "react-dom";
+import styled, { ThemeProvider } from "styled-components";
 import { Formik } from "formik";
 
-import { UserContainer } from "../../unstated";
 import {
-  Text,
-  TextInput,
   Button,
+  ControlGroup,
   Label,
-  ControlGroup
-} from "../../components/atoms";
+  Text,
+  TextInput
+} from "./admin/components/atoms";
+
+import * as variables from "./admin/styles/variables";
+import { GlobalStyles, Reset } from "./admin/components/styles";
 
 const SignInForm = () => (
   <div
@@ -68,10 +70,21 @@ const StyledSignInContent = styled(SignInContent)`
   align-items: center;
 `;
 
-export const RequireSignIn = ({ children }) => {
-  return (
-    <Subscribe to={[UserContainer]}>
-      {user => (user.isLoggedIn && children) || <StyledSignInContent />}
-    </Subscribe>
-  );
+const App = () => {
+  return <StyledSignInContent />;
 };
+
+render(
+  <ThemeProvider theme={variables}>
+    <Fragment>
+      <Reset />
+      <GlobalStyles />
+      <App />
+    </Fragment>
+  </ThemeProvider>,
+  document.getElementById("root")
+);
+
+if (module.hot) {
+  module.hot.accept();
+}

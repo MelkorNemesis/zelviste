@@ -7,7 +7,11 @@ import cookieParser from "cookie-parser";
 
 import db from "./db";
 import { CategoriesRouter, ProductsRouter } from "./router";
-import { serverRender, adminServerRender } from "./handlers";
+import {
+  serverRender,
+  adminServerRender,
+  adminSignInServerRender
+} from "./handlers";
 import { serverErrorHandler, clientErrorHandler } from "./middlewares";
 
 // setup redis client
@@ -40,13 +44,16 @@ index
   .use(morgan("dev"))
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
 
-  // routes
+  // frontend routes
   .use("/api/categories", CategoriesRouter)
   .use("/api/products", ProductsRouter)
 
+  // admin router
+  // TODO: add authorization check middleware
   .use("/admin/api", (req, res) => {
     res.json({ api: "voe" });
   })
+  .use("/admin/sign-in", adminSignInServerRender)
   .use("/admin*", adminServerRender)
 
   // server-side rendering fallback
