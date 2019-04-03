@@ -15,29 +15,56 @@ UNSTATED.logStateChanges = process.env.NODE_ENV === "development";
 
 const browserHistory = history.createBrowserHistory({ basename: "/admin" });
 
-const App = () => (
-  <Provider>
-    <ThemeProvider theme={variables}>
-      <Fragment>
-        <Reset />
-        <GlobalStyles />
+class App extends React.PureComponent {
+  state = {
+    bootstrapped: false
+  };
 
-        <Wrapper>
-          <Router history={browserHistory}>
-            <Fragment>
-              <Sidebar />
-              <Content>
-                <Switch>
-                  <Route path="/dashboard" component={Dashboard} />
-                  <Route render={() => "Stránka nenalezena"} />
-                </Switch>
-              </Content>
-            </Fragment>
-          </Router>
-        </Wrapper>
-      </Fragment>
-    </ThemeProvider>
-  </Provider>
-);
+  componentDidMount() {
+    // TODO: bootstrap app
+    setTimeout(() => {
+      this.setState({
+        bootstrapped: true
+      });
+    }, 1000);
+  }
+
+  static get router() {
+    return (
+      <Router history={browserHistory}>
+        <Fragment>
+          <Sidebar />
+          <Content>
+            <Switch>
+              <Route path="/dashboard" component={Dashboard} />
+              <Route render={() => "Stránka nenalezena"} />
+            </Switch>
+          </Content>
+        </Fragment>
+      </Router>
+    );
+  }
+
+  static get loader() {
+    return "loading...";
+  }
+
+  render() {
+    const { router, loader } = this.constructor;
+
+    return (
+      <Provider>
+        <ThemeProvider theme={variables}>
+          <Fragment>
+            <Reset />
+            <GlobalStyles />
+
+            <Wrapper>{this.state.bootstrapped ? router : loader}</Wrapper>
+          </Fragment>
+        </ThemeProvider>
+      </Provider>
+    );
+  }
+}
 
 export default App;
