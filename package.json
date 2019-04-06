@@ -4,7 +4,7 @@
     "clean": "lerna clean",
     "bootstrap": "lerna bootstrap",
     "start": "lerna run --parallel start",
-    "prepare": "rimraf mono-ui/build && rimraf mono-common/build && lerna run prepare",
+    "prepare": "rimraf packages/razzle/build && rimraf packages/admin/build && rimraf packages/sign_in/build && lerna run prepare",
     "build": "npm run prepare && lerna run --parallel build"
   },
   "devDependencies": {
