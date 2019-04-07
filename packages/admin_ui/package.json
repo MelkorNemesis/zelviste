@@ -1,0 +1,12 @@
+{
+  "name": "@eshop/admin_ui",
+  "private": true,
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "dependencies": {
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "react": "^16.8.6",
+    "styled-components": "^4.2.0",
+    "styled-reset": "^2.0.5"
+  }
+}
