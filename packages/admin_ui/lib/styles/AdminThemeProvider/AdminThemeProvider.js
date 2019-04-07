@@ -7,8 +7,12 @@ import * as theme from "../theme";
 export const AdminThemeProvider = ({ children }) => {
   return (
     <Fragment>
-      <GlobalStyles />
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Fragment>
+          <GlobalStyles />
+          {children}
+        </Fragment>
+      </ThemeProvider>
     </Fragment>
   );
 };
