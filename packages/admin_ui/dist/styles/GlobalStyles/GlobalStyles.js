@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.GlobalStyles = undefined;
 
-var _templateObject = _taggedTemplateLiteral(["\n  body {\n    font-family: ", ";\n    font-size: ", ";\n    color: ", "\n  }\n  \n  html, body, #root {\n    height: 100%;\n  }\n"], ["\n  body {\n    font-family: ", ";\n    font-size: ", ";\n    color: ", "\n  }\n  \n  html, body, #root {\n    height: 100%;\n  }\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n  body {\n    font-family: ", ";\n    font-size: ", ";\n    color: ", "\n  }\n  \n  html, body, #root {\n    height: 100%;\n  }\n  \n  * {\n    box-sizing: border-box;\n  }\n"], ["\n  body {\n    font-family: ", ";\n    font-size: ", ";\n    color: ", "\n  }\n  \n  html, body, #root {\n    height: 100%;\n  }\n  \n  * {\n    box-sizing: border-box;\n  }\n"]);
 
 var _styledComponents = require("styled-components");
 

@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
     "@eshop/admin_ui": "^0.0.0",
+    "@eshop/common": "^0.0.0",
     "formik": "^1.5.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

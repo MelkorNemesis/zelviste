@@ -3,9 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Input = undefined;
+exports.Button = undefined;
 
-var _templateObject = _taggedTemplateLiteral(["\n  height: ", ";\n  width: 100%;\n  padding: 0 10px;\n\n  font-size: 16px;\n  font-weight: 500;\n  color: black;\n\n  border: 2px solid #eee;\n  border-radius: ", ";\n\n  outline: none;\n\n  &:focus {\n    border-color: ", ";\n  }\n"], ["\n  height: ", ";\n  width: 100%;\n  padding: 0 10px;\n\n  font-size: 16px;\n  font-weight: 500;\n  color: black;\n\n  border: 2px solid #eee;\n  border-radius: ", ";\n\n  outline: none;\n\n  &:focus {\n    border-color: ", ";\n  }\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n  display: block;\n  width: 100%;\n  height: ", ";\n  margin-top: ", ";\n\n  font-size: 14px;\n  font-weight: 600;\n  color: #fff;\n\n  cursor: pointer;\n  border: none;\n  border-radius: ", ";\n  background: #2980b9;\n"], ["\n  display: block;\n  width: 100%;\n  height: ", ";\n  margin-top: ", ";\n\n  font-size: 14px;\n  font-weight: 600;\n  color: #fff;\n\n  cursor: pointer;\n  border: none;\n  border-radius: ", ";\n  background: #2980b9;\n"]);
 
 var _react = require("react");
 
@@ -21,20 +21,20 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var StyledInput = _styledComponents2.default.input(_templateObject, function (_ref) {
+var StyledButton = _styledComponents2.default.button(_templateObject, function (_ref) {
   var theme = _ref.theme;
   return theme.inputHeight;
 }, function (_ref2) {
   var theme = _ref2.theme;
-  return theme.borderRadius;
+  return theme.controlMarginTop;
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return theme.inputAccentColor;
+  return theme.borderRadius;
 });
 
-var Input = function Input(_ref4) {
+var Button = function Button(_ref4) {
   var rest = _objectWithoutProperties(_ref4, []);
 
-  return _react2.default.createElement(StyledInput, rest);
+  return _react2.default.createElement(StyledButton, rest);
 };
-exports.Input = Input;
+exports.Button = Button;
