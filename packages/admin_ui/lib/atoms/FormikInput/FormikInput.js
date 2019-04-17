@@ -8,15 +8,17 @@ const StyledFormikInput = styled.div`
   width: 100%;
 `;
 
+let id = 0;
 export const FormikInput = ({ field, form: { touched, errors }, ...props }) => {
   const { label } = props;
+  ++id;
 
   return (
     <StyledFormikInput>
-      {label && <Label>{label}</Label>}
-      <Input {...field} {...props} />
+      {label && <Label htmlFor={id}>{label}</Label>}
+      <Input {...field} id={id} {...props} />
       {touched[field.name] && errors[field.name] && (
-        <InputError>{errors[field.name]}</InputError>
+        <InputError htmlFor={id}>{errors[field.name]}</InputError>
       )}
     </StyledFormikInput>
   );

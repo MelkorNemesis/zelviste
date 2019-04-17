@@ -5,6 +5,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.validations = undefined;
 
+var _generateId = require("./generate-id");
+
+Object.keys(_generateId).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _generateId[key];
+    }
+  });
+});
+
 var _validations = require("./validations");
 
 var validations = _interopRequireWildcard(_validations);

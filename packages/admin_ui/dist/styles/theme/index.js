@@ -13,3 +13,4 @@ var inputAccentColor = exports.inputAccentColor = "#0984e3";
 var inputErrorColor = exports.inputErrorColor = "#d63031";
 var inputHeight = exports.inputHeight = "40px";
 var controlMarginTop = exports.controlMarginTop = "10px";
+var controlSubmitMarginTop = exports.controlSubmitMarginTop = "20px";

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Button = undefined;
 
-var _templateObject = _taggedTemplateLiteral(["\n  display: block;\n  width: 100%;\n  height: ", ";\n  margin-top: ", ";\n\n  font-size: 14px;\n  font-weight: 600;\n  color: #fff;\n\n  cursor: pointer;\n  border: none;\n  border-radius: ", ";\n  background: #2980b9;\n"], ["\n  display: block;\n  width: 100%;\n  height: ", ";\n  margin-top: ", ";\n\n  font-size: 14px;\n  font-weight: 600;\n  color: #fff;\n\n  cursor: pointer;\n  border: none;\n  border-radius: ", ";\n  background: #2980b9;\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n  display: block;\n  width: 100%;\n  height: ", ";\n  margin-top: ", ";\n\n  &[type=\"submit\"] {\n    margin-top: ", ";\n  }\n\n  font-size: 14px;\n  font-weight: 600;\n  color: #fff;\n\n  cursor: pointer;\n  border: none;\n  border-radius: ", ";\n  background: #2980b9;\n\n  &:hover {\n    background: #2969a2;\n  }\n"], ["\n  display: block;\n  width: 100%;\n  height: ", ";\n  margin-top: ", ";\n\n  &[type=\"submit\"] {\n    margin-top: ", ";\n  }\n\n  font-size: 14px;\n  font-weight: 600;\n  color: #fff;\n\n  cursor: pointer;\n  border: none;\n  border-radius: ", ";\n  background: #2980b9;\n\n  &:hover {\n    background: #2969a2;\n  }\n"]);
 
 var _react = require("react");
 
@@ -29,11 +29,14 @@ var StyledButton = _styledComponents2.default.button(_templateObject, function (
   return theme.controlMarginTop;
 }, function (_ref3) {
   var theme = _ref3.theme;
+  return theme.controlSubmitMarginTop;
+}, function (_ref4) {
+  var theme = _ref4.theme;
   return theme.borderRadius;
 });
 
-var Button = function Button(_ref4) {
-  var rest = _objectWithoutProperties(_ref4, []);
+var Button = function Button(_ref5) {
+  var rest = _objectWithoutProperties(_ref5, []);
 
   return _react2.default.createElement(StyledButton, rest);
 };

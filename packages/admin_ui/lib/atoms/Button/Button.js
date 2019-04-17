@@ -7,6 +7,10 @@ const StyledButton = styled.button`
   height: ${({ theme }) => theme.inputHeight};
   margin-top: ${({ theme }) => theme.controlMarginTop};
 
+  &[type="submit"] {
+    margin-top: ${({ theme }) => theme.controlSubmitMarginTop};
+  }
+
   font-size: 14px;
   font-weight: 600;
   color: #fff;
@@ -15,6 +19,10 @@ const StyledButton = styled.button`
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius};
   background: #2980b9;
+
+  &:hover {
+    background: #2969a2;
+  }
 `;
 
 export const Button = ({ ...rest }) => <StyledButton {...rest} />;

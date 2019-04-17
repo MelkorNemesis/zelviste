@@ -30,6 +30,7 @@ var StyledFormikInput = _styledComponents2.default.div(_templateObject, function
   return theme.controlMarginTop;
 });
 
+var id = 0;
 var FormikInput = function FormikInput(_ref2) {
   var field = _ref2.field,
       _ref2$form = _ref2.form,
@@ -39,19 +40,20 @@ var FormikInput = function FormikInput(_ref2) {
 
   var label = props.label;
 
+  ++id;
 
   return _react2.default.createElement(
     StyledFormikInput,
     null,
     label && _react2.default.createElement(
       _.Label,
-      null,
+      { htmlFor: id },
       label
     ),
-    _react2.default.createElement(_.Input, _extends({}, field, props)),
+    _react2.default.createElement(_.Input, _extends({}, field, { id: id }, props)),
     touched[field.name] && errors[field.name] && _react2.default.createElement(
       _.InputError,
-      null,
+      { htmlFor: id },
       errors[field.name]
     )
   );
