@@ -1982,6 +1982,11 @@ property-expr@^1.5.0:
   resolved "https://registry.yarnpkg.com/property-expr/-/property-expr-1.5.1.tgz#22e8706894a0c8e28d58735804f6ba3a3673314f"
   integrity sha512-CGuc0VUTGthpJXL36ydB6jnbyOf/rAHFvmVrJlH+Rg0DqqLFQGAP6hIaxD/G0OAmBJPhXDHuEJigrp0e0wFV6g==
 
+rambda@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/rambda/-/rambda-2.4.1.tgz#fa7cca42205dcaa9de855f990ffca03a1bca267f"
+  integrity sha512-wmY04DwL1Ooz7Me4vCd+QWjzziE05Y5A/2RQ1MokfhDYYz7YNVWVgtsLGK/p4UVSVZUshxJFXQsTytRjid5iXA==
+
 randomatic@^3.0.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-3.1.1.tgz#b776efc59375984e36c537b2f51a1f0aff0da1ed"

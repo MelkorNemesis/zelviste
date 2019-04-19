@@ -53,7 +53,7 @@ class App extends Component {
                     component={FormikInput}
                     validate={validator([required])}
                   />
-                  <Button type="submit">Přihlásit</Button>
+                  <Button.Primary type="submit">Přihlásit</Button.Primary>
                 </Form>
               </div>
             );

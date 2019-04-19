@@ -12,6 +12,7 @@ const getFontSize = ({ h1, h2 }) => {
 };
 
 const StyledText = styled.p`
+  margin: ${({ first }) => (first ? 0 : "1em")} 0 1em;
   font-size: ${getFontSize};
 `;
 

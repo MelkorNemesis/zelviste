@@ -9,7 +9,14 @@ import EmojiFoodIcon from "@atlaskit/icon/glyph/emoji/food";
 
 import { theme } from "../../../styles";
 
-const Group = ({ children }) => <ul>{children}</ul>;
+const Group = ({ children, className }) => (
+  <ul className={className}>{children}</ul>
+);
+
+const StyledGroup = styled(Group)`
+  margin: 0;
+  padding: 0;
+`;
 
 const Item = ({ text, to, before, className }) => {
   return (
@@ -23,6 +30,8 @@ const Item = ({ text, to, before, className }) => {
 };
 
 const StyledItem = styled(Item)`
+  list-style-type: none;
+
   a {
     display: flex;
     align-items: center;
@@ -56,12 +65,12 @@ const StyledNavigation = styled.nav``;
 
 export const Navigation = () => (
   <StyledNavigation>
-    <Group>
+    <StyledGroup>
       <StyledItem text="Dashboard" to="/dashboard" before={DashboardIcon} />
       <StyledItem text="Objednávky" to="/orders" before={MarketplaceIcon} />
       <StyledItem text="Produkty" to="/products" before={EmojiFoodIcon} />
       <StyledItem text="Nastavení" to="/settings" before={SettingsIcon} />
-    </Group>
+    </StyledGroup>
 
     <footer />
   </StyledNavigation>

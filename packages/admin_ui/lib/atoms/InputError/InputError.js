@@ -5,6 +5,6 @@ export const InputError = styled.label`
   display: block;
   margin-top: 3px;
 
-  color: ${({ theme }) => theme.inputErrorColor};
+  color: ${({ theme }) => theme.input_error_color};
   font-weight: 600;
 `;

@@ -6,6 +6,6 @@ export const Label = styled.label`
   font-weight: 600;
   margin-bottom: 3px;
 
-  color: ${({ hasError, theme: { inputErrorColor } }) =>
-    hasError ? inputErrorColor : "#636e72"};
+  color: ${({ hasError, theme: { input_error_color } }) =>
+    hasError ? input_error_color : "#636e72"};
 `;

@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
-import { Text } from "../../atoms";
+import { Text } from "@eshop/admin_ui";
 
 export const Dashboard = () => {
   return (
     <Fragment>
-      <Text.Header h1>Dashboard</Text.Header>
+      <Text.Header first h1>
+        Dashboard
+      </Text.Header>
     </Fragment>
   );
 };

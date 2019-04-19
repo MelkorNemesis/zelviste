@@ -7,7 +7,7 @@ exports.Text = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _templateObject = _taggedTemplateLiteral(["\n  font-size: ", ";\n"], ["\n  font-size: ", ";\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n  margin: ", " 0 1em;\n  font-size: ", ";\n"], ["\n  margin: ", " 0 1em;\n  font-size: ", ";\n"]);
 
 var _react = require("react");
 
@@ -36,10 +36,13 @@ var getFontSize = function getFontSize(_ref) {
   }
 };
 
-var StyledText = _styledComponents2.default.p(_templateObject, getFontSize);
+var StyledText = _styledComponents2.default.p(_templateObject, function (_ref2) {
+  var first = _ref2.first;
+  return first ? 0 : "1em";
+}, getFontSize);
 
-var Text = exports.Text = function Text(_ref2) {
-  var children = _ref2.children;
+var Text = exports.Text = function Text(_ref3) {
+  var children = _ref3.children;
   return _react2.default.createElement(
     StyledText,
     null,
@@ -47,9 +50,9 @@ var Text = exports.Text = function Text(_ref2) {
   );
 };
 
-Text.Paragraph = function (_ref3) {
-  var children = _ref3.children,
-      rest = _objectWithoutProperties(_ref3, ["children"]);
+Text.Paragraph = function (_ref4) {
+  var children = _ref4.children,
+      rest = _objectWithoutProperties(_ref4, ["children"]);
 
   return _react2.default.createElement(
     StyledText,
@@ -58,9 +61,9 @@ Text.Paragraph = function (_ref3) {
   );
 };
 
-Text.Header = function (_ref4) {
-  var children = _ref4.children,
-      rest = _objectWithoutProperties(_ref4, ["children"]);
+Text.Header = function (_ref5) {
+  var children = _ref5.children,
+      rest = _objectWithoutProperties(_ref5, ["children"]);
 
   var HeaderTag = void 0;
   var h1 = rest.h1,

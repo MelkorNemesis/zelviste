@@ -29,7 +29,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var StyledFormikInput = _styledComponents2.default.div(_templateObject, function (_ref) {
   var theme = _ref.theme;
-  return theme.controlMarginTop;
+  return theme.control_margin_top;
 });
 
 var FormikInput = function FormikInput(_ref2) {

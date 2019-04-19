@@ -21,5 +21,5 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var InputError = exports.InputError = _styledComponents2.default.label(_templateObject, function (_ref) {
   var theme = _ref.theme;
-  return theme.inputErrorColor;
+  return theme.input_error_color;
 });

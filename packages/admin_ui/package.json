@@ -6,7 +6,6 @@
   "dependencies": {
     "@eshop/common": "^0.0.0",
     "formik": "^1.5.2",
-    "styled-components": "^4.2.0",
     "styled-reset": "^2.0.5"
   },
   "peerDependencies": {

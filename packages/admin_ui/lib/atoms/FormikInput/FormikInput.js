@@ -5,7 +5,7 @@ import { Input, InputError, Label } from "..";
 import { useNextId } from "../../hooks";
 
 const StyledFormikInput = styled.div`
-  margin-top: ${({ theme }) => theme.controlMarginTop};
+  margin-top: ${({ theme }) => theme.control_margin_top};
   width: 100%;
 `;
 

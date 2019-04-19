@@ -13,10 +13,10 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var GlobalStyles = exports.GlobalStyles = (0, _styledComponents.createGlobalStyle)(_templateObject, function (_ref) {
   var theme = _ref.theme;
-  return theme.fontFamily;
+  return theme.font_family;
 }, function (_ref2) {
   var theme = _ref2.theme;
-  return theme.fontSize;
+  return theme.font_size;
 }, function (_ref3) {
   var theme = _ref3.theme;
   return theme.color;

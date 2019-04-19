@@ -21,6 +21,6 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var Label = exports.Label = _styledComponents2.default.label(_templateObject, function (_ref) {
   var hasError = _ref.hasError,
-      inputErrorColor = _ref.theme.inputErrorColor;
-  return hasError ? inputErrorColor : "#636e72";
+      input_error_color = _ref.theme.input_error_color;
+  return hasError ? input_error_color : "#636e72";
 });
