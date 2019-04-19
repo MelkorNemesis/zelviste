@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Input = undefined;
 
-var _templateObject = _taggedTemplateLiteral(["\n  height: ", ";\n  width: 100%;\n  padding: 0 10px;\n\n  font-size: 16px;\n  font-weight: 500;\n\n  color: ", ";\n\n  border: 2px solid\n    ", ";\n  border-radius: ", ";\n\n  outline: none;\n\n  &:focus {\n    border-color: ", ";\n  }\n"], ["\n  height: ", ";\n  width: 100%;\n  padding: 0 10px;\n\n  font-size: 16px;\n  font-weight: 500;\n\n  color: ", ";\n\n  border: 2px solid\n    ", ";\n  border-radius: ", ";\n\n  outline: none;\n\n  &:focus {\n    border-color: ", ";\n  }\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n  height: ", ";\n  width: 100%;\n  padding: 0 10px;\n\n  font-size: 16px;\n  font-weight: 500;\n\n  color: ", ";\n\n  border: 2px solid\n    ", ";\n  border-radius: ", ";\n  \n  box-shadow: ", "\n\n  outline: none;\n\n  &:focus {\n    border-color: ", ";\n  }\n"], ["\n  height: ", ";\n  width: 100%;\n  padding: 0 10px;\n\n  font-size: 16px;\n  font-weight: 500;\n\n  color: ", ";\n\n  border: 2px solid\n    ", ";\n  border-radius: ", ";\n  \n  box-shadow: ", "\n\n  outline: none;\n\n  &:focus {\n    border-color: ", ";\n  }\n"]);
 
 var _react = require("react");
 
@@ -26,8 +26,8 @@ var StyledInput = _styledComponents2.default.input(_templateObject, function (_r
   return theme.inputHeight;
 }, function (_ref2) {
   var hasError = _ref2.hasError,
-      inputErrorColor = _ref2.theme.inputErrorColor;
-  return hasError ? inputErrorColor : "black";
+      inputErrorColorText = _ref2.theme.inputErrorColorText;
+  return hasError ? inputErrorColorText : "black";
 }, function (_ref3) {
   var hasError = _ref3.hasError,
       inputErrorColor = _ref3.theme.inputErrorColor;
@@ -37,14 +37,18 @@ var StyledInput = _styledComponents2.default.input(_templateObject, function (_r
   return theme.borderRadius;
 }, function (_ref5) {
   var hasError = _ref5.hasError,
-      _ref5$theme = _ref5.theme,
-      inputErrorColor = _ref5$theme.inputErrorColor,
-      inputAccentColor = _ref5$theme.inputAccentColor;
+      inputErrorBorderColor = _ref5.theme.inputErrorBorderColor;
+  return hasError ? "0 0 12px " + inputErrorBorderColor : "none";
+}, function (_ref6) {
+  var hasError = _ref6.hasError,
+      _ref6$theme = _ref6.theme,
+      inputErrorColor = _ref6$theme.inputErrorColor,
+      inputAccentColor = _ref6$theme.inputAccentColor;
   return hasError ? inputErrorColor : inputAccentColor;
 });
 
-var Input = function Input(_ref6) {
-  var rest = _objectWithoutProperties(_ref6, []);
+var Input = function Input(_ref7) {
+  var rest = _objectWithoutProperties(_ref7, []);
 
   return _react2.default.createElement(StyledInput, rest);
 };

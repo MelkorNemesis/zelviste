@@ -9,13 +9,16 @@ const StyledInput = styled.input`
   font-size: 16px;
   font-weight: 500;
 
-  color: ${({ hasError, theme: { inputErrorColor } }) =>
-    hasError ? inputErrorColor : "black"};
+  color: ${({ hasError, theme: { inputErrorColorText } }) =>
+    hasError ? inputErrorColorText : "black"};
 
   border: 2px solid
     ${({ hasError, theme: { inputErrorColor } }) =>
       hasError ? inputErrorColor : "#eee"};
   border-radius: ${({ theme }) => theme.borderRadius};
+  
+  box-shadow: ${({ hasError, theme: { inputErrorBorderColor } }) =>
+    hasError ? `0 0 12px ${inputErrorBorderColor}` : "none"}
 
   outline: none;
 

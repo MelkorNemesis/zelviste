@@ -39,5 +39,5 @@ var formikValidate = function formikValidate(validateFn, message) {
   return (0, _rambda.compose)(_helpers.trueToUndefined, (0, _decorators.withMessageOnFalse)(message), validateFn);
 };
 
-var email = exports.email = formikValidate(v.email, "Neplatný email.");
-var required = exports.required = formikValidate(v.required, "Položka je povinná.");
+var email = exports.email = formikValidate(v.email, "Email musít být ve formátu x@y.z.");
+var required = exports.required = formikValidate(v.required, "Povinné pole.");

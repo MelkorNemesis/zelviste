@@ -48,6 +48,7 @@ class App extends Component {
                   />
                   <Field
                     name="password"
+                    type="password"
                     label="Heslo"
                     component={FormikInput}
                     validate={validator([required])}
