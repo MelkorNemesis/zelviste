@@ -8,15 +8,22 @@ const StyledInput = styled.input`
 
   font-size: 16px;
   font-weight: 500;
-  color: black;
 
-  border: 2px solid #eee;
+  color: ${({ hasError, theme: { inputErrorColor } }) =>
+    hasError ? inputErrorColor : "black"};
+
+  border: 2px solid
+    ${({ hasError, theme: { inputErrorColor } }) =>
+      hasError ? inputErrorColor : "#eee"};
   border-radius: ${({ theme }) => theme.borderRadius};
 
   outline: none;
 
   &:focus {
-    border-color: ${({ theme }) => theme.inputAccentColor};
+    border-color: ${({
+      hasError,
+      theme: { inputErrorColor, inputAccentColor }
+    }) => (hasError ? inputErrorColor : inputAccentColor)};
   }
 `;
 

@@ -3,7 +3,9 @@ import { Formik, Field, Form } from "formik";
 import { AdminThemeProvider, FormikInput, Button, Text } from "@eshop/admin_ui";
 import { validations } from "@eshop/common";
 
-const { email, required, minLength } = validations;
+const {
+  formik: { validator, email, required }
+} = validations;
 
 const onSubmit = values => console.log(values);
 
@@ -38,11 +40,17 @@ class App extends Component {
                   }}
                 >
                   <Text.Header h1>Přihlášení</Text.Header>
-                  <Field name="email" label="E-mail" component={FormikInput} />
+                  <Field
+                    name="email"
+                    label="E-mail"
+                    component={FormikInput}
+                    validate={validator([required, email])}
+                  />
                   <Field
                     name="password"
                     label="Heslo"
                     component={FormikInput}
+                    validate={validator([required])}
                   />
                   <Button type="submit">Přihlásit</Button>
                 </Form>

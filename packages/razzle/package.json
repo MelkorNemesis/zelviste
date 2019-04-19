@@ -7,6 +7,10 @@
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js"
   },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
   "dependencies": {
     "@atlaskit/icon": "^16.0.7",
     "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
@@ -39,8 +43,6 @@
     "razzle": "^2.4.1",
     "razzle-plugin-scss": "^2.4.1",
     "razzle-plugin-typescript": "^2.4.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",

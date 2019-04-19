@@ -19,6 +19,8 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 var _ = require("..");
 
+var _hooks = require("../../hooks");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -30,7 +32,6 @@ var StyledFormikInput = _styledComponents2.default.div(_templateObject, function
   return theme.controlMarginTop;
 });
 
-var id = 0;
 var FormikInput = function FormikInput(_ref2) {
   var field = _ref2.field,
       _ref2$form = _ref2.form,
@@ -38,20 +39,21 @@ var FormikInput = function FormikInput(_ref2) {
       errors = _ref2$form.errors,
       props = _objectWithoutProperties(_ref2, ["field", "form"]);
 
+  var id = (0, _hooks.useNextId)();
   var label = props.label;
 
-  ++id;
+  var hasError = touched[field.name] && errors[field.name];
 
   return _react2.default.createElement(
     StyledFormikInput,
     null,
     label && _react2.default.createElement(
       _.Label,
-      { htmlFor: id },
+      { htmlFor: id, hasError: hasError },
       label
     ),
-    _react2.default.createElement(_.Input, _extends({}, field, { id: id }, props)),
-    touched[field.name] && errors[field.name] && _react2.default.createElement(
+    _react2.default.createElement(_.Input, _extends({}, field, { id: id }, props, { hasError: hasError })),
+    hasError && _react2.default.createElement(
       _.InputError,
       { htmlFor: id },
       errors[field.name]

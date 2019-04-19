@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { nextId } from "@eshop/common";
 
-let i = 0;
-export const useNextId = () => {
-  const [nextId] = useState(++i);
-  return nextId;
+export const useNextId = prefix => {
+  const [id] = useState(nextId(prefix));
+  return id;
 };

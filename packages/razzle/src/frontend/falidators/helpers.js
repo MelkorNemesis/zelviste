@@ -6,6 +6,6 @@ export function falidator(validatorFn, fallbackValue) {
   return compose(
     fallback(fallbackValue),
     falseToUndefined,
-    withValueOnTruthy(val => val === true, validatorFn)
+    withValueOnTruthy(validatorFn)
   );
 }

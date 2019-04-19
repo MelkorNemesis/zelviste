@@ -2,10 +2,14 @@
   "private": true,
   "scripts": {
     "clean": "lerna clean",
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "yarn && lerna bootstrap",
     "start": "lerna run --parallel start",
-    "prepare": "rimraf packages/razzle/build && rimraf packages/admin/build && rimraf packages/sign_in/build && rimrag packages/admin_ui/build && lerna run prepare",
+    "prepare": "rimraf packages/razzle/build && rimraf packages/admin/build && rimraf packages/sign_in/build && rimraf packages/admin_ui/dist && rimraf packages/common/dist && lerna run prepare",
     "build": "npm run prepare && lerna run --parallel build"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "lerna": "^3.13.1",

@@ -3,28 +3,24 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.email = email;
-exports.required = required;
-exports.minLength = minLength;
+exports.formik = undefined;
 
-var _yup = require("yup");
+var _validations = require("./validations");
 
-function email(val, message) {
-  var schema = (0, _yup.string)().email(message || "Špatně zadaný e-mail");
-  return schema.isValidSync(val);
-}
+Object.keys(_validations).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _validations[key];
+    }
+  });
+});
 
-function required(val, message) {
-  var schema = (0, _yup.string)().required(message || "Položka je povinná.");
-  return schema.isValidSync(val);
-}
+var _formik = require("./formik");
 
-function minLength(min) {
-  return function validateMinLength(val, message) {
-    var defaultMessage = function defaultMessage(min) {
-      return "Polo\u017Eka mus\xED m\xEDt alespo\u0148 " + min + " znak\u016F.";
-    };
-    var schema = (0, _yup.string)().min(min, message || defaultMessage());
-    return schema.isValidSync(val);
-  };
-}
+var formik = _interopRequireWildcard(_formik);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+exports.formik = formik;
