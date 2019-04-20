@@ -18,7 +18,7 @@ const StyledButton = styled.button`
 
   cursor: pointer;
   border: none;
-  border-radius: ${({ theme }) => theme.borderRadius};
+  border-radius: ${({ theme }) => theme.border_radius};
   background: #2980b9;
 
   &:hover {

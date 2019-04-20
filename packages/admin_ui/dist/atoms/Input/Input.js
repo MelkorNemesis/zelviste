@@ -34,7 +34,7 @@ var StyledInput = _styledComponents2.default.input(_templateObject, function (_r
   return hasError ? input_error_color : "#eee";
 }, function (_ref4) {
   var theme = _ref4.theme;
-  return theme.borderRadius;
+  return theme.border_radius;
 }, function (_ref5) {
   var hasError = _ref5.hasError,
       input_error_bg_color = _ref5.theme.input_error_bg_color;

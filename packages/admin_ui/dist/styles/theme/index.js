@@ -6,9 +6,15 @@ Object.defineProperty(exports, "__esModule", {
 var font_family = exports.font_family = "system-ui, sans-serif";
 var font_family_alt = exports.font_family_alt = "'Lato', sans-serif";
 var font_size = exports.font_size = "14px";
-var color = exports.color = "#000";
+var c_text_base = exports.c_text_base = "#000";
 
-var borderRadius = exports.borderRadius = "3px";
+var spacing_xs = exports.spacing_xs = "4px";
+var spacing_s = exports.spacing_s = "8px";
+var spacing_m = exports.spacing_m = "16px";
+var spacing_l = exports.spacing_l = "24px";
+var spacing_xl = exports.spacing_xl = "32px";
+
+var border_radius = exports.border_radius = "3px";
 
 var c_green_1 = exports.c_green_1 = "#f2ffd2";
 var c_green_2 = exports.c_green_2 = "#899B45";
@@ -36,10 +42,4 @@ var input_border_color = exports.input_border_color = "#f2f2f2";
 var input_focus_border_color = exports.input_focus_border_color = "#3498db";
 var input_focus_color = exports.input_focus_color = "#2980b9";
 
-var spacing_xs = exports.spacing_xs = "4px";
-var spacing_s = exports.spacing_s = "8px";
-var spacing_m = exports.spacing_m = "16px";
-var spacing_l = exports.spacing_l = "24px";
-var spacing_xl = exports.spacing_xl = "32px";
-
-var border_radius = exports.border_radius = "3px";
+var c_spinner = exports.c_spinner = '#0984e3';

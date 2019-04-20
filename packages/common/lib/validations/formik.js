@@ -29,5 +29,9 @@ const formikValidate = function(validateFn, message) {
   );
 };
 
-export const email = formikValidate(v.email, "Email musít být ve formátu x@y.z.");
+export const email = formikValidate(
+  v.email,
+  "Email musít být ve formátu x@y.z."
+);
 export const required = formikValidate(v.required, "Povinné pole.");
+export const minLength = formikValidate(v.minLength, "Pole je příliš krátké.");

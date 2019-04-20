@@ -34,7 +34,7 @@ var StyledButton = _styledComponents2.default.button(_templateObject, function (
   return theme.control_submit_margin_top;
 }, function (_ref4) {
   var theme = _ref4.theme;
-  return theme.borderRadius;
+  return theme.border_radius;
 });
 
 var Button = function Button(_ref5) {

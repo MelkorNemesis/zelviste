@@ -4,7 +4,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-family: ${({ theme }) => theme.font_family};
     font-size: ${({ theme }) => theme.font_size};
-    color: ${({ theme }) => theme.color}
+    color: ${({ theme }) => theme.c_text_base}
   }
   
   html, body, #root {

@@ -19,5 +19,5 @@ var GlobalStyles = exports.GlobalStyles = (0, _styledComponents.createGlobalStyl
   return theme.font_size;
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return theme.color;
+  return theme.c_text_base;
 });

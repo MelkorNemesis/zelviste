@@ -15,7 +15,7 @@ const StyledInput = styled.input`
   border: 2px solid
     ${({ hasError, theme: { input_error_color } }) =>
       hasError ? input_error_color : "#eee"};
-  border-radius: ${({ theme }) => theme.borderRadius};
+  border-radius: ${({ theme }) => theme.border_radius};
   background: ${({ hasError, theme: { input_error_bg_color } }) =>
     hasError ? input_error_bg_color : "#fff"};
   

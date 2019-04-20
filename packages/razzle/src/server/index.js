@@ -6,12 +6,8 @@ import sessionStorage from "express-sessions";
 import cookieParser from "cookie-parser";
 
 import db from "./db";
-import { CategoriesRouter, ProductsRouter } from "./router";
-import {
-  serverRender,
-  adminServerRender,
-  adminSignInServerRender
-} from "./handlers";
+import { CategoriesRouter, ProductsRouter, AdminRouter } from "./router";
+import { serverRender } from "./handlers";
 import { serverErrorHandler, clientErrorHandler } from "./middlewares";
 
 // setup redis client
@@ -50,11 +46,7 @@ index
 
   // admin router
   // TODO: add authorization check middleware
-  .use("/admin/api", (req, res) => {
-    res.json({ api: "voe" });
-  })
-  .use("/admin/sign-in", adminSignInServerRender)
-  .use("/admin*", adminServerRender)
+  .use("/admin/api", AdminRouter)
 
   // server-side rendering fallback
   .get("/*", serverRender)

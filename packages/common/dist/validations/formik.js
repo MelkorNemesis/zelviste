@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.required = exports.email = undefined;
+exports.minLength = exports.required = exports.email = undefined;
 exports.validator = validator;
 
 var _rambda = require("rambda");
@@ -41,3 +41,4 @@ var formikValidate = function formikValidate(validateFn, message) {
 
 var email = exports.email = formikValidate(v.email, "Email musít být ve formátu x@y.z.");
 var required = exports.required = formikValidate(v.required, "Povinné pole.");
+var minLength = exports.minLength = formikValidate(v.minLength, "Pole je příliš krátké.");

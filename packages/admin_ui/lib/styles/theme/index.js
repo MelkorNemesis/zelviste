@@ -1,9 +1,15 @@
 export const font_family = "system-ui, sans-serif";
 export const font_family_alt = "'Lato', sans-serif";
 export const font_size = "14px";
-export const color = "#000";
+export const c_text_base = "#000";
 
-export const borderRadius = "3px";
+export const spacing_xs = "4px";
+export const spacing_s = "8px";
+export const spacing_m = "16px";
+export const spacing_l = "24px";
+export const spacing_xl = "32px";
+
+export const border_radius = "3px";
 
 export const c_green_1 = "#f2ffd2";
 export const c_green_2 = "#899B45";
@@ -31,10 +37,4 @@ export const input_border_color = "#f2f2f2";
 export const input_focus_border_color = "#3498db";
 export const input_focus_color = "#2980b9";
 
-export const spacing_xs = "4px";
-export const spacing_s = "8px";
-export const spacing_m = "16px";
-export const spacing_l = "24px";
-export const spacing_xl = "32px";
-
-export const border_radius = "3px";
+export const c_spinner = '#0984e3';
