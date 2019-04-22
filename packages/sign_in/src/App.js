@@ -3,11 +3,17 @@ import { Formik, Field, Form } from "formik";
 import { AdminThemeProvider, FormikInput, Button, Text } from "@eshop/admin_ui";
 import { validations } from "@eshop/common";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const {
   formik: { validator, email, required }
 } = validations;
 
-const onSubmit = values => console.log(values);
+const onSubmit = values => {
+  fetch(`${API_URL}/auth`)
+    .then(res => res.json())
+    .then(json => console.log(json));
+};
 
 class App extends Component {
   render() {

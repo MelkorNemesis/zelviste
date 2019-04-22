@@ -4,7 +4,7 @@
     "clean": "lerna clean",
     "bootstrap": "yarn && lerna bootstrap",
     "start": "lerna run --parallel start",
-    "prepare": "rimraf packages/razzle/build && rimraf packages/admin/build && rimraf packages/sign_in/build && rimraf packages/admin_ui/dist && rimraf packages/common/dist && lerna run prepare",
+    "prepare": "rimraf packages/core/build && rimraf packages/admin/build && rimraf packages/sign_in/build && rimraf packages/admin_ui/dist && rimraf packages/common/dist && lerna run prepare",
     "build": "npm run prepare && lerna run --parallel build"
   },
   "dependencies": {

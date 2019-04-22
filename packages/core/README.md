@@ -107,7 +107,7 @@ Razzle comes with most of ES6 stuff you need. However, if you want to add your o
 ```js
 {
   "presets": [
-    "razzle/babel", // NEEDED
+    core, // NEEDED
     "stage-0"
    ],
    "plugins": [
@@ -123,7 +123,7 @@ A word of advice: the `.babelrc` file will replace the internal razzle babelrc t
 You can also extend the underlying webpack config. Create a file called `razzle.config.js` in your project's root.
 
 ```js
-// razzle.config.js
+core
 
 module.exports = {
   modify: (config, { target, dev }, webpack) => {
