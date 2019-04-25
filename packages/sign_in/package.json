@@ -17,7 +17,8 @@
     "start": "PORT=3003 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "rimraf build"
   },
   "eslintConfig": {
     "extends": "react-app"

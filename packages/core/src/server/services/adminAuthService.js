@@ -9,7 +9,7 @@ export const adminAuthService = {
       .first();
 
     if (!user) {
-      throw Boom.notFound("Invalid email.");
+      throw Boom.notFound("EMAIL_INVALID");
     }
 
     // calculate hash for given password
@@ -20,7 +20,7 @@ export const adminAuthService = {
 
     // compare calculated hash with database
     if (hash !== user.hash) {
-      throw Boom.forbidden("Invalid password");
+      throw Boom.forbidden("PASSWORD_INVALID");
     }
 
     req.session.user = user;

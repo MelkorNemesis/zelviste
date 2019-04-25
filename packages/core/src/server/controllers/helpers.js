@@ -6,7 +6,7 @@ export const format = {
     };
   },
 
-  ok(data, extras = undefined) {
+  ok(data = undefined, extras = undefined) {
     return {
       data,
       ...extras

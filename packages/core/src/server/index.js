@@ -4,6 +4,7 @@ import redis from "redis";
 import session from "express-session";
 import sessionStorage from "express-sessions";
 import cookieParser from "cookie-parser";
+import cors from 'cors'
 
 import db from "./db";
 import { CategoriesRouter, ProductsRouter, AdminRouter } from "./router";
@@ -20,6 +21,8 @@ const index = express();
 
 index
   .disable("x-powered-by")
+  // TODO: temporary solution, limit to known hosts
+  .use(cors())
   .use(cookieParser())
   .use(
     session({
@@ -45,7 +48,6 @@ index
   .use("/api/products", ProductsRouter)
 
   // admin router
-  // TODO: add authorization check middleware
   .use("/admin/api", AdminRouter)
 
   // server-side rendering fallback

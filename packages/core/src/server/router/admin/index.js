@@ -1,17 +1,9 @@
 import { Router } from "express";
-import boom from "boom";
+import { requireAuth } from "../../middlewares";
 
 // -- imports
 import authRouter from "./authRouter";
 import userRouter from "./userRouter";
-
-// -- middlewares
-function requireAuth(req, res, next) {
-  if (req.session && req.session.user) {
-    return next();
-  }
-  next(boom.unauthorized());
-}
 
 // -- router
 export const router = new Router();

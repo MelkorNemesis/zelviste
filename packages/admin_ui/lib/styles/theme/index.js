@@ -20,6 +20,8 @@ export const c_red_1_a_70 = "#d6303170";
 export const c_red_1_a_12 = "#d6303112";
 export const c_red_2 = "#aa233d";
 
+export const c_form_error = c_red_1;
+
 export const c_input_border = "#eee";
 
 export const input_accent_color = "#0984e3";

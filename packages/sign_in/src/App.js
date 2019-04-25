@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Formik, Field, Form } from "formik";
-import { AdminThemeProvider, FormikInput, Button, Text } from "@eshop/admin_ui";
+import {
+  AdminThemeProvider,
+  FormikInput,
+  Button,
+  Text,
+  FormError
+} from "@eshop/admin_ui";
 import { validations } from "@eshop/common";
+
+import request from "./request";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -9,10 +17,26 @@ const {
   formik: { validator, email, required }
 } = validations;
 
-const onSubmit = values => {
-  fetch(`${API_URL}/auth`)
-    .then(res => res.json())
-    .then(json => console.log(json));
+const onSubmit = ({ email, password }, { setStatus }) => {
+  setStatus(undefined);
+
+  request(`${API_URL}/auth`, {
+    method: "POST",
+    body: JSON.stringify({ email, password })
+  })
+    .then(() => {
+      window.location.href = process.env.REACT_APP_ADMIN_URL;
+    })
+    .catch(err => {
+      if (err.detail === "EMAIL_INVALID") {
+        setStatus("Neexistující e-mail.");
+      } else if (err.detail === "PASSWORD_INVALID") {
+        setStatus("Špatně zadané heslo.");
+      } else {
+        setStatus(`Neznámá chyba. ${err.message}`);
+        console.log({ err });
+      }
+    });
 };
 
 class App extends Component {
@@ -26,7 +50,7 @@ class App extends Component {
             password: ""
           }}
         >
-          {() => {
+          {({ status }) => {
             return (
               <div
                 style={{
@@ -46,6 +70,7 @@ class App extends Component {
                   }}
                 >
                   <Text.Header h1>Přihlášení</Text.Header>
+                  {status && <FormError>{status}</FormError>}
                   <Field
                     name="email"
                     label="E-mail"

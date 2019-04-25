@@ -16,6 +16,18 @@ Object.keys(_Button).forEach(function (key) {
   });
 });
 
+var _FormError = require("./FormError/FormError");
+
+Object.keys(_FormError).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _FormError[key];
+    }
+  });
+});
+
 var _FormikInput = require("./FormikInput/FormikInput");
 
 Object.keys(_FormikInput).forEach(function (key) {

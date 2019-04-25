@@ -15,7 +15,8 @@
   },
   "scripts": {
     "start": "babel lib -w -d dist",
-    "build": "babel lib -d dist"
+    "build": "babel lib -d dist",
+    "prepare": "rimraf dist"
   },
   "devDependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.2.0",

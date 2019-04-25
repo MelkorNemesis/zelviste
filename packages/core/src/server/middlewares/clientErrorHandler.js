@@ -20,5 +20,4 @@ export function clientErrorHandler(err, req, res, next) {
       statusCode: HttpStatus.INTERNAL_SERVER_ERROR
     });
   }
-  next(err);
 }

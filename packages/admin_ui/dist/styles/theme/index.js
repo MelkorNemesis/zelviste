@@ -25,6 +25,8 @@ var c_red_1_a_70 = exports.c_red_1_a_70 = "#d6303170";
 var c_red_1_a_12 = exports.c_red_1_a_12 = "#d6303112";
 var c_red_2 = exports.c_red_2 = "#aa233d";
 
+var c_form_error = exports.c_form_error = c_red_1;
+
 var c_input_border = exports.c_input_border = "#eee";
 
 var input_accent_color = exports.input_accent_color = "#0984e3";

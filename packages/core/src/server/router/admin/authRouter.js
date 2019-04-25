@@ -3,6 +3,7 @@ import { celebrate, Joi } from "celebrate";
 import bodyParser from "body-parser";
 
 import { asyncHandlerWrapper } from "../helpers";
+import { requireAuth } from "../../middlewares";
 import { adminAuthService } from "../../services";
 import { format } from "../../controllers/helpers";
 
@@ -24,6 +25,15 @@ router.post(
     user.$pick(["id", "email", "firstname", "surname"]);
 
     return format.ok(user);
+  })
+);
+
+router.post(
+  "/sign-out",
+  requireAuth,
+  asyncHandlerWrapper(async req => {
+    adminAuthService.signOut({ req });
+    return format.ok();
   })
 );
 

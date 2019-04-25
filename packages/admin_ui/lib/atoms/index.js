@@ -1,4 +1,5 @@
 export * from "./Button/Button";
+export * from "./FormError/FormError";
 export * from "./FormikInput/FormikInput";
 export * from "./Input/Input";
 export * from "./InputError/InputError";
