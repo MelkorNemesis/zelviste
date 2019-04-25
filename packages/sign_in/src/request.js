@@ -17,9 +17,10 @@ function checkStatus({ response, json }) {
   }
 }
 
-export default function request(url, options) {
+export default function request(url, options = {}) {
   return fetch(url, {
     mode: "cors",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       ...(options.headers || {})

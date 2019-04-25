@@ -4,12 +4,13 @@ import redis from "redis";
 import session from "express-session";
 import sessionStorage from "express-sessions";
 import cookieParser from "cookie-parser";
-import cors from 'cors'
+import cors from "cors";
 
 import db from "./db";
 import { CategoriesRouter, ProductsRouter, AdminRouter } from "./router";
 import { serverRender } from "./handlers";
 import { serverErrorHandler, clientErrorHandler } from "./middlewares";
+import { CORS_WHITELIST } from "./security";
 
 // setup redis client
 const redisClient = redis.createClient(6379, "localhost");
@@ -21,8 +22,18 @@ const index = express();
 
 index
   .disable("x-powered-by")
-  // TODO: temporary solution, limit to known hosts
-  .use(cors())
+  .use(
+    cors({
+      origin: function(origin, callback) {
+        if (CORS_WHITELIST.indexOf(origin) !== -1) {
+          return callback(null, true);
+        } else {
+          return callback(new Error("Not allowed by CORS"));
+        }
+      },
+      credentials: true
+    })
+  )
   .use(cookieParser())
   .use(
     session({

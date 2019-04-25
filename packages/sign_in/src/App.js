@@ -13,6 +13,10 @@ import request from "./request";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
+function redirectToAdmin() {
+  window.location.href = process.env.REACT_APP_ADMIN_URL;
+}
+
 const {
   formik: { validator, email, required }
 } = validations;
@@ -25,7 +29,7 @@ const onSubmit = ({ email, password }, { setStatus }) => {
     body: JSON.stringify({ email, password })
   })
     .then(() => {
-      window.location.href = process.env.REACT_APP_ADMIN_URL;
+      redirectToAdmin();
     })
     .catch(err => {
       if (err.detail === "EMAIL_INVALID") {
@@ -40,6 +44,16 @@ const onSubmit = ({ email, password }, { setStatus }) => {
 };
 
 class App extends Component {
+  componentDidMount() {
+    request(`${API_URL}/user`)
+      .then(() => {
+        redirectToAdmin();
+      })
+      .catch(() => {
+        console.info("Error occured, not redirecting to admin.");
+      });
+  }
+
   render() {
     return (
       <AdminThemeProvider>
