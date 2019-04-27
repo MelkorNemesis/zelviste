@@ -56,6 +56,7 @@ const StyledItem = styled(Item)`
     }
 
     .before {
+      flex-shrink: 0;
       margin-right: ${theme("spacing_s")};
     }
   }

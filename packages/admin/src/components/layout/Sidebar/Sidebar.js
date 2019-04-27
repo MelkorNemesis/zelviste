@@ -9,6 +9,7 @@ const StyledSidebar = styled.aside`
   background: #fff;
   
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
 `;
 

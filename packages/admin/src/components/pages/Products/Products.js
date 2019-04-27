@@ -1,16 +1,25 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { Text, Spinner, TableList, ProductPrice } from "@eshop/admin_ui";
+import React, { Fragment } from "react";
+import { Text, Spinner, TableList, ProductPrice, Err } from "@eshop/admin_ui";
 
 import * as API from "../../../api";
+import { useFetchStatus } from "@eshop/admin_ui";
 
-function mapProducts(product) {
+function mapProducts({
+  id,
+  name,
+  manufacturer,
+  category,
+  price,
+  priceBefore,
+  stock_quantity
+}) {
   return [
-    <strong>#{product.id}</strong>,
-    product.name,
-    product.manufacturer.name,
-    product.category.name,
-    <ProductPrice price={product.price} priceBefore={product.priceBefore} />,
-    `${product.stock_quantity} ks`,
+    <strong>#{id}</strong>,
+    name,
+    manufacturer.name,
+    category.name,
+    <ProductPrice price={price} priceBefore={priceBefore} />,
+    `${stock_quantity} ks`,
     "..."
   ];
 }
@@ -23,15 +32,8 @@ const ProductsTableList = ({ products }) => (
 );
 
 export const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    API.getProducts().then(({ json }) => {
-      setLoading(false);
-      setProducts(json.data);
-    });
-  }, []);
+  const { loading, done, error, result } = useFetchStatus(API.getProducts);
+  const products = (result && result.data) || [];
 
   return (
     <Fragment>
@@ -40,7 +42,8 @@ export const Products = () => {
       </Text.Header>
 
       {loading && <Spinner>Nahrávám produkty...</Spinner>}
-      {!loading && <ProductsTableList products={products} />}
+      {error && <Err>Chyba při načítání produktů: {error.message}</Err>}
+      {done && <ProductsTableList products={products} />}
     </Fragment>
   );
 };

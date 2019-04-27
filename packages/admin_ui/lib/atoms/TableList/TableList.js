@@ -20,10 +20,7 @@ const StyledTableList = styled.div`
           padding-right: ${({ theme: { spacing_m } }) => spacing_m};
         }
 
-        color: ${({ theme }) => {
-          console.log({ theme });
-          return theme.c_text_alt;
-        }};
+        color: ${({ theme }) => theme.c_text_alt};
         text-align: left;
         text-transform: uppercase;
         font-weight: 700;

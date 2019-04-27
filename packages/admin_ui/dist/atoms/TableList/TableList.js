@@ -35,8 +35,6 @@ var StyledTableList = _styledComponents2.default.div(_templateObject, function (
   return spacing_m;
 }, function (_ref5) {
   var theme = _ref5.theme;
-
-  console.log({ theme: theme });
   return theme.c_text_alt;
 }, function (_ref6) {
   var spacing_s = _ref6.theme.spacing_s;

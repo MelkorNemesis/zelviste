@@ -16,6 +16,18 @@ Object.keys(_Button).forEach(function (key) {
   });
 });
 
+var _Error = require("./Error/Error");
+
+Object.keys(_Error).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Error[key];
+    }
+  });
+});
+
 var _FormError = require("./FormError/FormError");
 
 Object.keys(_FormError).forEach(function (key) {
