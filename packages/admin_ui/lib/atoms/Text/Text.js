@@ -11,9 +11,18 @@ const getFontSize = ({ h1, h2, smaller }) => {
   }
 };
 
-const StyledText = styled.p`
+const getTextDecoration = ({ strike }) => {
+  if (strike) {
+    return "line-through";
+  } else {
+    return "none";
+  }
+};
+
+const StyledText = styled.span`
   margin: ${({ first }) => (first ? 0 : "1em")} 0 1em;
   font-size: ${getFontSize};
+  text-decoration: ${getTextDecoration};
 `;
 
 export const Text = ({ children, ...rest }) => (

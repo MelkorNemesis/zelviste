@@ -38,7 +38,10 @@ export const ProductsController = {
       return await ProductsController.getBySeoUrl(req);
     }
 
-    const products = await Product.query().orderBy("id", "desc");
+    const products = await Product.query()
+      .orderBy("id", "desc")
+      .eager("[manufacturer, category]");
+
     return format.ok(products);
   }
 };
