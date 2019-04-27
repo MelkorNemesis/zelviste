@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 // -- Default Button
 const StyledButton = styled.button`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: ${({ theme }) => theme.input_height};
   margin-top: ${({ theme }) => theme.control_margin_top};

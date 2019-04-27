@@ -76,7 +76,5 @@ export const Navigation = () => (
       <StyledItem text="Produkty" to="/products" before={EmojiFoodIcon} />
       <StyledItem text="Nastavení" to="/settings" before={SettingsIcon} />
     </StyledGroup>
-
-    <footer />
   </StyledNavigation>
 );

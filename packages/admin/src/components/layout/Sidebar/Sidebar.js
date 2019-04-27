@@ -1,17 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Navigation } from "../index";
+import { Navigation, NavigationFooter } from "../index";
 import { theme } from "../../../styles";
 
 const StyledSidebar = styled.aside`
-  flex: 0 0 auto;
-  padding: ${theme('spacing_l')};
-  background: #F2F7FB;
+  padding: ${theme("spacing_l")};
+  background: #f2f7fb;
+  
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Sidebar = () => (
   <StyledSidebar>
     <Navigation />
+    <NavigationFooter />
   </StyledSidebar>
 );

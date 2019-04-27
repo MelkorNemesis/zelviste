@@ -1,10 +1,7 @@
 import { Container } from "unstated";
-import { get } from "../api";
+import { noopLog } from "@eshop/common";
 
-const user = {
-  id: 1,
-  email: "sevcik.mi@gmail.com"
-};
+import * as API from "../api";
 
 export class UserContainer extends Container {
   state = {
@@ -15,9 +12,13 @@ export class UserContainer extends Container {
     return this.state.user !== null;
   }
 
+  get name() {
+    const { firstname, surname } = this.state.user;
+    return `${firstname} ${surname}`;
+  }
+
   signIn() {
-    console.log("signing in");
-    return get("/user")
+    return API.user()
       .then(({ json }) => {
         this.setState({ user: json.data });
       })
@@ -27,6 +28,10 @@ export class UserContainer extends Container {
   }
 
   signOut() {
-    console.log("signing out");
+    return API.signOut()
+      .catch(noopLog)
+      .finally(() => {
+        window.location.href = process.env.REACT_APP_SIGN_IN_URL;
+      });
   }
 }

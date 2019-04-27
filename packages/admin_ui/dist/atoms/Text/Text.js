@@ -25,14 +25,15 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var getFontSize = function getFontSize(_ref) {
   var h1 = _ref.h1,
-      h2 = _ref.h2;
+      h2 = _ref.h2,
+      smaller = _ref.smaller;
 
   if (h1) {
     return "28px";
   } else if (h2) {
     return "24px";
-  } else {
-    return "20px";
+  } else if (smaller) {
+    return "12px";
   }
 };
 
@@ -41,15 +42,18 @@ var StyledText = _styledComponents2.default.p(_templateObject, function (_ref2) 
   return first ? 0 : "1em";
 }, getFontSize);
 
-var Text = exports.Text = function Text(_ref3) {
-  var children = _ref3.children;
+var Text = function Text(_ref3) {
+  var children = _ref3.children,
+      rest = _objectWithoutProperties(_ref3, ["children"]);
+
   return _react2.default.createElement(
     StyledText,
-    null,
+    rest,
     children
   );
 };
 
+exports.Text = Text;
 Text.Paragraph = function (_ref4) {
   var children = _ref4.children,
       rest = _objectWithoutProperties(_ref4, ["children"]);

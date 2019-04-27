@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const getFontSize = ({ h1, h2 }) => {
+const getFontSize = ({ h1, h2, smaller }) => {
   if (h1) {
     return "28px";
   } else if (h2) {
     return "24px";
-  } else {
-    return "20px";
+  } else if (smaller) {
+    return "12px";
   }
 };
 
@@ -16,7 +16,9 @@ const StyledText = styled.p`
   font-size: ${getFontSize};
 `;
 
-export const Text = ({ children }) => <StyledText>{children}</StyledText>;
+export const Text = ({ children, ...rest }) => (
+  <StyledText {...rest}>{children}</StyledText>
+);
 
 Text.Paragraph = ({ children, ...rest }) => (
   <StyledText as="p" {...rest}>

@@ -11,3 +11,7 @@ export function trueToUndefined(value) {
   }
   return value;
 }
+
+export function noopLog(...args) {
+  console.log("noopLog: ", ...args);
+}

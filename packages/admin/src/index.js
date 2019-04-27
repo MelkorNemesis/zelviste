@@ -19,7 +19,7 @@ ReactDOM.render(
                 window.location.href = process.env.REACT_APP_SIGN_IN_URL;
               });
             }}
-            bootstrapped={user.state.user != null}
+            bootstrapped={user.isLoggedIn}
           />
         );
       }}
