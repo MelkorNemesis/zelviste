@@ -3,6 +3,7 @@ export const font_family_alt = "'Lato', sans-serif";
 export const font_size = "14px";
 export const c_text_base = "#000";
 export const c_text_alt = "#5d5d5d";
+export const c_text_faded = "#bcbcbc";
 
 export const spacing_xs = "4px";
 export const spacing_s = "8px";

@@ -88,6 +88,18 @@ Object.keys(_Spinner).forEach(function (key) {
   });
 });
 
+var _ProductPrice = require("./ProductPrice/ProductPrice");
+
+Object.keys(_ProductPrice).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _ProductPrice[key];
+    }
+  });
+});
+
 var _TableList = require("./TableList/TableList");
 
 Object.keys(_TableList).forEach(function (key) {

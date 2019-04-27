@@ -8,6 +8,7 @@ var font_family_alt = exports.font_family_alt = "'Lato', sans-serif";
 var font_size = exports.font_size = "14px";
 var c_text_base = exports.c_text_base = "#000";
 var c_text_alt = exports.c_text_alt = "#5d5d5d";
+var c_text_faded = exports.c_text_faded = "#bcbcbc";
 
 var spacing_xs = exports.spacing_xs = "4px";
 var spacing_s = exports.spacing_s = "8px";

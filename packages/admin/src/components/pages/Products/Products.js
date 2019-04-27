@@ -1,20 +1,17 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Text, Spinner, TableList } from "@eshop/admin_ui";
+import { Text, Spinner, TableList, ProductPrice } from "@eshop/admin_ui";
 
 import * as API from "../../../api";
 
 function mapProducts(product) {
   return [
-    `#${product.id}`,
+    <strong>#{product.id}</strong>,
     product.name,
     product.manufacturer.name,
     product.category.name,
-    <Fragment>
-      {product.price}
-      {product.priceBefore && <Text strike>{product.priceBefore}</Text>}
-    </Fragment>,
+    <ProductPrice price={product.price} priceBefore={product.priceBefore} />,
     `${product.stock_quantity} ks`,
-    "akce"
+    "..."
   ];
 }
 

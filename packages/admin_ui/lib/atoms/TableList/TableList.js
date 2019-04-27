@@ -10,8 +10,15 @@ const StyledTableList = styled.div`
 
     thead {
       th {
-        padding: ${({ theme: { spacing_s } }) =>
-          `${spacing_s} ${spacing_s}`};
+        padding: ${({ theme: { spacing_s } }) => `${spacing_s} ${spacing_s}`};
+
+        &:first-child {
+          padding-left: ${({ theme: { spacing_m } }) => spacing_m};
+        }
+
+        &:last-child {
+          padding-right: ${({ theme: { spacing_m } }) => spacing_m};
+        }
 
         color: ${({ theme }) => {
           console.log({ theme });
@@ -26,22 +33,36 @@ const StyledTableList = styled.div`
 
     tbody {
       tr {
+        border-radius: ${({ theme: { spacing_s } }) => spacing_s};
+
+        &:hover {
+          td {
+            background: #e9f1f5;
+            border-bottom-color: #d1d9dd;
+          }
+        }
+
         td {
           padding: ${({ theme: { spacing_m, spacing_s } }) =>
             `${spacing_m} ${spacing_s}`};
 
           text-align: left;
 
+          border-bottom: 2px solid transparent;
           background: #fff;
         }
 
         td {
           &:first-child {
+            padding-left: ${({ theme: { spacing_m } }) => spacing_m};
+
             border-radius: ${({ theme: { spacing_s } }) =>
               `${spacing_s} 0 0 ${spacing_s}`};
           }
 
           &:last-child {
+            padding-right: ${({ theme: { spacing_m } }) => spacing_m};
+
             border-radius: ${({ theme: { spacing_s } }) =>
               `0 ${spacing_s} ${spacing_s} 0`};
           }

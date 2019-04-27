@@ -5,5 +5,6 @@ export * from "./Input/Input";
 export * from "./InputError/InputError";
 export * from "./Label/Label";
 export * from "./Spinner/Spinner";
+export * from "./ProductPrice/ProductPrice";
 export * from "./TableList/TableList";
 export * from "./Text/Text";
