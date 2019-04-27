@@ -11,7 +11,8 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "unstated": "^2.1.1",
-    "unstated-debug": "^0.3.2"
+    "unstated-debug": "^0.3.2",
+    "prop-types": "^15.7.2"
   },
   "scripts": {
     "start": "PORT=3005 react-scripts start",

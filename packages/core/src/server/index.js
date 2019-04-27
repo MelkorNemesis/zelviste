@@ -1,54 +1,32 @@
 import express from "express";
 import morgan from "morgan";
 import redis from "redis";
-import session from "express-session";
-import sessionStorage from "express-sessions";
 import cookieParser from "cookie-parser";
-import cors from "cors";
 
 import db from "./db";
 import { CategoriesRouter, ProductsRouter, AdminRouter } from "./router";
 import { serverRender } from "./handlers";
-import { serverErrorHandler, clientErrorHandler } from "./middlewares";
-import { CORS_WHITELIST } from "./security";
+import {
+  serverErrorHandler,
+  clientErrorHandler,
+  cors,
+  session
+} from "./middlewares";
 
 // setup redis client
 const redisClient = redis.createClient(6379, "localhost");
 
 // setup knex & objection
-db.initDatabase();
+db.init();
 
 const index = express();
-
 index
   .disable("x-powered-by")
-  .use(
-    cors({
-      origin: function(origin, callback) {
-        if (CORS_WHITELIST.indexOf(origin) !== -1) {
-          return callback(null, true);
-        } else {
-          return callback(new Error("Not allowed by CORS"));
-        }
-      },
-      credentials: true
-    })
-  )
+  .use(cors)
   .use(cookieParser())
   .use(
     session({
-      secret: "a4f8071f-c873-4447-8ee2",
-      cookie: { maxAge: 31 * 24 * 60 * 60 * 1000 }, // 31 days
-      resave: true,
-      saveUninitialized: true,
-      store: new sessionStorage({
-        storage: "redis",
-        instance: redisClient,
-        host: "localhost",
-        port: 6379,
-        collection: "sessions",
-        expire: 31 * 24 * 60 * 60 // 31 days
-      })
+      redisClient
     })
   )
   .use(morgan("dev"))

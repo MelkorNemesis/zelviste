@@ -1,4 +1,10 @@
 import { Container } from "unstated";
+import { get } from "../api";
+
+const user = {
+  id: 1,
+  email: "sevcik.mi@gmail.com"
+};
 
 export class UserContainer extends Container {
   state = {
@@ -6,14 +12,21 @@ export class UserContainer extends Container {
   };
 
   get isLoggedIn() {
-    return false;
+    return this.state.user !== null;
   }
 
-  login() {
-    console.log("logging in");
+  signIn() {
+    console.log("signing in");
+    return get("/user")
+      .then(({ json }) => {
+        this.setState({ user: json.data });
+      })
+      .catch(err => {
+        throw err;
+      });
   }
 
-  logout() {
-    console.log("logging out");
+  signOut() {
+    console.log("signing out");
   }
 }
