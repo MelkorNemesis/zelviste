@@ -15,3 +15,7 @@ export function sha512({ password, salt }) {
   hash.update(password);
   return hash.digest("hex");
 }
+
+export function round(num) {
+  return Math.ceil(num);
+}

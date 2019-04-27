@@ -42,7 +42,7 @@ export const Product = ({
 
     {showButton && (
       <ButtonLink.Next className="Product__more" to={seoUrl}>
-        Více informací
+        Zobrazit
       </ButtonLink.Next>
     )}
   </div>

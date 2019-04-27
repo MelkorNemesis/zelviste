@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@eshop/admin_ui": "^0.0.0",
-    "@eshop/common": "^0.0.0",
     "@atlaskit/icon": "^16.0.9",
     "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@eshop/admin_ui": "^0.0.0",
+    "@eshop/common": "^0.0.0",
     "formik": "^1.5.2",
+    "prop-types": "^15.7.2",
+    "qs": "^6.7.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "unstated": "^2.1.1",
-    "unstated-debug": "^0.3.2",
-    "prop-types": "^15.7.2"
+    "unstated-debug": "^0.3.2"
   },
   "scripts": {
     "start": "PORT=3005 react-scripts start",

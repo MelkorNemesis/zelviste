@@ -6,7 +6,7 @@ import { theme } from "../../../styles";
 
 const StyledSidebar = styled.aside`
   padding: ${theme("spacing_l")};
-  background: #f2f7fb;
+  background: #fff;
   
   display: flex;
   flex-direction: column;

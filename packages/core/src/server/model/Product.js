@@ -1,5 +1,6 @@
 import { Model } from "objection";
 import { Category, Manufacturer } from ".";
+import { round } from "../utils";
 
 export class Product extends Model {
   static get tableName() {
@@ -22,8 +23,8 @@ export class Product extends Model {
         relation: Model.BelongsToOneRelation,
         modelClass: Manufacturer,
         join: {
-          from: 'products.id_manufacturer',
-          to: 'manufacturers.id'
+          from: "products.id_manufacturer",
+          to: "manufacturers.id"
         }
       }
     };
@@ -31,7 +32,6 @@ export class Product extends Model {
 
   get price() {
     const discount = this.discount || 0;
-
     return this.priceIncVAT - discount;
   }
 
@@ -43,7 +43,7 @@ export class Product extends Model {
   }
 
   get priceIncVAT() {
-    return this.price_without_vat * (1 + this.vat / 100);
+    return round(this.price_without_vat * (1 + this.vat / 100));
   }
 
   get currency() {
