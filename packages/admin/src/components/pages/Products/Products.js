@@ -7,6 +7,8 @@ import { useFetchStatus } from "@eshop/admin_ui";
 function mapProducts({
   id,
   name,
+  code,
+  ean,
   manufacturer,
   category,
   price,
@@ -16,6 +18,8 @@ function mapProducts({
   return [
     <strong>#{id}</strong>,
     name,
+    code,
+    ean,
     manufacturer.name,
     category.name,
     <ProductPrice price={price} priceBefore={priceBefore} />,
@@ -26,7 +30,17 @@ function mapProducts({
 
 const ProductsTableList = ({ products }) => (
   <TableList
-    headings={["ID", "Název", "Výrobce", "Kategorie", "Cena", "Skladem", ""]}
+    headings={[
+      "ID",
+      "Název",
+      "Kód",
+      "EAN",
+      "Výrobce",
+      "Kategorie",
+      "Cena",
+      "Skladem",
+      ""
+    ]}
     rows={products.map(mapProducts)}
   />
 );

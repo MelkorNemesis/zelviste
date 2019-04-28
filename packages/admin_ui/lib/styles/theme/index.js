@@ -2,7 +2,6 @@ export const font_family = "system-ui, sans-serif";
 export const font_family_alt = "'Lato', sans-serif";
 export const font_size = "14px";
 export const c_text_base = "#000";
-export const c_text_alt = "#5d5d5d";
 export const c_text_faded = "#bcbcbc";
 
 export const spacing_xs = "4px";
@@ -25,6 +24,9 @@ export const c_red_2 = "#aa233d";
 export const c_form_error = c_red_1;
 
 export const c_input_border = "#eee";
+
+export const c_table_text = '#43535f';
+export const c_table_head_text = "#5d5d5d";
 
 export const input_accent_color = "#0984e3";
 export const input_error_color = c_red_1;

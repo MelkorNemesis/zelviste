@@ -4,9 +4,12 @@ import styled from "styled-components";
 const StyledTableList = styled.div`
   table {
     width: 100%;
+
+    font-weight: 500;
+    color: ${({ theme }) => theme.c_table_text};
+
     border-spacing: 0 ${({ theme }) => theme.spacing_s};
     border-collapse: separate;
-    font-weight: 500;
 
     thead {
       th {
@@ -20,7 +23,7 @@ const StyledTableList = styled.div`
           padding-right: ${({ theme: { spacing_m } }) => spacing_m};
         }
 
-        color: ${({ theme }) => theme.c_text_alt};
+        color: ${({ theme }) => theme.c_table_head_text};
         text-align: left;
         text-transform: uppercase;
         font-weight: 700;

@@ -7,7 +7,6 @@ var font_family = exports.font_family = "system-ui, sans-serif";
 var font_family_alt = exports.font_family_alt = "'Lato', sans-serif";
 var font_size = exports.font_size = "14px";
 var c_text_base = exports.c_text_base = "#000";
-var c_text_alt = exports.c_text_alt = "#5d5d5d";
 var c_text_faded = exports.c_text_faded = "#bcbcbc";
 
 var spacing_xs = exports.spacing_xs = "4px";
@@ -30,6 +29,9 @@ var c_red_2 = exports.c_red_2 = "#aa233d";
 var c_form_error = exports.c_form_error = c_red_1;
 
 var c_input_border = exports.c_input_border = "#eee";
+
+var c_table_text = exports.c_table_text = '#43535f';
+var c_table_head_text = exports.c_table_head_text = "#5d5d5d";
 
 var input_accent_color = exports.input_accent_color = "#0984e3";
 var input_error_color = exports.input_error_color = c_red_1;
