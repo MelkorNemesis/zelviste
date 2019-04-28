@@ -14,4 +14,13 @@ export const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+  
+  a {
+    color: ${({ theme }) => theme.c_blue}; 
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;

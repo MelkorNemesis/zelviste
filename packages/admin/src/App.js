@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { AdminThemeProvider, Spinner } from "@eshop/admin_ui";
 
 import { Content, Wrapper, Sidebar } from "./components/layout";
-import { Dashboard, Orders, Products } from "./components/pages";
+import { Dashboard, Orders, Products, Product } from "./components/pages";
 
 // log unstated only in development mode
 UNSTATED.logStateChanges = process.env.NODE_ENV === "development";
@@ -28,6 +28,7 @@ class App extends React.PureComponent {
               <Route path="/" exact component={Dashboard} />
               <Route path="/orders" component={Orders} />
               <Route path="/products" component={Products} />
+              <Route path="/product/:id([0-9]+)" component={Product} />
               <Route render={() => "Stránka nenalezena"} />
             </Switch>
           </Content>

@@ -13,7 +13,7 @@ const PriceBefore = styled.span`
 export const ProductPrice = ({ price, priceBefore, ...rest }) => {
   return (
     <StyledProductPrice {...rest}>
-      {price} Kč
+      <strong>{price} Kč</strong>
       {priceBefore && <PriceBefore>({priceBefore} Kč)</PriceBefore>}
     </StyledProductPrice>
   );

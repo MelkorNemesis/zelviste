@@ -1,5 +1,13 @@
 import React, { Fragment } from "react";
-import { Text, Spinner, TableList, ProductPrice, Err } from "@eshop/admin_ui";
+import { Link } from "react-router-dom";
+import {
+  Text,
+  Spinner,
+  TableList,
+  ProductPrice,
+  Err,
+  ProductQuantity
+} from "@eshop/admin_ui";
 
 import * as API from "../../../api";
 import { useFetchStatus } from "@eshop/admin_ui";
@@ -17,13 +25,13 @@ function mapProducts({
 }) {
   return [
     <strong>#{id}</strong>,
-    name,
+    <Link to={`/product/${id}`}>{name}</Link>,
     code,
     ean,
     manufacturer.name,
     category.name,
     <ProductPrice price={price} priceBefore={priceBefore} />,
-    `${stock_quantity} ks`,
+    <ProductQuantity quantity={stock_quantity} />,
     "..."
   ];
 }

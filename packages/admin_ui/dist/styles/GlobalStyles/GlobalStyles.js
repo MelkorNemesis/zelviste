@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.GlobalStyles = undefined;
 
-var _templateObject = _taggedTemplateLiteral(["\n  body {\n    font-family: ", ";\n    font-size: ", ";\n    color: ", "\n  }\n  \n  html, body, #root {\n    height: 100%;\n  }\n  \n  * {\n    box-sizing: border-box;\n  }\n"], ["\n  body {\n    font-family: ", ";\n    font-size: ", ";\n    color: ", "\n  }\n  \n  html, body, #root {\n    height: 100%;\n  }\n  \n  * {\n    box-sizing: border-box;\n  }\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n  body {\n    font-family: ", ";\n    font-size: ", ";\n    color: ", "\n  }\n  \n  html, body, #root {\n    height: 100%;\n  }\n  \n  * {\n    box-sizing: border-box;\n  }\n  \n  a {\n    color: ", "; \n    text-decoration: none;\n    \n    &:hover {\n      text-decoration: underline;\n    }\n  }\n"], ["\n  body {\n    font-family: ", ";\n    font-size: ", ";\n    color: ", "\n  }\n  \n  html, body, #root {\n    height: 100%;\n  }\n  \n  * {\n    box-sizing: border-box;\n  }\n  \n  a {\n    color: ", "; \n    text-decoration: none;\n    \n    &:hover {\n      text-decoration: underline;\n    }\n  }\n"]);
 
 var _styledComponents = require("styled-components");
 
@@ -20,4 +20,7 @@ var GlobalStyles = exports.GlobalStyles = (0, _styledComponents.createGlobalStyl
 }, function (_ref3) {
   var theme = _ref3.theme;
   return theme.c_text_base;
+}, function (_ref4) {
+  var theme = _ref4.theme;
+  return theme.c_blue;
 });

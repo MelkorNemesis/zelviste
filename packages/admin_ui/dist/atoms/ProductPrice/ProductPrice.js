@@ -39,8 +39,12 @@ var ProductPrice = function ProductPrice(_ref3) {
   return _react2.default.createElement(
     StyledProductPrice,
     rest,
-    price,
-    " K\u010D",
+    _react2.default.createElement(
+      "strong",
+      null,
+      price,
+      " K\u010D"
+    ),
     priceBefore && _react2.default.createElement(
       PriceBefore,
       null,
