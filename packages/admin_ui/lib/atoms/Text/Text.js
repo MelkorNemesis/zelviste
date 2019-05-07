@@ -23,17 +23,37 @@ const StyledText = styled.span`
   margin: ${({ first }) => (first ? 0 : "1em")} 0 1em;
   font-size: ${getFontSize};
   text-decoration: ${getTextDecoration};
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
+// -- Text
 export const Text = ({ children, ...rest }) => (
   <StyledText {...rest}>{children}</StyledText>
 );
 
+// -- Paragraph
 Text.Paragraph = ({ children, ...rest }) => (
   <StyledText as="p" {...rest}>
     {children}
   </StyledText>
 );
+
+// -- Header
+const StyledTextHeader = styled(StyledText)`
+  margin-bottom: ${({ halfBottom }) => (halfBottom ? "0.5em" : "1em")};
+
+  h2&,
+  h3& {
+    font-weight: 600;
+  }
+`;
 
 Text.Header = ({ children, ...rest }) => {
   let HeaderTag;
@@ -48,8 +68,8 @@ Text.Header = ({ children, ...rest }) => {
   }
 
   return (
-    <StyledText as={HeaderTag} {...rest}>
+    <StyledTextHeader as={HeaderTag} {...rest}>
       {children}
-    </StyledText>
+    </StyledTextHeader>
   );
 };

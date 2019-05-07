@@ -35,3 +35,5 @@ export const email = formikValidate(
 );
 export const required = formikValidate(v.required, "Povinné pole.");
 export const minLength = formikValidate(v.minLength, "Pole je příliš krátké.");
+export const number = formikValidate(v.number, "Pole musí být číslo.");
+export const integer = formikValidate(v.integer, "Pole musí být celé číslo.");

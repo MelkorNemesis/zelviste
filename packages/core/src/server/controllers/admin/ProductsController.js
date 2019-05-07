@@ -4,13 +4,12 @@ import { Product } from "../../model";
 import { format } from "../helpers";
 
 export const ProductsController = {
-  async getBySeoUrl(req) {
-    const { seo_url } = req.query;
+  async getById(req) {
+    const { id } = req.params;
 
     const product = await Product.query()
-      .where("is_active", true)
-      .where("seo_url", seo_url)
-      .eager("manufacturer")
+      .findById(id)
+      .eager("[manufacturer, category]")
       .limit(1)
       .first();
 
@@ -18,26 +17,10 @@ export const ProductsController = {
       throw boom.notFound();
     }
 
-    const category = await product
-      .$relatedQuery("category")
-      .where("is_active", true);
-
-    const hasAllParentsActive = await category.hasAllParentsActive();
-
-    if (!category || !hasAllParentsActive) {
-      throw boom.notFound();
-    }
-
     return format.ok(product);
   },
 
-  async getAll(req) {
-    const { seo_url } = req.query;
-
-    if (seo_url) {
-      return await ProductsController.getBySeoUrl(req);
-    }
-
+  async getAll() {
     const products = await Product.query()
       .orderBy("id", "desc")
       .eager("[manufacturer, category]");

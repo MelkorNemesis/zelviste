@@ -23,6 +23,8 @@ const StyledInput = styled.input`
     hasError ? `3px 3px 0 ${input_error_border_color}` : "none"}
 
   outline: none;
+  
+  transition: border-color 0.2s;
 
   &:focus {
     border-color: ${({
@@ -32,4 +34,19 @@ const StyledInput = styled.input`
   }
 `;
 
-export const Input = ({ ...rest }) => <StyledInput {...rest} />;
+const StyledInputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  .unit {
+    font-weight: 700;
+    padding-left: ${({ theme }) => theme.spacing_s};
+  }
+`;
+
+export const Input = ({ unit, className, ...rest }) => (
+  <StyledInputWrapper className={className}>
+    <StyledInput {...rest} />
+    {unit && <span className="unit">{unit}</span>}
+  </StyledInputWrapper>
+);

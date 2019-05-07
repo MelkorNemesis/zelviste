@@ -22,9 +22,14 @@ const StyledButton = styled.button`
   border: none;
   border-radius: ${({ theme }) => theme.border_radius};
   background: #2980b9;
+  outline: none;
 
   &:hover {
     background: #2969a2;
+  }
+  
+  &:active {
+    transform: scale(0.98);
   }
 `;
 
