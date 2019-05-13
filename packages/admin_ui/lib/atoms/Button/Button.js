@@ -29,7 +29,7 @@ const StyledButton = styled.button`
   }
   
   &:active {
-    transform: scale(0.98);
+    transform: translateY(2px);
   }
 `;
 

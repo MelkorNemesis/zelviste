@@ -8,7 +8,8 @@ import {
   Text,
   useFetchStatus,
   Section,
-  FormikInput
+  FormikInput,
+  Grid
 } from "@eshop/admin_ui";
 import { validations } from "@eshop/common";
 
@@ -43,66 +44,71 @@ export const Product = () => {
                 <Text.Header h1 first>
                   {product.name}
                 </Text.Header>
+                <Grid>
+                  <Grid.Item>
+                    <Text.Header h2 halfBottom>
+                      Základní informace
+                    </Text.Header>
+                    <Section>
+                      <Field
+                        label="Název"
+                        name="name"
+                        component={FormikInput}
+                        validate={validator([required])}
+                      />
+                      <Field
+                        label="SEO URL"
+                        name="seo_url"
+                        component={FormikInput}
+                        validate={validator([required])}
+                      />
+                      <Field
+                        label="EAN"
+                        name="ean"
+                        component={FormikInput}
+                        validate={validator([required])}
+                      />
+                      <Field
+                        label="Kód"
+                        name="code"
+                        component={FormikInput}
+                        validate={validator([required])}
+                      />
+                    </Section>
+                  </Grid.Item>
 
-                <Text.Header h2 halfBottom>
-                  Základní informace
-                </Text.Header>
-                <Section>
-                  <Field
-                    label="Název"
-                    name="name"
-                    component={FormikInput}
-                    validate={validator([required])}
-                  />
-                  <Field
-                    label="SEO URL"
-                    name="seo_url"
-                    component={FormikInput}
-                    validate={validator([required])}
-                  />
-                  <Field
-                    label="EAN"
-                    name="ean"
-                    component={FormikInput}
-                    validate={validator([required])}
-                  />
-                  <Field
-                    label="Kód"
-                    name="code"
-                    component={FormikInput}
-                    validate={validator([required])}
-                  />
-                </Section>
-
-                <Text.Header h2 halfBottom>
-                  Cena
-                </Text.Header>
-                <Section>
-                  <Field
-                    label="Cena s DPH"
-                    name="price"
-                    component={FormikInput}
-                    validate={validator([required, number, integer])}
-                    type="number"
-                    unit="Kč"
-                  />
-                  <Field
-                    label="Sleva"
-                    name="discount"
-                    component={FormikInput}
-                    validate={validator([required, number, integer])}
-                    type="number"
-                    unit="Kč"
-                  />
-                  <Field
-                    label="DPH"
-                    name="vat"
-                    component={FormikInput}
-                    validate={validator([required, number, integer])}
-                    type="number"
-                    unit="%"
-                  />
-                </Section>
+                  <Grid.Item>
+                    <Text.Header h2 halfBottom>
+                      Cena
+                    </Text.Header>
+                    <Section>
+                      <Field
+                        label="Cena s DPH"
+                        name="price"
+                        component={FormikInput}
+                        validate={validator([required, number, integer])}
+                        type="number"
+                        unit="Kč"
+                      />
+                      <Field
+                        label="Sleva"
+                        name="discount"
+                        component={FormikInput}
+                        validate={validator([required, number, integer])}
+                        type="number"
+                        unit="Kč"
+                      />
+                      <Field
+                        label="DPH"
+                        name="vat"
+                        component={FormikInput}
+                        validate={validator([required, number, integer])}
+                        type="number"
+                        unit="%"
+                      />
+                    </Section>
+                  </Grid.Item>
+                </Grid>
 
                 <Text.Header h2 halfBottom>
                   Popis
