@@ -6,6 +6,7 @@ import MarketplaceIcon from "@atlaskit/icon/glyph/marketplace";
 import DashboardIcon from "@atlaskit/icon/glyph/dashboard";
 import SettingsIcon from "@atlaskit/icon/glyph/settings";
 import EmojiFoodIcon from "@atlaskit/icon/glyph/emoji/food";
+import ChildIssuesIcon from "@atlaskit/icon/glyph/child-issues";
 
 import { theme } from "../../../styles";
 
@@ -74,6 +75,7 @@ export const Navigation = () => (
         navLinkProps={{ exact: true }}
       />
       <StyledItem text="Objednávky" to="/orders" before={MarketplaceIcon} />
+      <StyledItem text="Kategorie" to="/categories" before={ChildIssuesIcon} />
       <StyledItem text="Produkty" to="/products" before={EmojiFoodIcon} />
       <StyledItem text="Nastavení" to="/settings" before={SettingsIcon} />
     </StyledGroup>
