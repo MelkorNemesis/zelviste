@@ -1,6 +1,6 @@
 import crypto from "crypto";
 
-export function getRandomString(length) {
+export function getRandomString(length = 16) {
   return crypto
     .randomBytes(Math.ceil(length / 2))
     .toString("hex") /** convert to hexadecimal format */

@@ -15,6 +15,7 @@
   "dependencies": {
     "@atlaskit/icon": "^16.0.7",
     "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/runtime": "^7.4.4",
     "@sentry/browser": "^4.5.3",
     "body-parser": "^1.18.3",
     "boom": "^7.3.0",
@@ -42,9 +43,9 @@
     "prettier": "^1.16.4",
     "prop-types": "^15.7.2",
     "qs": "^6.6.0",
-    "razzle": "^2.4.1",
-    "razzle-plugin-scss": "^2.4.1",
-    "razzle-plugin-typescript": "^2.4.1",
+    "razzle": "^3.0.0",
+    "razzle-plugin-scss": "^3.0.0",
+    "razzle-plugin-typescript": "^3.0.0",
     "react-helmet": "^5.2.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
@@ -55,6 +56,15 @@
     "styled-components": "^4.2.0",
     "styled-reset": "^2.0.4",
     "unstated": "^2.1.1",
-    "unstated-debug": "^0.3.2"
+    "unstated-debug": "^0.3.2",
+    "yargs": "^13.2.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0"
   }
 }
