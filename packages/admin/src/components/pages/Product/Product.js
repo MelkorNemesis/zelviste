@@ -45,7 +45,7 @@ export const Product = () => {
                   {product.name}
                 </Text.Header>
                 <Grid>
-                  <Grid.Item>
+                  <Grid.Item span={8}>
                     <Text.Header h2 halfBottom>
                       Základní informace
                     </Text.Header>
@@ -77,7 +77,7 @@ export const Product = () => {
                     </Section>
                   </Grid.Item>
 
-                  <Grid.Item>
+                  <Grid.Item span={4}>
                     <Text.Header h2 halfBottom>
                       Cena
                     </Text.Header>
