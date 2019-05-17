@@ -7,6 +7,12 @@ export function productToForm({
   vat,
   discount,
   description,
+  is_active,
+  is_on_sale,
+  width,
+  height,
+  length,
+  weight,
   ...product
 }) {
   return {
@@ -17,6 +23,12 @@ export function productToForm({
     price,
     vat,
     discount,
-    description
+    description,
+    is_active,
+    is_on_sale,
+    width,
+    height,
+    length,
+    weight
   };
 }

@@ -8,6 +8,7 @@ import {
   Text,
   useFetchStatus,
   Section,
+  FormikCheckbox,
   FormikInput,
   FormikTextarea,
   Grid
@@ -128,6 +129,82 @@ export const Product = () => {
                       />
                     </Section>
                   </Grid.Item>
+
+                  <Grid.Item span={5}>
+                    <Section>
+                      <Field
+                        label="Je aktivní"
+                        name="is_active"
+                        component={FormikCheckbox}
+                      />
+                      <Field
+                        label="Je ve výprodeji"
+                        name="is_on_sale"
+                        component={FormikCheckbox}
+                      />
+                    </Section>
+                  </Grid.Item>
+
+                  <Grid.Item span={3}>
+                    <Section>
+                      <Field
+                        label="Výška"
+                        name="height"
+                        component={FormikInput}
+                        validate={validator([
+                          required,
+                          number,
+                          integer,
+                          min(1)
+                        ])}
+                        unit="mm"
+                        type="number"
+                        min={1}
+                      />
+                      <Field
+                        label="Šířka"
+                        name="width"
+                        component={FormikInput}
+                        validate={validator([
+                          required,
+                          number,
+                          integer,
+                          min(1)
+                        ])}
+                        unit="mm"
+                        type="number"
+                        min={1}
+                      />
+                      <Field
+                        label="Délka"
+                        name="length"
+                        component={FormikInput}
+                        validate={validator([
+                          required,
+                          number,
+                          integer,
+                          min(1)
+                        ])}
+                        unit="mm"
+                        type="number"
+                        min={1}
+                      />
+                      <Field
+                        label="Váha"
+                        name="weight"
+                        component={FormikInput}
+                        validate={validator([
+                          required,
+                          number,
+                          integer,
+                          min(1)
+                        ])}
+                        unit="g"
+                        type="number"
+                        min={1}
+                      />
+                    </Section>
+                  </Grid.Item>
                 </Grid>
 
                 <Text.Header h2 halfBottom>
@@ -138,6 +215,7 @@ export const Product = () => {
                     name="description"
                     component={FormikTextarea}
                     validate={validator([required])}
+                    rows={10}
                   />
                 </Section>
 
