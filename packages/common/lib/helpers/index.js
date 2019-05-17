@@ -15,3 +15,7 @@ export function trueToUndefined(value) {
 export function noopLog(...args) {
   console.log("noopLog: ", ...args);
 }
+
+export function isFunction(obj) {
+  return typeof obj === "function";
+}

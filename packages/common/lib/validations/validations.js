@@ -17,6 +17,20 @@ export function minLength(min) {
   };
 }
 
+export function min(min) {
+  return function validateMin(val) {
+    const schema = _number().min(min);
+    return schema.isValidSync(val);
+  };
+}
+
+export function max(max) {
+  return function validateMax(val) {
+    const schema = _number().max(max);
+    return schema.isValidSync(val);
+  };
+}
+
 export function number(val) {
   const schema = _number();
   return schema.isValidSync(val);

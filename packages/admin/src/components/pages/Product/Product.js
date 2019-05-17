@@ -9,6 +9,7 @@ import {
   useFetchStatus,
   Section,
   FormikInput,
+  FormikTextarea,
   Grid
 } from "@eshop/admin_ui";
 import { validations } from "@eshop/common";
@@ -17,13 +18,18 @@ import * as API from "../../../api";
 import { productToForm } from "../../../mappers";
 
 // validations
-const { required, validator, number, integer } = validations.formik;
+const { required, validator, number, integer, max, min } = validations.formik;
 
 export const Product = () => {
-  const { match } = useReactRouter();
+  const {
+    match: {
+      params: { id }
+    }
+  } = useReactRouter();
+
   const { loading, done, error, result } = useFetchStatus(API.getProductById, {
-    id: match.params.id
-  })([match.params.id]);
+    id
+  })([id]);
 
   const product = result && result.data;
   const formData = (product && productToForm(product)) || {};
@@ -86,7 +92,12 @@ export const Product = () => {
                         label="Cena s DPH"
                         name="price"
                         component={FormikInput}
-                        validate={validator([required, number, integer])}
+                        validate={validator([
+                          required,
+                          number,
+                          integer,
+                          min(1)
+                        ])}
                         type="number"
                         unit="Kč"
                       />
@@ -94,17 +105,26 @@ export const Product = () => {
                         label="Sleva"
                         name="discount"
                         component={FormikInput}
-                        validate={validator([required, number, integer])}
+                        validate={validator([number, integer, min(0)])}
                         type="number"
                         unit="Kč"
+                        min={0}
                       />
                       <Field
                         label="DPH"
                         name="vat"
                         component={FormikInput}
-                        validate={validator([required, number, integer])}
-                        type="number"
+                        validate={validator([
+                          required,
+                          number,
+                          integer,
+                          min(1),
+                          max(100)
+                        ])}
                         unit="%"
+                        type="number"
+                        min={1}
+                        max={100}
                       />
                     </Section>
                   </Grid.Item>
@@ -113,7 +133,13 @@ export const Product = () => {
                 <Text.Header h2 halfBottom>
                   Popis
                 </Text.Header>
-                <Section>Hovno 3</Section>
+                <Section>
+                  <Field
+                    name="description"
+                    component={FormikTextarea}
+                    validate={validator([required])}
+                  />
+                </Section>
 
                 <Button.Primary type="submit">Uložit</Button.Primary>
               </Form>

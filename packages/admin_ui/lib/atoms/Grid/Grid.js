@@ -12,10 +12,8 @@ export const Grid = ({ children, ...rest }) => (
   <StyledGrid {...rest}>{children}</StyledGrid>
 );
 
-const StyledGridItem = styled.div`
+const StyledGridItem = styled(({ span, ...rest }) => <div {...rest} />)`
   grid-column: span ${({ span }) => span || 12};
 `;
 
-Grid.Item = ({ children, ...rest }) => (
-  <StyledGridItem {...rest}>{children}</StyledGridItem>
-);
+Grid.Item = StyledGridItem;

@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledInput = styled.input`
-  height: ${({ theme }) => theme.input_height};
+const StyledTextarea = styled.textarea`
   width: 100%;
-  padding: 0 10px;
+  padding: 10px;
 
   font-size: 14px;
   font-weight: 500;
@@ -34,7 +33,7 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledInputWrapper = styled.div`
+const StyledTextareaWrapper = styled.div`
   display: flex;
   align-items: center;
 
@@ -44,9 +43,9 @@ const StyledInputWrapper = styled.div`
   }
 `;
 
-export const Input = ({ unit, className, ...rest }) => (
-  <StyledInputWrapper className={className}>
-    <StyledInput {...rest} />
+export const Textarea = ({ unit, className, ...rest }) => (
+  <StyledTextareaWrapper className={className}>
+    <StyledTextarea {...rest} />
     {unit && <span className="unit">{unit}</span>}
-  </StyledInputWrapper>
+  </StyledTextareaWrapper>
 );

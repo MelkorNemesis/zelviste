@@ -6,6 +6,7 @@ export function productToForm({
   price,
   vat,
   discount,
+  description,
   ...product
 }) {
   return {
@@ -15,6 +16,7 @@ export function productToForm({
     code,
     price,
     vat,
-    discount
+    discount,
+    description
   };
 }
