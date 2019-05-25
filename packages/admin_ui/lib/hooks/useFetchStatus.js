@@ -10,9 +10,7 @@ export function useFetchStatus(promiseFactory) {
       setLoading(true);
       promiseFactory()
         .then(setResult)
-        .catch(err => {
-          setError(err);
-        })
+        .catch(setError)
         .finally(() => {
           setLoading(false);
         });
@@ -21,7 +19,6 @@ export function useFetchStatus(promiseFactory) {
     return {
       error,
       loading,
-      done: !loading && error == null && !!result,
       result
     };
   };
