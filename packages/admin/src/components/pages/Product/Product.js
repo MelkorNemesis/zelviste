@@ -10,6 +10,7 @@ import {
   Section,
   FormikCheckbox,
   FormikInput,
+  FormikSelect,
   FormikTextarea,
   Grid
 } from "@eshop/admin_ui";
@@ -17,6 +18,7 @@ import { validations } from "@eshop/common";
 
 import * as API from "../../../api";
 import { productToForm } from "../../../mappers";
+import { flattenCategories, formatNestedCategoryName } from "../../../utils";
 
 // validations
 const { required, validator, number, integer, max, min } = validations.formik;
@@ -28,12 +30,15 @@ export const Product = () => {
     }
   } = useReactRouter();
 
-  const { loading, done, error, result } = useFetchStatus(API.getProductById, {
-    id
-  })([id]);
+  const { loading, error, done, result } = useFetchStatus(() =>
+    Promise.all([API.getProductById({ id }), API.getCategories()])
+  )([id]);
 
-  const product = result && result.data;
+  const product = result && result[0].json.data;
   const formData = (product && productToForm(product)) || {};
+
+  let categories =
+    (result && Array.from(flattenCategories(result[1].json.data))) || [];
 
   const handleSubmit = values => {
     console.log({ values });
@@ -52,7 +57,7 @@ export const Product = () => {
                   {product.name}
                 </Text.Header>
                 <Grid>
-                  <Grid.Item span={8}>
+                  <Grid.Item span={10}>
                     <Text.Header h2 halfBottom>
                       Základní informace
                     </Text.Header>
@@ -81,10 +86,32 @@ export const Product = () => {
                         component={FormikInput}
                         validate={validator([required])}
                       />
+                      <Field
+                        label="Výrobce"
+                        name="id_manufacturer"
+                        component={FormikSelect}
+                        validate={validator([required])}
+                        options={[
+                          { label: "Polozka 1", value: 1 },
+                          { label: "Polozka 2", value: 2 }
+                        ]}
+                        prompt="-- zvolit --"
+                      />
+                      <Field
+                        label="Kategorie"
+                        name="id_category"
+                        component={FormikSelect}
+                        validate={validator([required])}
+                        options={categories.map(c => ({
+                          label: formatNestedCategoryName(c),
+                          value: c.id
+                        }))}
+                        prompt="-- zvolit --"
+                      />
                     </Section>
                   </Grid.Item>
 
-                  <Grid.Item span={4}>
+                  <Grid.Item span={6}>
                     <Text.Header h2 halfBottom>
                       Cena
                     </Text.Header>
@@ -131,6 +158,9 @@ export const Product = () => {
                   </Grid.Item>
 
                   <Grid.Item span={5}>
+                    <Text.Header h2 halfBottom>
+                      Vlastnosti
+                    </Text.Header>
                     <Section>
                       <Field
                         label="Je aktivní"
@@ -142,67 +172,88 @@ export const Product = () => {
                         name="is_on_sale"
                         component={FormikCheckbox}
                       />
+                      <Field
+                        label="Skladem"
+                        name="stock_quantity"
+                        validate={validator([number, integer])}
+                        component={FormikInput}
+                        unit="ks"
+                        type="number"
+                      />
                     </Section>
                   </Grid.Item>
 
-                  <Grid.Item span={3}>
+                  <Grid.Item span={11}>
+                    <Text.Header h2 halfBottom>
+                      Rozměry
+                    </Text.Header>
                     <Section>
-                      <Field
-                        label="Výška"
-                        name="height"
-                        component={FormikInput}
-                        validate={validator([
-                          required,
-                          number,
-                          integer,
-                          min(1)
-                        ])}
-                        unit="mm"
-                        type="number"
-                        min={1}
-                      />
-                      <Field
-                        label="Šířka"
-                        name="width"
-                        component={FormikInput}
-                        validate={validator([
-                          required,
-                          number,
-                          integer,
-                          min(1)
-                        ])}
-                        unit="mm"
-                        type="number"
-                        min={1}
-                      />
-                      <Field
-                        label="Délka"
-                        name="length"
-                        component={FormikInput}
-                        validate={validator([
-                          required,
-                          number,
-                          integer,
-                          min(1)
-                        ])}
-                        unit="mm"
-                        type="number"
-                        min={1}
-                      />
-                      <Field
-                        label="Váha"
-                        name="weight"
-                        component={FormikInput}
-                        validate={validator([
-                          required,
-                          number,
-                          integer,
-                          min(1)
-                        ])}
-                        unit="g"
-                        type="number"
-                        min={1}
-                      />
+                      <Grid>
+                        <Grid.Item span={8}>
+                          <Field
+                            label="Výška"
+                            name="height"
+                            component={FormikInput}
+                            validate={validator([
+                              required,
+                              number,
+                              integer,
+                              min(1)
+                            ])}
+                            unit="mm"
+                            type="number"
+                            min={1}
+                          />
+                        </Grid.Item>
+                        <Grid.Item span={8}>
+                          <Field
+                            label="Šířka"
+                            name="width"
+                            component={FormikInput}
+                            validate={validator([
+                              required,
+                              number,
+                              integer,
+                              min(1)
+                            ])}
+                            unit="mm"
+                            type="number"
+                            min={1}
+                          />
+                        </Grid.Item>
+                        <Grid.Item span={8}>
+                          <Field
+                            label="Délka"
+                            name="length"
+                            component={FormikInput}
+                            validate={validator([
+                              required,
+                              number,
+                              integer,
+                              min(1)
+                            ])}
+                            unit="mm"
+                            type="number"
+                            min={1}
+                          />
+                        </Grid.Item>
+                        <Grid.Item span={8}>
+                          <Field
+                            label="Váha"
+                            name="weight"
+                            component={FormikInput}
+                            validate={validator([
+                              required,
+                              number,
+                              integer,
+                              min(1)
+                            ])}
+                            unit="g"
+                            type="number"
+                            min={1}
+                          />
+                        </Grid.Item>
+                      </Grid>
                     </Section>
                   </Grid.Item>
                 </Grid>
@@ -218,7 +269,6 @@ export const Product = () => {
                     rows={10}
                   />
                 </Section>
-
                 <Button.Primary type="submit">Uložit</Button.Primary>
               </Form>
             );

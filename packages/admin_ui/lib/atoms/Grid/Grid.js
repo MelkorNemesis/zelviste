@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(16, 1fr);
   grid-column-gap: ${({ theme }) => theme.spacing_m};
   grid-row-gap: ${({ theme }) => theme.spacing_m};
 `;

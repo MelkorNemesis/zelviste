@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useFetchStatus(fn, ...args) {
+export function useFetchStatus(promiseFactory) {
   return function useFetchStatusInner(deps) {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -8,10 +8,8 @@ export function useFetchStatus(fn, ...args) {
 
     useEffect(() => {
       setLoading(true);
-      fn(...args)
-        .then(res => {
-          setResult(res.json);
-        })
+      promiseFactory()
+        .then(setResult)
         .catch(err => {
           setError(err);
         })

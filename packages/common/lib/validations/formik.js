@@ -47,7 +47,7 @@ export const email = formikValidate(
 export const required = formikValidate(v.required, "Povinné pole.");
 export const minLength = formikValidate(
   [v.minLength],
-  min => `Pole musí mít alespoň ${min} znaky.`
+  min => `Pole musí mít alespoň ${min} znaků.`
 );
 export const number = formikValidate(v.number, "Pole musí být číslo.");
 export const integer = formikValidate(v.integer, "Pole musí být celé číslo.");

@@ -13,6 +13,9 @@ export function productToForm({
   height,
   length,
   weight,
+  stock_quantity,
+  manufacturer,
+  category,
   ...product
 }) {
   return {
@@ -29,6 +32,9 @@ export function productToForm({
     width,
     height,
     length,
-    weight
+    weight,
+    stock_quantity,
+    id_manufacturer: manufacturer.id,
+    id_category: category.id
   };
 }

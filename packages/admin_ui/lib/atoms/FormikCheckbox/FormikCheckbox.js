@@ -34,16 +34,20 @@ export const FormikCheckbox = ({
   return (
     <StyledFormikCheckbox>
       <StyledControl>
-        <Checkbox {...field} id={id} {...props} hasError={hasError} />
+        <Checkbox
+          checked={field.value}
+          id={id}
+          {...field}
+          {...props}
+          hasError={hasError}
+        />
         {label && (
           <Label htmlFor={id} hasError={hasError}>
             {label}
           </Label>
         )}
       </StyledControl>
-      {hasError && (
-        <InputError htmlFor={id}>{errors[field.name]}</InputError>
-      )}
+      {hasError && <InputError htmlFor={id}>{errors[field.name]}</InputError>}
     </StyledFormikCheckbox>
   );
 };

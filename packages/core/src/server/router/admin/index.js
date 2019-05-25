@@ -5,6 +5,7 @@ import { requireAuth } from "../../middlewares";
 import authRouter from "./authRouter";
 import userRouter from "./userRouter";
 import productsRouter from "./productsRouter";
+import categoriesRouter from "./categoriesRouter";
 
 // -- router
 export const router = new Router();
@@ -20,3 +21,6 @@ router.use("/user", userRouter);
 
 // products router
 router.use("/products", productsRouter);
+
+// categories router
+router.use("/categories", categoriesRouter);
