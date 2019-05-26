@@ -101,7 +101,6 @@ export const Product = () => {
                         label: m.name,
                         value: m.id
                       }))}
-                      prompt="-- zvolit --"
                     />
                     <Field
                       label="Kategorie"
@@ -112,7 +111,6 @@ export const Product = () => {
                         label: formatNestedCategoryName(c),
                         value: c.id
                       }))}
-                      prompt="-- zvolit --"
                     />
                   </Section>
                 </Grid.Item>

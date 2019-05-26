@@ -1,7 +1,8 @@
 import React from "react";
+import Select from "react-select";
 import styled from "styled-components";
 
-import { Select, InputError, Label } from "..";
+import { InputError, Label } from "..";
 import { useNextId } from "../../hooks";
 
 const StyledFormikSelect = styled.div`
@@ -15,7 +16,8 @@ const StyledFormikSelect = styled.div`
 
 export const FormikSelect = ({
   field,
-  form: { touched, errors },
+  form: { touched, errors, setFieldValue },
+  options,
   ...props
 }) => {
   const id = useNextId();
@@ -29,7 +31,17 @@ export const FormikSelect = ({
           {label}
         </Label>
       )}
-      <Select id={id} {...field} {...props} hasError={hasError} />
+      <Select
+        id={id}
+        {...field}
+        {...props}
+        onChange={option => {
+          setFieldValue(field.name, option.value);
+        }}
+        value={options.filter(option => option.value === field.value)}
+        options={options}
+        hasError={hasError}
+      />
       {hasError && <InputError htmlFor={id}>{errors[field.name]}</InputError>}
     </StyledFormikSelect>
   );
