@@ -5,7 +5,7 @@ const StyledSelect = styled.select``;
 
 export const Select = ({ className, options, value, prompt, ...rest }) => {
   return (
-    <StyledSelect className={className} defaultValue={value} {...rest}>
+    <StyledSelect className={className} value={value} {...rest}>
       {prompt && <option disabled>{prompt}</option>}
       {options.map(opt => {
         return (

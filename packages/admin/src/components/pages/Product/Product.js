@@ -28,22 +28,26 @@ export const Product = () => {
   const { match: { params: { id } } } = useReactRouter();
 
   // fetch data
-  const { loading, error, result } = useFetchStatus(() =>
-    Promise.all([API.getProductById({ id }), API.getCategories()])
-  )([id]);
+  const { loading, error, result } = useFetchStatus(() => {
+    const _product = API.getProductById({ id });
+    const _categories = API.getCategories();
+    const _manufacturers = API.getManufacturers();
+    return Promise.all([_product, _categories, _manufacturers]);
+  })([id]);
 
   if (loading) return <Spinner>Nahrávám produkt...</Spinner>;
   if (error) return <Err>Chyba při načítání produktu: {error.message}</Err>;
   if (!result) return null;
 
   // destructure fetched data
-  const [productResponse, categoriesResponse] = result;
+  const [productResponse, categoriesResponse, manufacturersresponse] = result;
 
   const product = productResponse.json.data;
   const formData = productToForm(product);
   const categories = Array.from(
     flattenCategories(categoriesResponse.json.data)
   );
+  const manufacturers = manufacturersresponse.json.data;
 
   const handleSubmit = values => {
     console.log({ values });
@@ -93,10 +97,10 @@ export const Product = () => {
                       name="id_manufacturer"
                       component={FormikSelect}
                       validate={validator([required])}
-                      options={[
-                        { label: "Polozka 1", value: 1 },
-                        { label: "Polozka 2", value: 2 }
-                      ]}
+                      options={manufacturers.map(m => ({
+                        label: m.name,
+                        value: m.id
+                      }))}
                       prompt="-- zvolit --"
                     />
                     <Field

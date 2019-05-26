@@ -54,7 +54,7 @@ const ProductsTableList = ({ products }) => (
 );
 
 export const Products = () => {
-  const { loading, done, error, result } = useFetchStatus(API.getProducts)([]);
+  const { loading, error, result } = useFetchStatus(API.getProducts)([]);
 
   return (
     <Fragment>
@@ -64,7 +64,9 @@ export const Products = () => {
 
       {loading && <Spinner>Nahrávám produkty...</Spinner>}
       {error && <Err>Chyba při načítání produktů: {error.message}</Err>}
-      {done && <ProductsTableList products={result.data} />}
+      {result && result.json && (
+        <ProductsTableList products={result.json.data} />
+      )}
     </Fragment>
   );
 };

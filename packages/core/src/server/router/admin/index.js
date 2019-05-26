@@ -6,6 +6,7 @@ import authRouter from "./authRouter";
 import userRouter from "./userRouter";
 import productsRouter from "./productsRouter";
 import categoriesRouter from "./categoriesRouter";
+import manufacturersRouter from "./manufacturersRouter";
 
 // -- router
 export const router = new Router();
@@ -24,3 +25,6 @@ router.use("/products", productsRouter);
 
 // categories router
 router.use("/categories", categoriesRouter);
+
+// manufacturers router
+router.use("/manufacturers", manufacturersRouter);
