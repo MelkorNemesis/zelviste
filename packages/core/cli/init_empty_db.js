@@ -3,7 +3,8 @@ import {
   Product,
   AdminUser,
   Category,
-  Manufacturer
+  Manufacturer,
+  Vat
 } from "../src/server/model";
 import { sha512, getRandomString } from "../src/server/utils";
 
@@ -39,6 +40,23 @@ run(async () => {
 
   const manufacturerDb = await Manufacturer.query().insert(manufacturer);
 
+  // -- vat
+
+  const vat_0 = {
+    value: 0
+  };
+  await Vat.query().insert(vat_0);
+
+  const vat_15 = {
+    value: 15
+  };
+  await Vat.query().insert(vat_15);
+
+  const vat_21 = {
+    value: 21
+  };
+  const vat21Db = await Vat.query().insert(vat_21);
+
   // -- products
 
   const product = {
@@ -49,7 +67,6 @@ run(async () => {
     description: "lorem ipsum dolor sit amet",
     description_ascii: "lorem ipsum",
     price_without_vat: 200,
-    vat: 21,
     discount: 50,
     is_active: true,
     is_on_sale: false,
@@ -59,8 +76,9 @@ run(async () => {
     height: 20,
     id_category: categoryDb.id,
     stock_quantity: 20,
-    id_manufacturer: manufacturerDb.id
+    id_manufacturer: manufacturerDb.id,
+    id_vat: vat21Db.id
   };
 
-  const productDb = await Product.query().insert(product);
+  await Product.query().insert(product);
 });

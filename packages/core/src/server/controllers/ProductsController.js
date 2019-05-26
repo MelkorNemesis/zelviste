@@ -10,7 +10,7 @@ export const ProductsController = {
     const product = await Product.query()
       .where("is_active", true)
       .where("seo_url", seo_url)
-      .eager("manufacturer")
+      .eager("[manufacturer]")
       .limit(1)
       .first();
 

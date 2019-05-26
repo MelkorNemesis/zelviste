@@ -3,10 +3,11 @@ import { requireAuth } from "../../middlewares";
 
 // -- imports
 import authRouter from "./authRouter";
-import userRouter from "./userRouter";
-import productsRouter from "./productsRouter";
 import categoriesRouter from "./categoriesRouter";
 import manufacturersRouter from "./manufacturersRouter";
+import productsRouter from "./productsRouter";
+import userRouter from "./userRouter";
+import vatsRouter from "./vatsRouter";
 
 // -- router
 export const router = new Router();
@@ -28,3 +29,6 @@ router.use("/categories", categoriesRouter);
 
 // manufacturers router
 router.use("/manufacturers", manufacturersRouter);
+
+// vat router
+router.use("/vats", vatsRouter);

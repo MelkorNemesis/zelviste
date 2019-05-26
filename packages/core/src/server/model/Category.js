@@ -31,7 +31,7 @@ export class Category extends Model {
           from: "categories.parent_id",
           to: "categories.id"
         }
-      }
+      },
     };
   }
 
