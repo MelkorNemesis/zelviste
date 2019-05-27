@@ -12,16 +12,17 @@ import {
   FormikInput,
   FormikSelect,
   FormikTextarea,
-  Grid
+  Grid,
+  Separator
 } from "@eshop/admin_ui";
-import { validations } from "@eshop/common";
+import { getVatAmount, validations, floor } from "@eshop/common";
 
 import * as API from "../../../api";
 import { productToForm } from "../../../mappers";
 import { flattenCategories, formatNestedCategoryName } from "../../../utils";
 
 // validations
-const { required, validator, number, integer, max, min } = validations.formik;
+const { required, validator, number, integer, min, max } = validations.formik;
 
 export const Product = () => {
   // prettier-ignore
@@ -32,7 +33,8 @@ export const Product = () => {
     const _product = API.getProductById({ id });
     const _categories = API.getCategories();
     const _manufacturers = API.getManufacturers();
-    return Promise.all([_product, _categories, _manufacturers]);
+    const _vats = API.getVats();
+    return Promise.all([_product, _categories, _manufacturers, _vats]);
   })([id]);
 
   if (loading) return <Spinner>Nahrávám produkt...</Spinner>;
@@ -40,14 +42,20 @@ export const Product = () => {
   if (!result) return null;
 
   // destructure fetched data
-  const [productResponse, categoriesResponse, manufacturersresponse] = result;
+  const [
+    productResponse,
+    categoriesResponse,
+    manufacturersResponse,
+    vatsResponse
+  ] = result;
 
   const product = productResponse.json.data;
   const formData = productToForm(product);
   const categories = Array.from(
     flattenCategories(categoriesResponse.json.data)
   );
-  const manufacturers = manufacturersresponse.json.data;
+  const manufacturers = manufacturersResponse.json.data;
+  const vats = vatsResponse.json.data;
 
   const handleSubmit = values => {
     console.log({ values });
@@ -56,7 +64,15 @@ export const Product = () => {
   return (
     <Fragment>
       <Formik initialValues={formData} onSubmit={handleSubmit}>
-        {() => {
+        {({ values }) => {
+          const finalPrice = values.price_with_vat - values.discount || 0;
+          const vatAmount = floor(
+            getVatAmount({
+              price: finalPrice,
+              vat: product.vat.value
+            })
+          );
+
           return (
             <Form>
               <Text.Header h1 first>
@@ -122,7 +138,7 @@ export const Product = () => {
                   <Section>
                     <Field
                       label="Cena s DPH"
-                      name="price"
+                      name="price_with_vat"
                       component={FormikInput}
                       validate={validator([required, number, integer, min(1)])}
                       type="number"
@@ -132,27 +148,38 @@ export const Product = () => {
                       label="Sleva"
                       name="discount"
                       component={FormikInput}
-                      validate={validator([number, integer, min(0)])}
+                      validate={validator([
+                        number,
+                        integer,
+                        min(0),
+                        max(values.price_with_vat)
+                      ])}
                       type="number"
                       unit="Kč"
                       min={0}
+                      max={200}
                     />
                     <Field
                       label="DPH"
-                      name="vat"
-                      component={FormikInput}
-                      validate={validator([
-                        required,
-                        number,
-                        integer,
-                        min(1),
-                        max(100)
-                      ])}
-                      unit="%"
-                      type="number"
-                      min={1}
-                      max={100}
+                      name="id_vat"
+                      component={FormikSelect}
+                      options={vats.map(v => ({
+                        value: v.id,
+                        label: `${v.value} %`
+                      }))}
+                      validate={validator([required])}
                     />
+                    <Separator />
+                    <div>
+                      Konečná cena:{" "}
+                      <strong>
+                        {finalPrice}
+                        {product.currency}
+                      </strong>
+                    </div>
+                    <div>
+                      DPH: {vatAmount} {product.currency}
+                    </div>
                   </Section>
                 </Grid.Item>
 

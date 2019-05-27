@@ -24,6 +24,8 @@ export const c_red_2 = "#aa233d";
 
 export const c_blue = "#0984e3";
 
+export const c_grey = "#ddd";
+
 export const c_form_error = c_red_1;
 
 export const c_input_border = "#eee";

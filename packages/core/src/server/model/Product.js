@@ -58,20 +58,18 @@ export class Product extends Model {
     });
   }
 
+  // -- virtual attributes
+
   get price() {
     const discount = this.discount || 0;
-    return this.priceIncVAT - discount;
+    return this.price_with_vat - discount;
   }
 
   get priceBefore() {
     if (this.discount) {
-      return this.priceIncVAT;
+      return this.price_with_vat;
     }
     return null;
-  }
-
-  get priceIncVAT() {
-    return round(this.price_without_vat * (1 + this.vat.value / 100));
   }
 
   get currency() {

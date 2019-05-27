@@ -1,5 +1,5 @@
 import { get } from "./helpers";
 
 export function getVats() {
-  return get("/vat");
+  return get("/vats");
 }

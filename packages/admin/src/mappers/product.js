@@ -3,8 +3,6 @@ export function productToForm({
   seo_url,
   ean,
   code,
-  price,
-  vat,
   discount,
   description,
   is_active,
@@ -16,15 +14,15 @@ export function productToForm({
   stock_quantity,
   manufacturer,
   category,
-  ...product
+  vat,
+  price_with_vat
 }) {
   return {
     name,
     seo_url,
     ean,
     code,
-    price,
-    vat,
+    price_with_vat,
     discount,
     description,
     is_active,
@@ -35,6 +33,7 @@ export function productToForm({
     weight,
     stock_quantity,
     id_manufacturer: manufacturer.id,
-    id_category: category.id
+    id_category: category.id,
+    id_vat: vat.id
   };
 }
