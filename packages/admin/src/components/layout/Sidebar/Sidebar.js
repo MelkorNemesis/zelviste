@@ -1,22 +1,21 @@
-import React from "react";
-import styled from "styled-components";
+/** @jsx jsx */
+import { jsx, css } from "@emotion/core";
 
 import { Navigation, NavigationFooter } from "../index";
-import { theme } from "../../../styles";
 
-const StyledSidebar = styled.aside`
+const sidebarCSS = theme => css`
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
-  padding: ${theme("spacing_l")};
-  
+  padding: ${theme.spacing_l};
+
   background: #fff;
   border-right: 1px solid #eaecee;
 `;
 
 export const Sidebar = () => (
-  <StyledSidebar>
+  <aside css={sidebarCSS}>
     <Navigation />
     <NavigationFooter />
-  </StyledSidebar>
+  </aside>
 );

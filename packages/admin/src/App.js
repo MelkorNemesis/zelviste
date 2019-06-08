@@ -3,10 +3,20 @@ import { Route, Router, Switch } from "react-router-dom";
 import * as history from "history";
 import UNSTATED from "unstated-debug";
 import PropTypes from "prop-types";
-import { AdminThemeProvider, Spinner } from "@eshop/admin_ui";
+import {
+  AdminThemeProvider,
+  EmotionAdminThemeProvider,
+  Spinner
+} from "@eshop/admin_ui";
 
 import { Content, Wrapper, Sidebar } from "./components/layout";
-import { Dashboard, Categories, Orders, Products, Product } from "./components/pages";
+import {
+  Dashboard,
+  Categories,
+  Orders,
+  Products,
+  Product
+} from "./components/pages";
 
 // log unstated only in development mode
 UNSTATED.logStateChanges = process.env.NODE_ENV === "development";
@@ -47,9 +57,11 @@ class App extends React.PureComponent {
     const { bootstrapped } = this.props;
 
     return (
-      <AdminThemeProvider>
-        <Wrapper>{bootstrapped ? router : loader}</Wrapper>
-      </AdminThemeProvider>
+      <EmotionAdminThemeProvider>
+        <AdminThemeProvider>
+          <Wrapper>{bootstrapped ? router : loader}</Wrapper>
+        </AdminThemeProvider>
+      </EmotionAdminThemeProvider>
     );
   }
 }

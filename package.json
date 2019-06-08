@@ -8,6 +8,8 @@
     "build": "yarn run prepare && lerna run --parallel build"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "emotion-theming": "^10.0.10",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-components": "^4.2.0"

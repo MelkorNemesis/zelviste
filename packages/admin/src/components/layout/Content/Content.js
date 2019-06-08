@@ -1,9 +1,15 @@
-import styled from "styled-components";
-import { theme } from "../../../styles";
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
 
-export const Content = styled.main`
+const contentCSS = theme => css`
   background: #f7f8fa;
   flex: 1 1 auto;
-  padding: ${theme("spacing_l")} ${theme("spacing_xl")};
+  padding: ${theme.spacing_l} ${theme.spacing_xl};
   overflow: auto;
 `;
+
+export const Content = ({ children, ...rest }) => (
+  <main css={contentCSS} {...rest}>
+    {children}
+  </main>
+);

@@ -1,21 +1,23 @@
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
+
 import React, { Fragment } from "react";
-import styled from "styled-components";
 import { Subscribe } from "unstated";
-import SignOutIcon from "@atlaskit/icon/glyph/sign-out";
 import { Button, Text } from "@eshop/admin_ui";
+import SignOutIcon from "@atlaskit/icon/glyph/sign-out";
 
 import { UserContainer } from "../../../unstated";
 
-const StyledNavigationFooter = styled.footer`
+const navigationFooterCSS = theme => css`
   margin-top: auto;
 
   .icon {
-    margin-right: ${({ theme }) => theme.spacing_s};
+    margin-right: ${theme.spacing_s};
   }
 `;
 
 export const NavigationFooter = ({ ...rest }) => (
-  <StyledNavigationFooter {...rest}>
+  <footer css={navigationFooterCSS} {...rest}>
     <Subscribe to={[UserContainer]}>
       {user => {
         return (
@@ -33,5 +35,5 @@ export const NavigationFooter = ({ ...rest }) => (
         );
       }}
     </Subscribe>
-  </StyledNavigationFooter>
+  </footer>
 );

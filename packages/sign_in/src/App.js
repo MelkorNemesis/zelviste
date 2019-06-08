@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Formik, Field, Form } from "formik";
 import {
   AdminThemeProvider,
+  EmotionAdminThemeProvider,
   FormikInput,
   Button,
   Text,
@@ -56,55 +57,57 @@ class App extends Component {
 
   render() {
     return (
-      <AdminThemeProvider>
-        <Formik
-          onSubmit={onSubmit}
-          initialValues={{
-            email: "",
-            password: ""
-          }}
-        >
-          {({ status }) => {
-            return (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "100%",
-                  maxWidth: "400px",
-                  width: "100%",
-                  margin: "0 auto",
-                  padding: "10px"
-                }}
-              >
-                <Form
+      <EmotionAdminThemeProvider>
+        <AdminThemeProvider>
+          <Formik
+            onSubmit={onSubmit}
+            initialValues={{
+              email: "",
+              password: ""
+            }}
+          >
+            {({ status }) => {
+              return (
+                <div
                   style={{
-                    width: "100%"
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%",
+                    maxWidth: "400px",
+                    width: "100%",
+                    margin: "0 auto",
+                    padding: "10px"
                   }}
                 >
-                  <Text.Header h1>Přihlášení</Text.Header>
-                  {status && <FormError>{status}</FormError>}
-                  <Field
-                    name="email"
-                    label="E-mail"
-                    component={FormikInput}
-                    validate={validator([required, email])}
-                  />
-                  <Field
-                    name="password"
-                    type="password"
-                    label="Heslo"
-                    component={FormikInput}
-                    validate={validator([required])}
-                  />
-                  <Button type="submit">Přihlásit</Button>
-                </Form>
-              </div>
-            );
-          }}
-        </Formik>
-      </AdminThemeProvider>
+                  <Form
+                    style={{
+                      width: "100%"
+                    }}
+                  >
+                    <Text.Header h1>Přihlášení</Text.Header>
+                    {status && <FormError>{status}</FormError>}
+                    <Field
+                      name="email"
+                      label="E-mail"
+                      component={FormikInput}
+                      validate={validator([required, email])}
+                    />
+                    <Field
+                      name="password"
+                      type="password"
+                      label="Heslo"
+                      component={FormikInput}
+                      validate={validator([required])}
+                    />
+                    <Button type="submit">Přihlásit</Button>
+                  </Form>
+                </div>
+              );
+            }}
+          </Formik>
+        </AdminThemeProvider>
+      </EmotionAdminThemeProvider>
     );
   }
 }

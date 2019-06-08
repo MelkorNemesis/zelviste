@@ -1,18 +1,26 @@
 import React, { Fragment } from "react";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "../GlobalStyles/GlobalStyles";
+import { ThemeProvider as StyledThemeProvider } from "styled-components";
+import { ThemeProvider } from "emotion-theming";
+
+import { GlobalStylesEmotion } from "../GlobalStyles/GlobalStyles";
 
 import * as theme from "../theme";
 
 export const AdminThemeProvider = ({ children }) => {
   return (
     <Fragment>
-      <ThemeProvider theme={theme}>
-        <Fragment>
-          <GlobalStyles />
-          {children}
-        </Fragment>
-      </ThemeProvider>
+      <StyledThemeProvider theme={theme}>
+        <Fragment>{children}</Fragment>
+      </StyledThemeProvider>
     </Fragment>
+  );
+};
+
+export const EmotionAdminThemeProvider = ({ children }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStylesEmotion />
+      {children}
+    </ThemeProvider>
   );
 };
