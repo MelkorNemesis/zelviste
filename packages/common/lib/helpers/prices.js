@@ -1,4 +1,5 @@
 /**
+ * Returns vat amount from given price.
  * Example:
  * { price: 200, vat: 21 } => 34.71
  *
@@ -11,6 +12,7 @@ export function getVatAmount({ price, vat }) {
 }
 
 /**
+ * Returns price without vat.
  * Example:
  * { price: 200, vat: 21 } => 165.289
  *
