@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { Subscribe } from "unstated";
 import { Button, Text } from "@eshop/admin_ui";
 import SignOutIcon from "@atlaskit/icon/glyph/sign-out";

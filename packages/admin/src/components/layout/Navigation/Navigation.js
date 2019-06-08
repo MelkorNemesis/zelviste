@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { createElement } from "react";
+import { createElement } from "react";
 import { NavLink } from "react-router-dom";
 import { jsx, css } from "@emotion/core";
 
