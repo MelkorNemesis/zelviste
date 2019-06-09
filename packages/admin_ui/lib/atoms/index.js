@@ -16,6 +16,7 @@ export * from "./ProductPrice/ProductPrice";
 export * from "./ProductQuantity/ProductQuantity";
 export * from "./Select/Select";
 export * from "./Separator/Separator";
+export * from "./Tabs/Tabs";
 export * from "./TableList/TableList";
 export * from "./Text/Text";
 export * from "./Textarea/Textarea";

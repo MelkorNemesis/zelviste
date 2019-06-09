@@ -49,3 +49,5 @@ export const input_focus_border_color = "#3498db";
 export const input_focus_color = "#2980b9";
 
 export const c_spinner = "#0984e3";
+
+export const c_tabs_border = "#eee";

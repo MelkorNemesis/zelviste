@@ -10,7 +10,10 @@ import {
   FormikSelect,
   FormikTextarea,
   Grid,
-  Separator
+  Separator,
+  Tabs,
+  TabLink,
+  TabContent
 } from "@eshop/admin_ui";
 
 import {
@@ -34,6 +37,13 @@ export function ProductForm({
 }) {
   return (
     <Fragment>
+      <Tabs>
+        <TabLink>Hlavní</TabLink>
+        <TabLink>Ceny</TabLink>
+
+        <TabContent>Obsah hlavní</TabContent>
+        <TabContent>Obsah ceny</TabContent>
+      </Tabs>
       <Formik initialValues={formData} onSubmit={handleSubmit}>
         {({ values }) => {
           const finalPrice = values.price_with_vat - values.discount || 0;
