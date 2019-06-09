@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const StyledTextarea = styled.textarea`
   width: 100%;

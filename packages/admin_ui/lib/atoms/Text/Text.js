@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const getFontSize = ({ h1, h2, smaller }) => {
   if (h1) {

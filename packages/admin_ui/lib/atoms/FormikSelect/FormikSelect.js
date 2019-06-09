@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 import { InputError, Label } from "..";
 import { useNextId } from "../../hooks";

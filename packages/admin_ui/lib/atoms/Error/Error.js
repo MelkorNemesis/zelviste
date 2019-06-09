@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const StyledError = styled.div`
   color: ${({ theme }) => theme.c_red_1};

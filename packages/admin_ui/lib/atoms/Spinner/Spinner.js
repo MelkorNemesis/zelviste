@@ -1,9 +1,8 @@
 import React, { Fragment } from "react";
-import styled, { keyframes } from "styled-components";
-import cx from "classnames";
+import styled from "@emotion/styled";
+import { keyframes } from "@emotion/core";
 
 const rotate = keyframes`
-  0%    { transform: rotate(0deg); }
   100%  { transform: rotate(360deg); }
 `;
 

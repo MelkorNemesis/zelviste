@@ -3,11 +3,7 @@ import { Route, Router, Switch } from "react-router-dom";
 import * as history from "history";
 import UNSTATED from "unstated-debug";
 import PropTypes from "prop-types";
-import {
-  AdminThemeProvider,
-  EmotionAdminThemeProvider,
-  Spinner
-} from "@eshop/admin_ui";
+import { EmotionAdminThemeProvider, Spinner } from "@eshop/admin_ui";
 
 import { Content, Wrapper, Sidebar } from "./components/layout";
 import {
@@ -58,9 +54,7 @@ class App extends React.PureComponent {
 
     return (
       <EmotionAdminThemeProvider>
-        <AdminThemeProvider>
-          <Wrapper>{bootstrapped ? router : loader}</Wrapper>
-        </AdminThemeProvider>
+        <Wrapper>{bootstrapped ? router : loader}</Wrapper>
       </EmotionAdminThemeProvider>
     );
   }
